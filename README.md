@@ -1,5 +1,7 @@
 # thetallgrass.net
 
+[![Dependency Status](https://gemnasium.com/thetallgrassnet/pokesite.svg)](https://gemnasium.com/thetallgrassnet/pokesite)
+
 Your one-stop Pokémon fan community and database.
 
 ## Development

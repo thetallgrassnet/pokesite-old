@@ -1,6 +1,8 @@
 # thetallgrass.net
 
 [![Build Status](https://travis-ci.org/thetallgrassnet/pokesite.svg)](https://travis-ci.org/thetallgrassnet/pokesite)
+[![Code Climate](https://codeclimate.com/github/thetallgrassnet/pokesite/badges/gpa.svg)](https://codeclimate.com/github/thetallgrassnet/pokesite)
+[![Test Coverage](https://codeclimate.com/github/thetallgrassnet/pokesite/badges/coverage.svg)](https://codeclimate.com/github/thetallgrassnet/pokesite)
 [![Dependency Status](https://gemnasium.com/thetallgrassnet/pokesite.svg)](https://gemnasium.com/thetallgrassnet/pokesite)
 
 Your one-stop Pokémon fan community and database.

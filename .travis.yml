@@ -1,0 +1,10 @@
+language: ruby
+
+bundler_args: --without development
+
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:setup
+
+addons:
+  postgresql: "9.3"

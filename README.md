@@ -1,5 +1,6 @@
 # thetallgrass.net
 
+[![Build Status](https://travis-ci.org/thetallgrassnet/pokesite.svg)](https://travis-ci.org/thetallgrassnet/pokesite)
 [![Dependency Status](https://gemnasium.com/thetallgrassnet/pokesite.svg)](https://gemnasium.com/thetallgrassnet/pokesite)
 
 Your one-stop Pokémon fan community and database.

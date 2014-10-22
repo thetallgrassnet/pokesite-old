@@ -21,17 +21,30 @@ Your one-stop Pokémon fan community and database.
         $ git clone https://github.com/thetallgrassnet/pokesite.git
         $ cd pokesite
 
- 2. Install gem dependencies:
+ 2. Bootstrap the application:
 
+        $ bin/setup
+
+    What this does (you don't need to run these commands): install dependencies,
+
+        $ gem install bundler
         $ bundle install
 
- 3. Set up the database:
+    and set up the database:
 
         $ bin/rake db:setup
 
- 4. Start the server:
+    then clean up logs and temp files and restart the application server if it's
+    running.
+
+ 3. Start the server:
 
         $ bin/rails s
+
+#### Updating
+
+    $ git pull
+    $ bin/setup
 
 ### Testing
 

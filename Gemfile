@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'slim-rails', '~> 2.1.5'
+gem 'foundation-rails', '~> 5.4.5'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'

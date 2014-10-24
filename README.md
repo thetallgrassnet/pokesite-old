@@ -1,9 +1,9 @@
 # thetallgrass.net
 
-[![Build Status](https://travis-ci.org/thetallgrassnet/pokesite.svg)](https://travis-ci.org/thetallgrassnet/pokesite)
-[![Code Climate](https://codeclimate.com/github/thetallgrassnet/pokesite/badges/gpa.svg)](https://codeclimate.com/github/thetallgrassnet/pokesite)
-[![Test Coverage](https://codeclimate.com/github/thetallgrassnet/pokesite/badges/coverage.svg)](https://codeclimate.com/github/thetallgrassnet/pokesite)
-[![Dependency Status](https://gemnasium.com/thetallgrassnet/pokesite.svg)](https://gemnasium.com/thetallgrassnet/pokesite)
+[![Build Status](http://img.shields.io/travis/thetallgrassnet/pokesite.svg?style=flat)](https://travis-ci.org/thetallgrassnet/pokesite)
+[![Code Climate](http://img.shields.io/codeclimate/github/thetallgrassnet/pokesite.svg?style=flat)](https://codeclimate.com/github/thetallgrassnet/pokesite)
+[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/thetallgrassnet/pokesite.svg?style=flat)](https://codeclimate.com/github/thetallgrassnet/pokesite)
+[![Dependency Status](http://img.shields.io/gemnasium/thetallgrassnet/pokesite.svg?style=flat)](https://gemnasium.com/thetallgrassnet/pokesite)
 
 Your one-stop Pokémon fan community and database.
 

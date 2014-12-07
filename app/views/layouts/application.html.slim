@@ -4,7 +4,7 @@ html lang="en"
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? yield(:title) + " | thetallgrass.net" : "thetallgrass.net | your one-stop Pokémon fan community and database"
+    title == content_for?(:title) ? yield(:title) + " | " + t("site.title") : t("site.title") + " | " + t("site.subtitle")
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
@@ -12,11 +12,11 @@ html lang="en"
 
   body
     section#header
-      a#logo href=root_url thetallgrass.net | your one-stop Pokémon fan community and database
+      a#logo href=root_url == t("site.title") + " | " + t("site.subtitle")
 
     section#body == yield
 
     section#footer
-      | © #{Time.now.year} #{link_to "thetallgrass.net", root_url}
+      | © #{Time.now.year} #{link_to t("site.title"), root_url}
 
     = javascript_include_tag "application"

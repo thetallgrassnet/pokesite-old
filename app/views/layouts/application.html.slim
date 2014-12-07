@@ -4,7 +4,7 @@ html lang=I18n.locale
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
+    title = content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
@@ -12,7 +12,7 @@ html lang=I18n.locale
 
   body
     section#header
-      == link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
+      = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
       nav.top-bar data={topbar: nil} role="navigation"
         ul.title-area
@@ -21,14 +21,14 @@ html lang=I18n.locale
         section.top-bar-section
           ul.right
             li.has-dropdown
-              == link_to account_signed_in? ? current_account.name : "Not signed in", "#"
+              = link_to account_signed_in? ? current_account.name : "Not signed in", "#"
               ul.dropdown
                 - if account_signed_in?
-                  li == link_to "Edit account", edit_account_registration_path
-                  li == link_to "Sign out", destroy_account_session_path, method: :delete
+                  li = link_to "Edit account", edit_account_registration_path
+                  li = link_to "Sign out", destroy_account_session_path, method: :delete
                 - else
-                  li == link_to "Create account", new_account_registration_path
-                  li == link_to "Sign in", new_account_session_path
+                  li = link_to "Create account", new_account_registration_path
+                  li = link_to "Sign in", new_account_session_path
 
     == display_flash_messages
 

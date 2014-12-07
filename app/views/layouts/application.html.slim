@@ -4,7 +4,7 @@ html lang="en"
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title == content_for?(:title) ? yield(:title) + " | " + t("site.title") : t("site.title") + " | " + t("site.subtitle")
+    title == content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
 
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
@@ -12,7 +12,7 @@ html lang="en"
 
   body
     section#header
-      a#logo href=root_url == t("site.title") + " | " + t("site.subtitle")
+      == link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
     section#body == yield
 

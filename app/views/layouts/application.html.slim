@@ -11,7 +11,12 @@ html lang="en"
     = csrf_meta_tag
 
   body
+    section#header
+      a#logo href=root_url thetallgrass.net | your one-stop Pokémon fan community and database
 
-    == yield
+    section#body == yield
+
+    section#footer
+      | © #{Time.now.year} #{link_to "thetallgrass.net", root_url}
 
     = javascript_include_tag "application"

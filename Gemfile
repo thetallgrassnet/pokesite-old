@@ -35,6 +35,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails', '~> 2.1.5'
 gem 'foundation-rails', '~> 5.4.5'
 
+gem 'devise', '~> 3.4.1'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara'

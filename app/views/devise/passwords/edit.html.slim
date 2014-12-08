@@ -1,0 +1,13 @@
+h2 = t('devise.passwords.edit.title')
+
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  = f.hidden_field :reset_password_token
+
+  .field = f.password_field :password, label: "New password", autofocus: true, autocomplete: "off", hint: "(#{ @minimum_password_length } characters minimum)" if @validatable
+
+  .field = f.password_field :password_confirmation, label: "Confirm new password", autocomplete: "off" %>
+
+  .actions
+    = f.submit t('devise.passwords.edit.new')
+
+= render "devise/shared/links"

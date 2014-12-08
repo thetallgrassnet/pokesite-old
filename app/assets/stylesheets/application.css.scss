@@ -3,3 +3,15 @@
 body > section {
   @include grid-row();
 }
+
+#flash {
+  @include grid-row();
+
+  .alert-box {
+    @include grid-column($columns: 12);
+
+    &:first-child {
+      margin-top: 1.25rem;
+    }
+  }
+}

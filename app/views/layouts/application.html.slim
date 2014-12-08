@@ -24,14 +24,14 @@ html lang=I18n.locale
 
           ul.right
             li.has-dropdown
-              = account_signed_in? ? link_to(current_account, current_account) : link_to(t('devise.sessions.not_signed_in'), "#")
+              = user_signed_in? ? link_to(current_user, current_user) : link_to(t('devise.sessions.not_signed_in'), "#")
               ul.dropdown
-                - if account_signed_in?
-                  li = link_to t('devise.registrations.edit.title'), edit_account_registration_path
-                  li = link_to t('devise.sessions.destroy'), destroy_account_session_path, method: :delete
+                - if user_signed_in?
+                  li = link_to t('devise.registrations.edit.title'), edit_user_registration_path
+                  li = link_to t('devise.sessions.destroy'), destroy_user_session_path, method: :delete
                 - else
-                  li = link_to t('devise.registrations.new.title'), new_account_registration_path
-                  li = link_to t('devise.sessions.new'), new_account_session_path
+                  li = link_to t('devise.registrations.new.title'), new_user_registration_path
+                  li = link_to t('devise.sessions.new'), new_user_session_path
 
     #flash == display_flash_messages
 

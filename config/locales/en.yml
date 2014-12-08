@@ -51,3 +51,4 @@ en:
       not_signed_in: Not signed in
       new: Sign in
       destroy: Sign out
+      new_omniauth: Sign in with %{provider}

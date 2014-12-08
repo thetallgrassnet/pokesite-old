@@ -52,3 +52,5 @@ en:
       new: Sign in
       destroy: Sign out
       new_omniauth: Sign in with %{provider}
+  welcome:
+    index: Home

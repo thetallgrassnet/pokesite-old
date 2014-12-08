@@ -19,6 +19,9 @@ html lang=I18n.locale
           li.name
 
         section.top-bar-section
+          ul.left
+            li = link_to t('welcome.index'), root_path
+
           ul.right
             li.has-dropdown
               = link_to account_signed_in? ? current_account.name : t('devise.sessions.not_signed_in'), "#"

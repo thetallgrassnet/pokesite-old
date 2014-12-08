@@ -1,3 +1,6 @@
+- content_for :title do
+  = t('devise.sessions.new')
+
 h2 = t('devise.sessions.new')
 
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

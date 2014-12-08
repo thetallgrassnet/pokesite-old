@@ -1,3 +1,6 @@
+- content_for :title do
+  = t('devise.registrations.new.title')
+
 h2 = t('devise.registrations.new.title')
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|

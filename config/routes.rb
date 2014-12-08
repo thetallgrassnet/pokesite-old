@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'accounts/show'
+  namespace :user, path: "users" do
+    resources :accounts, path: "", only: [:show]
   end
 
   devise_for :accounts, class_name: "User::Account"

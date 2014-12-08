@@ -23,3 +23,31 @@ en:
   site:
     title: thetallgrass.net
     subtitle: your one-stop Pokémon fan community and database
+  common:
+    back: Back
+    confirm: Are you sure?
+  devise:
+    confirmations:
+      new: Resend confirmation instructions
+    passwords:
+      edit:
+        title: Change your password
+        submit: Change my password
+      new:
+        title: Forgot your password?
+        submit: Send me password reset instructions
+    registrations:
+      edit:
+        title: Edit account
+        pending_reconfirmation: Currently awaiting confirmation for %{email}
+        password: (leave blank if you don't want to change it)
+        current_password: (we need your current password to confirm your changes)
+        submit: Update
+        cancel: Cancel my account
+      new:
+        title: Sign up
+        password: (%{length} characters minimum)
+    sessions:
+      not_signed_in: Not signed in
+      new: Sign in
+      destroy: Sign out

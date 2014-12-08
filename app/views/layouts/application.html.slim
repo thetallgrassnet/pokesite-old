@@ -24,7 +24,7 @@ html lang=I18n.locale
 
           ul.right
             li.has-dropdown
-              = link_to account_signed_in? ? current_account.name : t('devise.sessions.not_signed_in'), "#"
+              = account_signed_in? ? link_to(current_account, current_account) : link_to(t('devise.sessions.not_signed_in'), "#")
               ul.dropdown
                 - if account_signed_in?
                   li = link_to t('devise.registrations.edit.title'), edit_account_registration_path

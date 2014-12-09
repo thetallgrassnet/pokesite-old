@@ -43,7 +43,7 @@ en:
         password: (leave blank if you don't want to change it)
         current_password: (we need your current password to confirm your changes)
         submit: Update
-        cancel: Cancel my account
+        delete: Delete my account
       new:
         title: Sign up
         password: (%{length} characters minimum)

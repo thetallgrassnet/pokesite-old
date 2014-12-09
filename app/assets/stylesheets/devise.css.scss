@@ -1,0 +1,6 @@
+body.devise {
+  #body .content {
+    @include grid-column($columns: 8, $center: true);
+  }
+}
+

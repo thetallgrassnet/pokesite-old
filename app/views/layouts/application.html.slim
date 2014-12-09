@@ -10,10 +10,11 @@ html lang=I18n.locale
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
-  body
+  body class=controller_classes
     = render 'layouts/header'
 
-    section#body == yield
+    section#body
+      .content == yield
 
     section#footer
       | © #{Time.now.year} #{link_to t("site.title"), root_url}

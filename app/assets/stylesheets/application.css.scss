@@ -1,7 +1,12 @@
 @import "foundation_and_overrides";
+@import "devise";
 
 body > section {
   @include grid-row();
+
+  .content {
+    @include grid-column($columns: 12);
+  }
 }
 
 #flash {

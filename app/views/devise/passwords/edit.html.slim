@@ -1,16 +1,17 @@
 - content_for :title do
   = t('devise.passwords.edit.title')
 
-h2 = t('devise.passwords.edit.title')
-
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-  = f.hidden_field :reset_password_token
+  fieldset
+    legend = t('devise.passwords.edit.title')
 
-  .field = f.password_field :password, label: "New password", autofocus: true, autocomplete: "off", hint: "(#{ @minimum_password_length } characters minimum)" if @validatable
+    = f.hidden_field :reset_password_token
 
-  .field = f.password_field :password_confirmation, label: "Confirm new password", autocomplete: "off" %>
+    .field = f.password_field :password, label: "New password", autofocus: true, autocomplete: "off", hint: "(#{ @minimum_password_length } characters minimum)" if @validatable
 
-  .actions
-    = f.submit t('devise.passwords.edit.new')
+    .field = f.password_field :password_confirmation, label: "Confirm new password", autocomplete: "off" %>
 
-= render "devise/shared/links"
+    .actions
+      = f.submit t('devise.passwords.edit.new')
+
+    = render "devise/shared/links"

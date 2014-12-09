@@ -13,7 +13,6 @@ html lang=I18n.locale
   body class=controller_classes
     = render 'layouts/header'
 
-    section#body
-      .content == yield
+    section#body == yield
 
     = render 'layouts/footer'

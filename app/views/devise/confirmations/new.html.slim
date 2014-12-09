@@ -1,12 +1,13 @@
 - content_for :title do
   = t('devise.confirmations.new')
 
-h2 = t('devise.confirmations.new')
-
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
-  .field = f.email_field :email, autofocus: true
+  fieldset
+    legend = t('devise.confirmations.new')
 
-  .actions
-    = f.submit t('devise.confirmations.new')
+    .field = f.email_field :email, autofocus: true
 
-= render "devise/shared/links"
+    .actions
+      = f.submit t('devise.confirmations.new')
+
+    = render "devise/shared/links"

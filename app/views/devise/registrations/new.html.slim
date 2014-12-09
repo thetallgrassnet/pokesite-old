@@ -1,18 +1,19 @@
 - content_for :title do
   = t('devise.registrations.new.title')
 
-h2 = t('devise.registrations.new.title')
-
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  .field = f.text_field :name, autofocus: true
+  fieldset
+    legend = t('devise.registrations.new.title')
 
-  .field = f.email_field :email
+    .field = f.text_field :name, autofocus: true
 
-  .field = f.password_field :password, autocomplete: "off", hint: t('devise.registrations.new.password', length: @minimum_password_length) if @validatable
+    .field = f.email_field :email
 
-  .field = f.password_field :password_confirmation, autocomplete: "off"
+    .field = f.password_field :password, autocomplete: "off", hint: t('devise.registrations.new.password', length: @minimum_password_length) if @validatable
 
-  .actions
-    = f.submit t('devise.registrations.new.title')
+    .field = f.password_field :password_confirmation, autocomplete: "off"
 
-= render "devise/shared/links"
+    .actions
+      = f.submit t('devise.registrations.new.title')
+
+    = render "devise/shared/links"

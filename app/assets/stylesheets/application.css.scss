@@ -16,7 +16,7 @@ body > section {
 }
 
 #flash .alert-box {
-  @include grid-column($columns: 12);
+  @include grid-column($columns: 11, $center: true);
 
   &:first-child {
     margin-top: 1.25rem;

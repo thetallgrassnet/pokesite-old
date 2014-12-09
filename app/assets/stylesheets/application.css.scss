@@ -9,15 +9,17 @@ body > section {
   }
 }
 
-#flash {
-  @include grid-row();
+#header #logo {
+  @include grid-column($columns: 8);
 
-  .alert-box {
-    @include grid-column($columns: 12);
+  display: block;
+}
 
-    &:first-child {
-      margin-top: 1.25rem;
-    }
+#flash .alert-box {
+  @include grid-column($columns: 12);
+
+  &:first-child {
+    margin-top: 1.25rem;
   }
 }
 

@@ -1,6 +1,7 @@
 section#header
   = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
+section#nav
   nav.top-bar data={topbar: nil} role="navigation"
     ul.title-area
       li.name
@@ -20,4 +21,4 @@ section#header
               li = link_to t('devise.registrations.new.title'), new_user_registration_path
               li = link_to t('devise.sessions.new'), new_user_session_path
 
-#flash == display_flash_messages
+section#flash == display_flash_messages

@@ -16,9 +16,13 @@ body > section {
   }
 }
 
-input + .hint {
+input ~ .hint {
   display: block;
   margin: -1rem 0 1rem;
   font-size: 70%;
   color: $small-font-color;
+}
+
+input.error ~ .hint {
+  display: none;
 }

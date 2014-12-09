@@ -13,12 +13,7 @@ html lang=I18n.locale
   body class=controller_classes
     = render 'layouts/header'
 
-    section#flash == display_flash_messages
-
     section#body
       .content == yield
 
-    section#footer
-      | © #{Time.now.year} #{link_to t("site.title"), root_url}
-
-    = javascript_include_tag "application"
+    = render 'layouts/footer'

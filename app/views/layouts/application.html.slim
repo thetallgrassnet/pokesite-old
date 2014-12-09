@@ -11,29 +11,7 @@ html lang=I18n.locale
     = csrf_meta_tag
 
   body
-    section#header
-      = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
-
-      nav.top-bar data={topbar: nil} role="navigation"
-        ul.title-area
-          li.name
-
-        section.top-bar-section
-          ul.left
-            li = link_to t('welcome.index'), root_path
-
-          ul.right
-            li.has-dropdown
-              = user_signed_in? ? link_to(current_user, current_user) : link_to(t('devise.sessions.not_signed_in'), "#")
-              ul.dropdown
-                - if user_signed_in?
-                  li = link_to t('devise.registrations.edit.title'), edit_user_registration_path
-                  li = link_to t('devise.sessions.destroy'), destroy_user_session_path, method: :delete
-                - else
-                  li = link_to t('devise.registrations.new.title'), new_user_registration_path
-                  li = link_to t('devise.sessions.new'), new_user_session_path
-
-    #flash == display_flash_messages
+    = render 'layouts/header'
 
     section#body == yield
 

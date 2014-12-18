@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'slim-rails', '~> 3.0.0'
-gem 'foundation-rails', '~> 5.4.5'
+gem 'foundation-rails', '~> 5.5'
 gem 'foundation_rails_helper', '~> 0.5'
 
 gem 'devise', '~> 3.4.1'

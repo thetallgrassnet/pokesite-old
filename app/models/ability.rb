@@ -28,5 +28,10 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    user ||= User::Account.new
+
+    if user.can_access_admin?
+      can :access, :admin
+    end
   end
 end

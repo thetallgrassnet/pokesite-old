@@ -18,4 +18,8 @@ class User::Account < ActiveRecord::Base
   def to_s
     username
   end
+
+  def can_access_admin?
+    is_admin?
+  end
 end

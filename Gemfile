@@ -37,6 +37,7 @@ gem 'foundation-rails', '~> 5.5'
 gem 'foundation_rails_helper', '~> 0.5'
 
 gem 'devise', '~> 3.4.1'
+gem 'cancancan', '~> 1.9'
 gem 'obscenity', '~> 1.0.2'
 
 group :development, :test do

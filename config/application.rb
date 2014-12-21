@@ -3,7 +3,7 @@ require File.expand_path('../boot', __FILE__)
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
-require "active_record/railtie"
+require "neo4j/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
@@ -29,7 +29,11 @@ module Pokesite
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
+
+    # Configure Neo4j connection
+    config.neo4j.session_type = :server_db
+    config.neo4j.session_path = ENV["NEO4J_URL"] or "http://localhost:7474"
 
     config.autoload_paths << Rails.root.join('lib')
   end

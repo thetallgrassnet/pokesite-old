@@ -1,4 +1,8 @@
-class User::Account < ActiveRecord::Base
+class User::Account
+  include Neo4j::ActiveNode
+
+  property 
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 

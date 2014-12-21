@@ -12,7 +12,7 @@ Your one-stop Pokémon fan community and database.
 ### Requirements
 
  * Ruby 2.1.3 (preferably installed by [RVM](http://rvm.io/))
- * PostgreSQL 9.3
+ * [Neo4j](http://neo4j.com/docs/stable/server-installation.html)
 
 ### Setup
 

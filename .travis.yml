@@ -9,4 +9,6 @@ before_script:
 addons:
   code_climate:
     repo_token: 2bad87358c11ee381ee49df1e7a6075a8be92998b2d7d6a65c472270b494bcee
-  postgresql: "9.3"
+
+services:
+  - neo4j

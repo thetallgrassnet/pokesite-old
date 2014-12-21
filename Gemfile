@@ -36,6 +36,9 @@ gem 'slim-rails', '~> 3.0.0'
 gem 'foundation-rails', '~> 5.5'
 gem 'foundation_rails_helper', '~> 0.5'
 
+gem 'neo4j', '~> 4.0.0.rc.3'
+gem 'devise-neo4j', '~> 2.0.0'
+
 gem 'devise', '~> 3.4.1'
 gem 'cancancan', '~> 1.9'
 gem 'obscenity', '~> 1.0.2'

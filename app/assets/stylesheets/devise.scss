@@ -1,7 +1,7 @@
 $devise-margin: 3rem;
 
 body.devise {
-  form {
+  fieldset {
     @include grid-column($columns: 6, $center: true);
 
     margin-top: $devise-margin;

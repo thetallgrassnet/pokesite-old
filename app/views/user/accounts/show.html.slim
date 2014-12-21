@@ -2,3 +2,5 @@
   = join_title @account.username, t('users')
 
 h1 = @account.username
+
+p = "Joined on %s" % @account.created_at.strftime("%B %-d, %Y")

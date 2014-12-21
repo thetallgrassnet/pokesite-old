@@ -11,7 +11,7 @@ Your one-stop Pokémon fan community and database.
 
 ### Requirements
 
- * Ruby 2.1.3 (preferably installed by [RVM](http://rvm.io/))
+ * Ruby 2.1.5 (preferably installed by [RVM](http://rvm.io/))
  * JDK 1.7
 
 ### Setup

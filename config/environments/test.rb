@@ -42,5 +42,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Configure Neo4j connection
-  config.neo4j.session_path = "http://localhost:7475"
+  config.neo4j.session_path = "http://localhost:7475" unless ENV["TRAVIS"]
 end

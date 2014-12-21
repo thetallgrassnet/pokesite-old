@@ -32,7 +32,8 @@ Your one-stop Pokémon fan community and database.
 
     and set up the database:
 
-        $ bin/rake db:setup
+        $ bin/rake neo4j:install[community-2.2.0-M01,development]
+        $ bin/rake neo4j:start
 
     then clean up logs and temp files and restart the application server if it's
     running.
@@ -44,7 +45,7 @@ Your one-stop Pokémon fan community and database.
 #### Updating
 
     $ git pull
-    $ bin/setup
+    $ bundle install
 
 ### Testing
 

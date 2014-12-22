@@ -19,11 +19,11 @@ Dir.chdir APP_ROOT do
 
   n4j_v = "2.2.0-M01"
   puts "\n== Setting up Neo4j #{n4j_v} =="
-  system "bin/rake neo4j:install[community-#{n4j_v},development]"
-  system "bin/rake neo4j:install[community-#{n4j_v},test]"
-  system "bin/rake neo4j:config[test,7475]"
-  system "bin/rake neo4j:start[development]"
-  system "bin/rake neo4j:start[test]"
+  system "bundle exec rake neo4j:install[community-#{n4j_v},development]"
+  system "bundle exec rake neo4j:install[community-#{n4j_v},test]"
+  system "bundle exec rake neo4j:config[test,7475]"
+  system "bundle exec rake neo4j:start[development]"
+  system "bundle exec rake neo4j:start[test]"
 
   puts "\n== Removing old logs and tempfiles =="
   system "rm -f log/*"

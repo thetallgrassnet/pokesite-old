@@ -32,11 +32,11 @@ Your one-stop Pokémon fan community and database.
 
     and set up the database:
 
-        $ bin/rake neo4j:install[community-2.2.0-M01,development]
-        $ bin/rake neo4j:install[community-2.2.0-M01,test]
-        $ bin/rake neo4j:config[test,7475]
-        $ bin/rake neo4j:start[development]
-        $ bin/rake neo4j:start[test]
+        $ bundle exec rake neo4j:install[community-2.2.0-M01,development]
+        $ bundle exec rake neo4j:install[community-2.2.0-M01,test]
+        $ bundle exec rake neo4j:config[test,7475]
+        $ bundle exec rake neo4j:start[development]
+        $ bundle exec rake neo4j:start[test]
 
     then clean up logs and temp files and restart the application server if it's
     running.

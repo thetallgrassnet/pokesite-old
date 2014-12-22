@@ -10,3 +10,11 @@ before_script:
 addons:
   code_climate:
     repo_token: 2bad87358c11ee381ee49df1e7a6075a8be92998b2d7d6a65c472270b494bcee
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/44f620873e2b1e8f050b
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: false     # default: false

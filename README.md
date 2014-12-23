@@ -5,7 +5,7 @@
 [![Code Climate](http://img.shields.io/codeclimate/github/thetallgrassnet/pokesite.svg?style=flat)](https://codeclimate.com/github/thetallgrassnet/pokesite)
 [![Test Coverage](http://img.shields.io/codeclimate/coverage/github/thetallgrassnet/pokesite.svg?style=flat)](https://codeclimate.com/github/thetallgrassnet/pokesite)
 [![Huboard](https://img.shields.io/github/issues/thetallgrassnet/pokesite.svg?style=flat)](https://huboard.com/thetallgrassnet/pokesite/)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/thetallgrassnet/pokesite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-brightgreen.svg?style=flat)](https://gitter.im/thetallgrassnet/pokesite?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Your one-stop Pokémon fan community and database.
 

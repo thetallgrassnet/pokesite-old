@@ -3,14 +3,14 @@ namespace :neo4j do
     args[:environment] || ENV["RAILS_ENV"] || "development"
   end
 
-  desc "Start all Neo4j environments"
+  desc "Start Neo4j development and test environments"
   task :start_all do
     Rake::Task["neo4j:start"].invoke("development")
     Rake::Task["neo4j:start"].reenable
     Rake::Task["neo4j:start"].invoke("test")
   end
 
-  desc "Stop all Neo4j environments"
+  desc "Stop Neo4j development and test environments"
   task :stop_all do
     Rake::Task["neo4j:stop"].invoke("development")
     Rake::Task["neo4j:stop"].reenable
@@ -29,6 +29,13 @@ namespace :neo4j do
     end
 
     Rake::Task["neo4j:start"].invoke(environment)
+  end
+
+  desc "Set up Neo4j development and test environments"
+  task :setup_all do
+    Rake::Task["neo4j:setup"].invoke("development")
+    Rake::Task["neo4j:setup"].reenable
+    Rake::Task["neo4j:setup"].invoke("test")
   end
 
 end

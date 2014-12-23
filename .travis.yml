@@ -3,9 +3,7 @@ language: ruby
 bundler_args: --without development
 
 before_script:
-  - bundle exec rake neo4j:install[community-2.2.0-M01,test]
-  - bundle exec rake neo4j:config[test,7475]
-  - bundle exec rake neo4j:start[test]
+  - bundle exec rake neo4j:setup[test]
 
 addons:
   code_climate:

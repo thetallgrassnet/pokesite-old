@@ -12,8 +12,7 @@ Dir.chdir APP_ROOT do
   system "gem install bundler --conservative"
   system "bundle check || bundle install"
 
-  n4j_v = "2.2.0-M01"
-  puts "\n== Setting up Neo4j #{n4j_v} =="
+  puts "\n== Setting up Neo4j =="
   system "bundle exec rake neo4j:setup_all"
 
   puts "\n== Removing old logs and tempfiles =="

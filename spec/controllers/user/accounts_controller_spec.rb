@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'support/controller_macros'
 
 RSpec.describe User::AccountsController, type: :controller do
 

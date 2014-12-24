@@ -22,12 +22,15 @@ namespace :neo4j do
     n4j_v = "2.2.0-M01"
     environment = get_environment(args)
 
+    Rake::Task["neo4j:install"].reenable
     Rake::Task["neo4j:install"].invoke("community-#{n4j_v}", environment)
 
     if environment == "test"
+      Rake::Task["neo4j:config"].reenable
       Rake::Task["neo4j:config"].invoke(environment, "7475")
     end
 
+    Rake::Task["neo4j:start"].reenable
     Rake::Task["neo4j:start"].invoke(environment)
   end
 

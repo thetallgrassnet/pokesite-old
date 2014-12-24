@@ -12,11 +12,6 @@ Dir.chdir APP_ROOT do
   system "gem install bundler --conservative"
   system "bundle check || bundle install"
 
-  # puts "\n== Copying sample files =="
-  # unless File.exist?("config/database.yml")
-  #   system "cp config/database.yml.sample config/database.yml"
-  # end
-
   n4j_v = "2.2.0-M01"
   puts "\n== Setting up Neo4j #{n4j_v} =="
   system "bundle exec rake neo4j:setup_all"

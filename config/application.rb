@@ -28,9 +28,6 @@ module Pokesite
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    # config.active_record.raise_in_transactional_callbacks = true
-
     # Configure Neo4j connection
     config.neo4j.session_type = :server_db
     config.neo4j.session_path = ENV["NEO4J_URL"] or "http://localhost:7474"

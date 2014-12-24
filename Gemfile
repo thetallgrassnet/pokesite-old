@@ -35,7 +35,7 @@ gem 'foundation-rails', '~> 5.5'
 gem 'foundation_rails_helper', '~> 0.5'
 
 gem 'active_attr', '~> 0.8.5'
-gem 'neo4j', '~> 4.0.0.rc.3'
+gem 'neo4j', '~> 4.0.0.rc.4'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.4.1'

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/slim-template/slim-rails.git
-  revision: d59278f41b54ce05a2cdb74d6207ed69d7dbcd81
+  revision: decc9cbcdbffc1c5925b9a6af5b6821ff864b326
   specs:
     slim-rails (3.0.0)
       actionmailer (>= 3.1, < 5.0)
@@ -149,7 +149,7 @@ GEM
       neo4j-core (~> 3.1.0)
       orm_adapter (~> 0.5.0)
       railties (~> 4)
-    neo4j-core (3.1.0)
+    neo4j-core (3.1.1)
       activesupport
       faraday (~> 0.9.0)
       faraday_middleware (~> 0.9.1)

@@ -3,6 +3,9 @@ language: ruby
 bundler_args: --without development
 
 before_script:
+  - rvm get stable
+  - rvm alias delete 2.2.0
+  - rvm use 2.2.0 --install
   - bundle exec rake neo4j:setup[test]
 
 addons:

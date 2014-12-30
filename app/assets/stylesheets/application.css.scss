@@ -1,7 +1,7 @@
 @import "foundation_and_overrides";
 @import "devise";
 
-body > section {
+body > div {
   @include grid-row();
 }
 

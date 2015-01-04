@@ -51,3 +51,9 @@ Your one-stop Pokémon fan community and database.
 ### Testing
 
     $ bin/rspec
+
+### Shutdown
+
+Press `Ctrl+C` to stop the server, then stop the development and test databases:
+
+    $ bundle exec rake neo4j:stop_all

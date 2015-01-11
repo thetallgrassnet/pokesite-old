@@ -34,7 +34,7 @@ gem 'slim-rails', '~> 3.0.1'
 gem 'foundation-rails', '~> 5.5'
 gem 'foundation_rails_helper', '~> 0.5'
 
-gem 'neo4j', '~> 4.0.0.rc.4'
+gem 'neo4j', '~> 4.1.0'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.4.1'

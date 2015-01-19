@@ -6,16 +6,22 @@ require 'socket'
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
+def get_ip container, port
+  ip, port = `docker port #{container} #{port}`.strip.split ':'
+
+  if `which boot2docker`.strip.length > 0
+    ip = `boot2docker ip`.strip
+  end
+
+  return ip, port
+end
+
 def start_db env
   `docker start pokesite-#{env}-db`
 
   tries = 0
 
-  ip, port = `docker port pokesite-#{env}-db 7474`.split ':'
-
-  if `which boot2docker`.strip.length > 0
-    ip = `boot2docker ip`.strip
-  end
+  ip, port = get_ip "pokesite-#{env}-db", 7474
 
   print "Waiting for pokesite-#{env}-db"
 
@@ -26,7 +32,7 @@ def start_db env
         begin
           s = TCPSocket.new ip, port.to_i
           s.close
-          print "available\n"
+          print "available at http://#{ip}:#{port}\n"
           return
         rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
           system "sleep 1"
@@ -57,7 +63,12 @@ Dir.chdir APP_ROOT do
   case cmd
   when "start"
     start_db "dev"
-    system "docker start -a pokesite-dev"
+    system "docker start pokesite-dev"
+
+    ip, port = get_ip "pokesite-dev", 3000
+    puts "Server available at http://#{ip}:#{port}"
+
+    system "docker attach pokesite-dev"
   when "stop"
     system "docker stop pokesite-dev"
     stop_db "dev"

@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
+
+def start_db env
+  system "docker start pokesite-#{env}-db && sleep 3"
+end
+
+def start env
+  start_db env
+  system "docker start -a pokesite-#{env}"
+end
+
+def stop_db env
+  system "docker stop pokesite-#{env}-db"
+end
+
+def stop env
+  system "docker stop pokesite-#{env}"
+  stop_db env
+end
+
+Dir.chdir APP_ROOT do
+  cmd = ARGV.shift
+
+  case cmd
+  when "start"
+    start "dev"
+  when "stop"
+    stop "dev"
+  when "spec"
+    start "test"
+    stop_db "test"
+  when "run"
+    start_db "dev"
+    system "docker run -i -t --link pokesite-dev-db:db --volume $(pwd):/usr/src/app --rm pokesite #{ARGV.join " "}"
+  else
+    puts "Usage: bin/d {start|stop|spec|run COMMAND ARGUMENTS}"
+  end
+end

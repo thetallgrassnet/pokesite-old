@@ -7,7 +7,7 @@ require 'socket'
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 def start_db env
-  system "docker start pokesite-#{env}-db"
+  `docker start pokesite-#{env}-db`
 
   tries = 0
 
@@ -43,7 +43,7 @@ def start_db env
 end
 
 def stop_db env
-  system "docker stop pokesite-#{env}-db"
+  `docker stop pokesite-#{env}-db`
 end
 
 def run env, cmd, args = []

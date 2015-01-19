@@ -72,9 +72,9 @@ Dir.chdir APP_ROOT do
   when "stop"
     system "docker stop pokesite-dev"
     stop_db "dev"
+    stop_db "test"
   when "spec"
     run "test", "bin/rspec", ARGV
-    stop_db "test"
   when "run"
     cmd = ARGV.shift
     run "dev", cmd, ARGV

@@ -1,16 +1,45 @@
 #!/usr/bin/env ruby
 require 'pathname'
+require 'timeout'
+require 'socket'
 
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 def start_db env
-  system "docker start pokesite-#{env}-db && sleep 5"
-end
+  system "docker start pokesite-#{env}-db"
 
-def start env
-  start_db env
-  system "docker start -a pokesite-#{env}"
+  tries = 0
+
+  ip, port = `docker port pokesite-#{env}-db 7474`.split ':'
+
+  if `which boot2docker`.strip.length > 0
+    ip = `boot2docker ip`.strip
+  end
+
+  print "Waiting for pokesite-#{env}-db"
+
+  until tries == 30
+    print "."
+    begin
+      Timeout::timeout(1) do
+        begin
+          s = TCPSocket.new ip, port.to_i
+          s.close
+          print "available\n"
+          return
+        rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+          system "sleep 1"
+          tries += 1
+        end
+      end
+    rescue Timeout::Error
+      tries += 1
+    end
+  end
+
+  print "failed to become available\n"
+  raise
 end
 
 def stop_db env

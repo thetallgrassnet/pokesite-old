@@ -36,11 +36,11 @@ application code and database instance are created and linked.
         $ bin/setup
 
     This builds a Docker image for the application, then creates Docker
-    containers for the development and test environments and databases, mounting
-    the project directory to the application directory in the environment
-    containers, and the `db/neo4j/[environment]/data/graph.db` directory to the
-    location of the `graph.db` directory in the database containers, and linking
-    the containers appropriately.
+    containers for the development and test databases and the application code,
+    mounting the project directory to the application directory in the
+    application container, and the `db/neo4j/[environment]/data/graph.db`
+    directory to the location of the `graph.db` directory in the database
+    containers, and linking the containers appropriately.
 
  3. Start the server using the helper script at `bin/d`:
 
@@ -49,23 +49,9 @@ application code and database instance are created and linked.
     The helper script can be passed one of four different commands to start or
     stop the server, run specs, or run an arbitrary command. The `start` command
     starts the Neo4j database for the development environment, waits for it to
-    be ready to accept connections, then starts the application server.
-
- 4. Find the port mapping for the server:
-
-        $ docker port pokesite-dev 3000
-
-    This shows the address to which the Rails application server is mapped on
-    your development machine, e.g. `0.0.0.0:49244`. This is the address to visit
-    in your browser to connect to the development server.
-
-    You can also use this command to find the address for the Neo4j browser
-    console:
-
-        $ docker port pokesite-dev-db 7474
-
-    (If you are using boot2docker, run `boot2docker ip` to find the address to
-    use instead of `0.0.0.0`.)
+    be ready to accept connections, then starts the application server. The
+    address and port for connecting to the server will be shown above the server
+    output in the terminal.
 
 #### Updating
 
@@ -77,11 +63,11 @@ Also re-run `bin/setup` whenever any changes are made to the `Gemfile` or
 
 ### Testing
 
-    $ bin/d spec
+    $ bin/d spec [ARGUMENTS]
 
 ### Running commands
 
-    $ bin/d run COMMAND ARGUMENTS
+    $ bin/d run COMMAND [ARGUMENTS]
 
 For example, to start a Rails console:
 

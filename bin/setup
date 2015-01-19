@@ -14,7 +14,7 @@ Dir.chdir APP_ROOT do
   system "docker stop pokesite-{dev,test}-db"
   system "docker rm pokesite-dev"
   system "docker rm pokesite-{dev,test}-db"
-  system "docker create -P --name pokesite-dev-db --volume #{APP_ROOT}/db/neo4j/development/data/graph.db:/var/lib/neo4j/data/graph.db tpires/neo4j-testing"
-  system "docker create -P --name pokesite-test-db --volume #{APP_ROOT}/db/neo4j/test/data/graph.db:/var/lib/neo4j/data/graph.db tpires/neo4j-testing"
+  system "docker create -P --name pokesite-dev-db --volume #{APP_ROOT}/db/neo4j/development/data/graph.db:/var/lib/neo4j/data/graph.db tpires/neo4j"
+  system "docker create -P --name pokesite-test-db --volume #{APP_ROOT}/db/neo4j/test/data/graph.db:/var/lib/neo4j/data/graph.db tpires/neo4j"
   system "docker create -i -t -P --name pokesite-dev --link pokesite-dev-db:db --volume #{APP_ROOT}:/usr/src/app pokesite bin/rails s -b 0.0.0.0"
 end

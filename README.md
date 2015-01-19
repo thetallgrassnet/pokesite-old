@@ -13,8 +13,16 @@ Your one-stop Pokémon fan community and database.
 
 ### Requirements
 
- * Ruby 2.1.5 (preferably installed by [RVM](http://rvm.io/))
- * JDK 1.7
+  * Ruby (the OS X or your Linux distribution's default installation is okay)
+  * [VirtualBox](https://www.virtualbox.org/)
+  * [Docker](https://www.docker.com/)
+  * [boot2docker](http://boot2docker.io/) on Mac OS X or Windows
+
+This project uses Docker images and containers to ensure parity between
+development, testing, and production environments, without needing to keep
+multiple dependencies manually up-to-date on different machines. The correct
+versions of Ruby and Neo4j are used from Docker images, and containers for the
+application code and database instance are created and linked.
 
 ### Setup
 
@@ -27,33 +35,58 @@ Your one-stop Pokémon fan community and database.
 
         $ bin/setup
 
-    What this does (you don't need to run these commands): install dependencies,
+    This builds a Docker image for the application, then creates Docker
+    containers for the development and test environments and databases, mounting
+    the project directory to the application directory in the environment
+    containers, and the `db/neo4j/[environment]/data/graph.db` directory to the
+    location of the `graph.db` directory in the database containers, and linking
+    the containers appropriately.
 
-        $ gem install bundler
-        $ bundle install
+ 3. Start the server using the helper script at `bin/d`:
 
-    and set up and start the development and test databases:
+        $ bin/d start
 
-        $ bundle exec rake neo4j:setup_all
+    The helper script can be passed one of four different commands to start or
+    stop the server, run specs, or run an arbitrary command. The `start` command
+    starts the Neo4j database for the development environment, waits for it to
+    be ready to accept connections, then starts the application server.
 
-    then clean up logs and temp files and restart the application server if it's
-    running.
+ 4. Find the port mapping for the server:
 
- 3. Start the server:
+        $ docker port pokesite-dev 3000
 
-        $ bin/rails s
+    This shows the address to which the Rails application server is mapped on
+    your development machine, e.g. `0.0.0.0:49244`. This is the address to visit
+    in your browser to connect to the development server.
+
+    You can also use this command to find the address for the Neo4j browser
+    console:
+
+        $ docker port pokesite-dev-db 7474
+
+    (If you are using boot2docker, run `boot2docker ip` to find the address to
+    use instead of `0.0.0.0`.)
 
 #### Updating
 
     $ git pull
     $ bin/setup
 
+Also re-run `bin/setup` whenever any changes are made to the `Gemfile` or
+`Dockerfile` to rebuild the application image and containers.
+
 ### Testing
 
-    $ bin/rspec
+    $ bin/d spec
+
+### Running commands
+
+    $ bin/d run COMMAND ARGUMENTS
+
+For example, to start a Rails console:
+
+    $ bin/d run bin/rails c
 
 ### Shutdown
 
-Press `Ctrl+C` to stop the server, then stop the development and test databases:
-
-    $ bundle exec rake neo4j:stop_all
+    $ bin/d stop

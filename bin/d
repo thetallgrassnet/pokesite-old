@@ -17,9 +17,9 @@ def stop_db env
   system "docker stop pokesite-#{env}-db"
 end
 
-def stop env
-  system "docker stop pokesite-#{env}"
-  stop_db env
+def run env, cmd, args = []
+  start_db env
+  system "docker run -i -t --link pokesite-#{env}-db:db --volumes-from pokesite-dev --rm pokesite #{cmd} #{args.join " "}"
 end
 
 Dir.chdir APP_ROOT do
@@ -27,16 +27,18 @@ Dir.chdir APP_ROOT do
 
   case cmd
   when "start"
-    start "dev"
+    start_db "dev"
+    system "docker start -a pokesite-dev"
   when "stop"
-    stop "dev"
+    system "docker stop pokesite-dev"
+    stop_db "dev"
   when "spec"
-    start "test"
+    run "test", "bin/rspec", ARGV
     stop_db "test"
   when "run"
-    start_db "dev"
-    system "docker run -i -t --link pokesite-dev-db:db --volumes-from pokesite-dev --rm pokesite #{ARGV.join " "}"
+    cmd = ARGV.shift
+    run "dev", cmd, ARGV
   else
-    puts "Usage: bin/d {start|stop|spec|run COMMAND ARGUMENTS}"
+    puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|run COMMAND [ARGUMENTS]}"
   end
 end

@@ -5,7 +5,7 @@ require 'pathname'
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 def start_db env
-  system "docker start pokesite-#{env}-db && sleep 3"
+  system "docker start pokesite-#{env}-db && sleep 5"
 end
 
 def start env

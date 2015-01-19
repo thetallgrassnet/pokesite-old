@@ -3,8 +3,8 @@ language: ruby
 
 bundler_args: --without development
 
-before_script:
-  - bundle exec rake neo4j:setup[test]
+services:
+  - neo4j
 
 addons:
   code_climate:

@@ -35,7 +35,7 @@ Dir.chdir APP_ROOT do
     stop_db "test"
   when "run"
     start_db "dev"
-    system "docker run -i -t --link pokesite-dev-db:db --volume $(pwd):/usr/src/app --rm pokesite #{ARGV.join " "}"
+    system "docker run -i -t --link pokesite-dev-db:db --volumes-from pokesite-dev --rm pokesite #{ARGV.join " "}"
   else
     puts "Usage: bin/d {start|stop|spec|run COMMAND ARGUMENTS}"
   end

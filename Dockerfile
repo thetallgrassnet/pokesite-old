@@ -5,9 +5,9 @@ RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -r
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+EXPOSE 3000
+
 ADD Gemfile /usr/src/app/Gemfile
 ADD Gemfile.lock /usr/src/app/Gemfile.lock
 
 RUN bundle install
-
-EXPOSE 3000

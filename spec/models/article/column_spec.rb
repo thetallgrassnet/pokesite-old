@@ -1,21 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Article::Column, type: :model do
-
   let(:column) { FactoryGirl.create(:article_column) }
 
   context "name" do
     it "is required" do
-      d = FactoryGirl.build(:article_column, name: "")
-      expect(d).to be_invalid
+      c = FactoryGirl.build(:article_column, name: "")
+      expect(c).to be_invalid
     end
 
     it "is unique" do
-      name = "Unique Name Column"
-      c = FactoryGirl.create(:article_column, name: name)
-      d = FactoryGirl.build(:article_column, name: name)
-      expect(c).to be_valid
-      expect(d).to be_invalid
+      c = FactoryGirl.build(:article_column, name: column.name)
+      expect(c).to be_invalid
     end
   end
 
@@ -27,11 +23,8 @@ RSpec.describe Article::Column, type: :model do
     end
 
     it "is unique" do
-      name = "Unique Slug Column"
-      c = FactoryGirl.create(:article_column, name: name)
-      d = FactoryGirl.build(:article_column, name: name)
-      expect(c).to be_valid
-      expect(d).to be_invalid
+      c = FactoryGirl.build(:article_column, name: column.name)
+      expect(c).to be_invalid
     end
   end
 

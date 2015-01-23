@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User::Account, :type => :model do
   let(:user) { FactoryGirl.create(:user_account) }
+  let(:admin) { FactoryGirl.create(:admin) }
 
   context "username" do
     it "is required" do
@@ -29,6 +30,16 @@ RSpec.describe User::Account, :type => :model do
   context "to_s" do
     it "returns the username" do
       expect(user.to_s).to eql(user.username)
+    end
+  end
+
+  context "can_access_admin?" do
+    it "is true for admins" do
+      expect(admin.can_access_admin?).to eql(true)
+    end
+
+    it "is false for non-admins" do
+      expect(user.can_access_admin?).to eql(false)
     end
   end
 end

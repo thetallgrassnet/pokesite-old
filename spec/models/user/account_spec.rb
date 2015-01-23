@@ -19,6 +19,11 @@ RSpec.describe User::Account, :type => :model do
       u = FactoryGirl.build(:user_account, username: "Invalid @Username")
       expect(u).to be_invalid
     end
+
+    it "cannot be profane" do
+      u = FactoryGirl.build(:user_account, username: "some_jackass")
+      expect(u).to be_invalid
+    end
   end
 
   context "to_param" do

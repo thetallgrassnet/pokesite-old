@@ -13,3 +13,6 @@
 
 # Ignore local Neo4j installation
 /db/neo4j
+
+# Exuberant ctags
+tags

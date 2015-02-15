@@ -1,26 +1,37 @@
-#header
+#header.hidden-xs.hidden-sm
   = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
-#nav
-  nav.top-bar data={topbar: nil} role="navigation"
-    ul.title-area
-      li.name
+nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data={ toggle: "collapse", target: ".navbar-collapse" }
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to t("site.title"), root_path, class: "navbar-brand visible-xs-inline visible-sm-inline"
+      = link_to t("welcome.index"), root_path, class: "navbar-brand hidden-xs hidden-sm"
 
-    .top-bar-section
-      ul.left
-        li = link_to t('welcome.index'), root_path
+    .navbar-collapse.collapse
+      ul.nav.navbar-nav
+        /li = link_to t("welcome.index"), root_path
 
-      ul.right
-        li.has-dropdown
-          = user_signed_in? ? link_to(current_user, current_user) : link_to(t('devise.sessions.not_signed_in'), "#")
-          ul.dropdown
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown
+          = link_to nil, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
+            = user_signed_in? ? current_user : t("devise.sessions.not_signed_in")
+            span.caret
+          ul.dropdown-menu role="menu"
             - if user_signed_in?
+              li = link_to t("users.show"), current_user
+              li = link_to t("devise.registrations.edit.title"), edit_user_registration_path
+              li.divider
               - if can? :access, :admin
                 li = link_to t("admin"), admin_root_path
-              li = link_to t('devise.registrations.edit.title'), edit_user_registration_path
-              li = link_to t('devise.sessions.destroy'), destroy_user_session_path, method: :delete
+                li.divider
+              li = link_to t("devise.sessions.destroy"), destroy_user_session_path, method: :delete
             - else
-              li = link_to t('devise.registrations.new.title'), new_user_registration_path
-              li = link_to t('devise.sessions.new'), new_user_session_path
+              li = link_to t("devise.registrations.new.title"), new_user_registration_path
+              li = link_to t("devise.sessions.new"), new_user_session_path
 
 #flash == display_flash_messages

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    root 'dashboard#index'
+  end
+
   namespace :user, path: "users" do
     resources :accounts, path: "", only: [:show]
   end

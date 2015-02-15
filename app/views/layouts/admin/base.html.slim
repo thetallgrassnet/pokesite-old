@@ -1,0 +1,30 @@
+doctype html
+html lang=I18n.locale
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title = content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
+
+    = stylesheet_link_tag "admin"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tag
+
+  body
+    nav.top-bar data={topbar: nil} role="navigation"
+      ul.title-area
+        li.name
+          h1 = link_to "#{t("site.title")} #{t("admin")}", admin_root_path
+
+      .top-bar-section
+        ul.right
+          li.has-dropdown
+            = link_to current_user
+            ul.dropdown
+              li = link_to "Return to #{t("site.title")}", root_path
+
+    #flash == display_flash_messages
+
+    #body == yield
+
+    = javascript_include_tag "application"

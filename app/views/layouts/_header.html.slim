@@ -5,7 +5,7 @@ nav.navbar.navbar-inverse
   .container-fluid
     .navbar-header
       button.navbar-toggle.collapsed data={ toggle: "collapse", target: ".navbar-collapse" }
-        span.sr-only Toggle navigation
+        span.sr-only = t("nav.toggle")
         span.icon-bar
         span.icon-bar
         span.icon-bar
@@ -27,7 +27,7 @@ nav.navbar.navbar-inverse
               li = link_to t("devise.registrations.edit.title"), edit_user_registration_path
               li.divider
               - if can? :access, :admin
-                li = link_to t("admin"), admin_root_path
+                li = link_to t("admin.title"), admin_root_path
                 li.divider
               li = link_to t("devise.sessions.destroy"), destroy_user_session_path, method: :delete
             - else

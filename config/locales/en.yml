@@ -27,6 +27,8 @@ en:
     back: Back
     close: Close
     confirm: Are you sure?
+  nav:
+    toggle: Toggle navigation
   devise:
     confirmations:
       new: Resend confirmation instructions
@@ -57,4 +59,6 @@ en:
     show: View profile
   welcome:
     index: Home
-  admin: Admin
+  admin:
+    title: Admin
+    return: Return to %{loc}

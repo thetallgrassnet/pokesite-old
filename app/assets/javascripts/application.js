@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require turbolinks
-//= require_tree .
-
-$(function(){ $(document).foundation(); });
+//= require bootstrap/alert
+//= require bootstrap/collapse
+//= require bootstrap/dropdown

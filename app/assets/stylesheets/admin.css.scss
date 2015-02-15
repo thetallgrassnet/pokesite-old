@@ -1,6 +1,7 @@
-@import "foundation_and_overrides";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 @import "devise";
 
-body > div {
-  @include grid-row();
+body > .container > div {
+  @include make-row();
 }

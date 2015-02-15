@@ -1,19 +1,16 @@
-@import "foundation_and_overrides";
+@import "bootstrap-sprockets";
+@import "bootstrap";
 @import "devise";
 
-body > div {
-  @include grid-row();
+body > .container > div {
+  @include make-row();
 }
 
 #header #logo {
-  @include grid-column($columns: 8);
-
   display: block;
 }
 
 #flash .alert-box {
-  @include grid-column($columns: 11, $center: true);
-
   &:first-child {
     margin-top: 1.25rem;
   }
@@ -23,7 +20,7 @@ input ~ .hint {
   display: block;
   margin: -1rem 0 1rem;
   font-size: 70%;
-  color: $small-font-color;
+  color: $gray-light;
 }
 
 input.error ~ .hint {

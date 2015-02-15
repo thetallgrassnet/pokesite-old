@@ -32,9 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'slim-rails', '~> 3.0.1'
 gem 'foundation-rails', '~> 5.5'
-gem 'foundation_rails_helper', '~> 0.5'
+gem 'foundation_rails_helper', '~> 1.0'
 
-gem 'neo4j', '~> 4.1.1'
+gem 'neo4j', '~> 4.1'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.4.1'
@@ -42,7 +42,7 @@ gem 'cancancan', '~> 1.9'
 gem 'obscenity', '~> 1.0.2'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.2.0'
   gem 'capybara'
   gem 'factory_girl_rails'
 

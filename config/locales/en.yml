@@ -25,6 +25,7 @@ en:
     subtitle: your one-stop Pokémon fan community and database
   common:
     back: Back
+    close: Close
     confirm: Are you sure?
   devise:
     confirmations:

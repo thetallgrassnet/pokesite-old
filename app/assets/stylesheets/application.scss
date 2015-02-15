@@ -1,19 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "grid";
 @import "devise";
-
-body > .container > div {
-  @include make-row();
-}
 
 #header #logo {
   display: block;
-}
-
-#flash .alert-box {
-  &:first-child {
-    margin-top: 1.25rem;
-  }
 }
 
 input ~ .hint {

@@ -7,12 +7,12 @@ html lang=I18n.locale
     title = content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
 
     = stylesheet_link_tag "application"
-    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
   body class=controller_classes
-    = render 'layouts/header'
+    .container
+      = render 'layouts/header'
 
-    #body == yield
+      #body == yield
 
-    = render 'layouts/footer'
+      = render 'layouts/footer'

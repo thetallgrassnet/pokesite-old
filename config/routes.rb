@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
+
+    namespace :user, path: "users" do
+      resources :accounts, except: [:new, :create]
+    end
   end
 
   namespace :user, path: "users" do

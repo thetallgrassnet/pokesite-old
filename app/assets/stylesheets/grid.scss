@@ -1,0 +1,9 @@
+body > .container > div {
+  @include make-row();
+}
+
+#flash .alert {
+  @include make-xs-column($columns: 10);
+  @include make-xs-column-offset($columns: 1);
+  padding-right: 35px;
+}

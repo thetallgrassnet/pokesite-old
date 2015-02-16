@@ -4,24 +4,31 @@ html lang=I18n.locale
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
-    title = content_for?(:title) ? join_title(content_for(:title), t("site.title")) : join_title(t("site.title"), t("site.subtitle"))
+    title
+      = content_for?(:title) ? join_title(content_for(:title), "#{t("site.title")} #{t("admin.title")}") : "#{t("site.title")} #{t("admin.title")}"
 
     = stylesheet_link_tag "admin"
-    = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
   body
-    nav.top-bar data={topbar: nil} role="navigation"
-      ul.title-area
-        li.name
-          h1 = link_to "#{t("site.title")} #{t("admin")}", admin_root_path
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed data={ toggle: "collapse", target: ".navbar-collapse" }
+            span.sr-only = t("nav.toggle")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to "#{t("site.title")} #{t("admin.title")}", admin_root_path, class: "navbar-brand"
 
-      .top-bar-section
-        ul.right
-          li.has-dropdown
-            = link_to current_user
-            ul.dropdown
-              li = link_to "Return to #{t("site.title")}", root_path
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              = link_to nil, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
+                = current_user
+                span.caret
+              ul.dropdown-menu role="menu"
+                li = link_to t("admin.return", loc: t("site.title")), root_path
 
     #flash == display_flash_messages
 

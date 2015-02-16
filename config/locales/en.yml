@@ -25,7 +25,10 @@ en:
     subtitle: your one-stop Pokémon fan community and database
   common:
     back: Back
+    close: Close
     confirm: Are you sure?
+  nav:
+    toggle: Toggle navigation
   devise:
     confirmations:
       new: Resend confirmation instructions
@@ -52,7 +55,10 @@ en:
       new: Sign in
       destroy: Sign out
       new_omniauth: Sign in with %{provider}
-  users: Users
+  users:
+    show: View profile
   welcome:
     index: Home
-  admin: Admin
+  admin:
+    title: Admin
+    return: Return to %{loc}

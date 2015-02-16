@@ -2,7 +2,10 @@ $devise-margin: 3rem;
 
 body.devise {
   fieldset {
-    @include grid-column($columns: 6, $center: true);
+    @include make-sm-column($columns: 6);
+    @include make-sm-column-offset($columns: 3);
+    @include make-md-column($columns: 4);
+    @include make-md-column-offset($columns: 4);
 
     margin-top: $devise-margin;
     margin-bottom: $devise-margin;

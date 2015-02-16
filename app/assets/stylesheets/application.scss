@@ -1,0 +1,20 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "rails_bootstrap_forms";
+@import "grid";
+@import "devise";
+
+#header #logo {
+  display: block;
+}
+
+input ~ .hint {
+  display: block;
+  margin: -1rem 0 1rem;
+  font-size: 70%;
+  color: $gray-light;
+}
+
+input.error ~ .hint {
+  display: none;
+}

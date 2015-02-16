@@ -2,38 +2,30 @@ require 'rails_helper'
 
 RSpec.describe Admin::User::AccountsController, type: :controller do
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
+  describe "GET index" do
+    context "authenticated" do
+      login_admin
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+      it "returns http success" do
+        get :index
+        expect(response).to have_http_status(:success)
+      end
     end
-  end
 
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
+    context "unauthenticated" do
+      it "returns http redirect" do
+        get :index
+        expect(response).to have_http_status(:redirect)
+      end
     end
-  end
 
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
+    context "unauthorized" do
+      login_user
 
-  describe "GET #delete" do
-    it "returns http success" do
-      get :delete
-      expect(response).to have_http_status(:success)
+      it "reutrns http redirect" do
+        get :index
+        expect(response).to have_http_status(:redirect)
+      end
     end
   end
 

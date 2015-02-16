@@ -7,7 +7,7 @@ require 'socket'
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 def get_ip container, port
-  ip, port = `docker port #{container} #{port}`.strip.split ':'
+  ip, port = `docker port #{container} #{port} 2>/dev/null`.strip.split ':'
 
   if `which boot2docker`.strip.length > 0
     ip = `boot2docker ip`.strip
@@ -18,13 +18,11 @@ end
 
 def start_db env
   `docker start pokesite-#{env}-db`
-
-  tries = 0
-
   ip, port = get_ip "pokesite-#{env}-db", 7474
 
   print "Waiting for pokesite-#{env}-db"
 
+  tries = 0
   until tries == 30
     print "."
     begin
@@ -52,6 +50,27 @@ def stop_db env
   `docker stop pokesite-#{env}-db`
 end
 
+def start env
+  ip, port = get_ip "pokesite-#{env}", 3000
+  return false if ip and port
+
+  start_db env
+  system "docker start pokesite-#{env}"
+end
+
+def stop env
+  ip, port = get_ip "pokesite-#{env}", 3000
+  return false unless ip and port
+
+  system "docker stop pokesite-#{env}"
+  stop_db env
+end
+
+def exec env, cmd, args = []
+  start env
+  system "docker exec -i -t pokesite-#{env} #{cmd} #{args.join " "}"
+end
+
 def run env, cmd, args = []
   start_db env
   system "docker run -i -t --link pokesite-#{env}-db:db --volumes-from pokesite-dev --rm pokesite #{cmd} #{args.join " "}"
@@ -62,23 +81,20 @@ Dir.chdir APP_ROOT do
 
   case cmd
   when "start"
-    start_db "dev"
-    system "docker start pokesite-dev"
+    start "dev"
 
     ip, port = get_ip "pokesite-dev", 3000
     puts "Server available at http://#{ip}:#{port}"
 
     system "docker attach pokesite-dev"
   when "stop"
-    system "docker stop pokesite-dev"
-    stop_db "dev"
+    stop "dev"
     stop_db "test"
   when "spec"
     run "test", "bin/rspec", ARGV
-  when "run"
-    cmd = ARGV.shift
-    run "dev", cmd, ARGV
+  when "help"
+    puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|help|COMMAND [ARGUMENTS]}"
   else
-    puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|run COMMAND [ARGUMENTS]}"
+    exec "dev", cmd, ARGV
   end
 end

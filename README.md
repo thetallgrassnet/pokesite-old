@@ -46,12 +46,11 @@ application code and database instance are created and linked.
 
         $ bin/d start
 
-    The helper script can be passed one of four different commands to start or
-    stop the server, run specs, or run an arbitrary command. The `start` command
-    starts the Neo4j database for the development environment, waits for it to
-    be ready to accept connections, then starts the application server. The
-    address and port for connecting to the server will be shown above the server
-    output in the terminal.
+    The helper script start or stop the server, run specs, or run an arbitrary
+    command. The `start` command starts the Neo4j database for the development
+    environment, waits for it to be ready to accept connections, then starts the
+    application server. The address and port for connecting to the server will
+    be shown above the server output in the terminal.
 
 #### Updating
 
@@ -67,11 +66,11 @@ Also re-run `bin/setup` whenever any changes are made to the `Gemfile` or
 
 ### Running commands
 
-    $ bin/d run COMMAND [ARGUMENTS]
+    $ bin/d COMMAND [ARGUMENTS]
 
 For example, to start a Rails console:
 
-    $ bin/d run bin/rails c
+    $ bin/d bin/rails c
 
 ### Shutdown
 

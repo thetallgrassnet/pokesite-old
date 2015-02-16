@@ -78,6 +78,7 @@ end
 
 Dir.chdir APP_ROOT do
   cmd = ARGV.shift
+  cmd ||= "help"
 
   case cmd
   when "start"

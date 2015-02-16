@@ -55,14 +55,14 @@ def start env
   return false if ip and port
 
   start_db env
-  system "docker start pokesite-#{env}"
+  `docker start pokesite-#{env}`
 end
 
 def stop env
   ip, port = get_ip "pokesite-#{env}", 3000
   return false unless ip and port
 
-  system "docker stop pokesite-#{env}"
+  `docker stop pokesite-#{env}`
   stop_db env
 end
 

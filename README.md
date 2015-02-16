@@ -55,10 +55,7 @@ application code and database instance are created and linked.
 #### Updating
 
     $ git pull
-    $ bin/setup
-
-Also re-run `bin/setup` whenever any changes are made to the `Gemfile` or
-`Dockerfile` to rebuild the application image and containers.
+    $ bin/d bundle
 
 ### Testing
 

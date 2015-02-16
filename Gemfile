@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'slim-rails', '~> 3.0.1'
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'bootstrap_form', '~> 2.2.0'
 
 gem 'neo4j', '~> 4.1'
 gem 'devise-neo4j', '~> 2.0.0'

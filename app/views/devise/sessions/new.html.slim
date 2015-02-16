@@ -1,7 +1,7 @@
 - content_for :title do
   = t('devise.sessions.new')
 
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   fieldset
     legend = t('devise.sessions.new')
 

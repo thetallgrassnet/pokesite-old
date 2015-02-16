@@ -35,5 +35,9 @@ class Ability
     if user.can_access_admin?
       can :access, :admin
     end
+
+    if user.is_admin?
+      can :manage, :all
+    end
   end
 end

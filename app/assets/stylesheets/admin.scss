@@ -8,7 +8,7 @@ body {
 }
 
 #body {
-  & > header, & > table {
+  & > header, & > .table-responsive {
     @include make-xs-column($columns: 12);
   }
 }

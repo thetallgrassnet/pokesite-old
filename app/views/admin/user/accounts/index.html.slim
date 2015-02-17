@@ -1,15 +1,16 @@
 header
   h1 = "#{t("users.title")} #{t("users.accounts.title")}"
 
-table.table.table-bordered.table-striped.table-hover
-  thead
-    tr
-      th UUID
-      th Username
-      th E-mail Address
-  tbody
-    - for account in @accounts
+.table-responsive
+  table.table.table-bordered.table-striped.table-hover
+    thead
       tr
-        td = account.uuid
-        td = account.username
-        td = account.email
+        th UUID
+        th Username
+        th E-mail Address
+    tbody
+      - for account in @accounts
+        tr
+          td = account.uuid
+          td = account.username
+          td = account.email

@@ -6,3 +6,9 @@
 body {
   padding-top: $navbar-height + 20px;
 }
+
+#body {
+  & > header, & > table {
+    @include make-xs-column($columns: 12);
+  }
+}

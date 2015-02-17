@@ -1,2 +1,15 @@
-h1 Admin::User::Accounts#index
-p Find me in app/views/admin/user/accounts/index.html.slim
+header
+  h1 = "#{t("users.title")} #{t("users.accounts.title")}"
+
+table.table.table-bordered.table-striped.table-hover
+  thead
+    tr
+      th UUID
+      th Username
+      th E-mail Address
+  tbody
+    - for account in @accounts
+      tr
+        td = account.uuid
+        td = account.username
+        td = account.email

@@ -1,7 +1,6 @@
 class Admin::User::AccountsController < Admin::BaseController
-  load_and_authorize_resource class: "User::Account", find_by: :uuid
-
   def index
+    @accounts = User::Account.all
   end
 
   def show

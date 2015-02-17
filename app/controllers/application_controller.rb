@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from CanCan::AccessDenied do |e|
-    redirect_to root_url, alert: e.message
+  rescue_from Allowy::AccessDenied do |e|
+    redirect_to root_url, flash: { error: t("common.not_authorized") }
   end
 
   protected

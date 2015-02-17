@@ -4,6 +4,6 @@ class Admin::BaseController < ApplicationController
   protected
 
   def authorize_admin
-    authorize! :access, :admin
+    raise Allowy::AccessDenied.new("Not authorized", nil, nil, nil) unless current_user.try(:can_access_admin?)
   end
 end

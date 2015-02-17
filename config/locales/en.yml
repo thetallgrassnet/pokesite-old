@@ -27,6 +27,7 @@ en:
     back: Back
     close: Close
     confirm: Are you sure?
+    not_authorized: You are not authorized to view that page.
   nav:
     toggle: Toggle navigation
   devise:

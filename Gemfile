@@ -38,8 +38,8 @@ gem 'neo4j', '~> 4.1'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.4.1'
-gem 'cancancan', '~> 1.9'
 gem 'obscenity', '~> 1.0.2'
+gem 'allowy', '~> 2.1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.2.0'

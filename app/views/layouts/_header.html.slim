@@ -26,7 +26,7 @@ nav.navbar.navbar-inverse
               li = link_to t("users.show"), current_user
               li = link_to t("devise.registrations.edit.title"), edit_user_registration_path
               li.divider
-              - if can? :access, :admin
+              - if current_user.can_access_admin?
                 li = link_to t("admin.title"), admin_root_path
                 li.divider
               li = link_to t("devise.sessions.destroy"), destroy_user_session_path, method: :delete

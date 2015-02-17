@@ -1,7 +1,5 @@
 class User::AccountsController < ApplicationController
-  before_action :authenticate_user!
-  load_and_authorize_resource find_by: :username
-
   def show
+    @account = User::Account.find_by username: params[:id]
   end
 end

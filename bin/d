@@ -93,6 +93,8 @@ Dir.chdir APP_ROOT do
     stop_db "test"
   when "spec"
     run "test", "bin/rspec", ARGV
+  when "commit"
+    system "docker commit pokesite-dev pokesite"
   when "help"
     puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|help|COMMAND [ARGUMENTS]}"
   else

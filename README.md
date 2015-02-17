@@ -56,6 +56,7 @@ application code and database instance are created and linked.
 
     $ git pull
     $ bin/d bundle
+    $ docker commit pokesite-dev pokesite
 
 ### Testing
 

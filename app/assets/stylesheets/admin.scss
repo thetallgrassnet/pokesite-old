@@ -8,7 +8,8 @@ body {
 }
 
 #body {
-  & > header, & > .table-responsive {
+  & > header, & > .table-container {
+    @include clearfix();
     @include make-xs-column($columns: 12);
   }
 }

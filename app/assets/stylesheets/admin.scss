@@ -18,4 +18,9 @@ table {
   ul.list-inline {
     margin-bottom: 0;
   }
+
+  td.table-actions {
+    width: 1px;
+    white-space: nowrap;
+  }
 }

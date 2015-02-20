@@ -66,3 +66,6 @@ en:
   admin:
     title: Admin
     return: Return to %{loc}
+    show: Show
+    edit: Edit
+    destroy: Delete

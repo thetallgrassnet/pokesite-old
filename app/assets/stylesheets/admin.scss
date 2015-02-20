@@ -12,3 +12,9 @@ body {
     @include make-xs-column($columns: 12);
   }
 }
+
+table {
+  ul.list-inline {
+    margin-bottom: 0;
+  }
+}

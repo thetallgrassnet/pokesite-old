@@ -15,16 +15,7 @@ header
           td = account.email
           td
             ul.list-inline
-              li
-                = link_to admin_user_account_path(account.uuid)
-                  span.glyphicon.glyphicon-eye-open aria-hidden="true"
-                  span.sr-only = t("admin.show")
-              li
-                = link_to edit_admin_user_account_path(account.uuid)
-                  span.glyphicon.glyphicon-pencil aria-hidden="true"
-                  span.sr-only = t("admin.edit")
+              li = link_to glyphicon("eye-open", t("admin.show")), admin_user_account_path(account.uuid)
+              li = link_to glyphicon("pencil", t("admin.edit")), edit_admin_user_account_path(account.uuid)
               - unless current_user == account
-                li
-                  = link_to admin_user_account_path(account.uuid), method: :delete
-                    span.glyphicon.glyphicon-trash aria-hidden="true"
-                    span.sr-only = t("admin.destroy")
+                li = link_to glyphicon("trash", t("admin.destroy")), admin_user_account_path(account.uuid), method: :delete

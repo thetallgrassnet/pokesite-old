@@ -17,6 +17,13 @@ module ApplicationHelper
     nil
   end
 
+  def glyphicon(icon, text = nil)
+    capture do
+      concat content_tag(:span, "", class: "glyphicon glyphicon-#{icon}", aria: { hidden: true })
+      concat content_tag(:span, text.nil? ? icon.titleize : text, class: "sr-only")
+    end
+  end
+
   private
 
   def bootstrap_class_for flash_type

@@ -59,6 +59,8 @@ en:
   users:
     accounts:
       title: Accounts
+      username: Username
+      email: E-mail Address
     title: Users
     show: View profile
   welcome:

@@ -5,8 +5,8 @@ header
   table.table.table-bordered.table-striped.table-hover
     thead
       tr
-        th Username
-        th E-mail Address
+        th = t("users.accounts.username")
+        th = t("users.accounts.email")
         th
     tbody
       - for account in @accounts

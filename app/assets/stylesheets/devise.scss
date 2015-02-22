@@ -1,6 +1,6 @@
 $devise-margin: 3rem;
 
-body.devise {
+body.devise, body.user.registrations {
   fieldset {
     @include make-sm-column($columns: 6);
     @include make-sm-column-offset($columns: 3);

@@ -29,4 +29,14 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
     end
   end
 
+  describe "GET show" do
+    let(:user) { FactoryGirl.create(:user_account, confirmed_at: DateTime.now) }
+    login_admin
+
+    it "retrieves the user" do
+      get :show, id: user.uuid
+      expect(assigns(:account)).to eql(user)
+    end
+  end
+
 end

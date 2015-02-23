@@ -16,3 +16,6 @@
 
 # Exuberant ctags
 tags
+
+# SimpleCov
+/coverage

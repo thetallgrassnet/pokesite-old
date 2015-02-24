@@ -10,7 +10,7 @@ module ApplicationHelper
   def display_flash_messages
     flash.each do |msg_type, message|
       concat(content_tag(:div, class: "alert #{bootstrap_class_for(msg_type)} alert-dismissible", role: 'alert') do
-        concat content_tag(:button, "&times;".html_safe, type: "button", class: "close", data: { dismiss: "alert" }, "aria-label": t("common.close"))
+        concat content_tag(:button, "&times;".html_safe, type: "button", class: "close", data: { dismiss: "alert" }, aria: { label: t("common.close") })
         concat message
       end)
     end

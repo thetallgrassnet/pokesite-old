@@ -40,7 +40,7 @@ gem 'obscenity', '~> 1.0.2'
 gem 'allowy', '~> 2.1.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara'
   gem 'factory_girl_rails'
 

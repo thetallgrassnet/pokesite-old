@@ -33,5 +33,8 @@ module Pokesite
     config.neo4j.session_path = "http://#{ENV.fetch("DB_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_PORT_7474_TCP_PORT", 7474)}"
 
     config.autoload_paths << Rails.root.join('lib')
+
+    # Allow web console access from boot2docker host
+    config.web_console.whitelisted_ips = '192.168.0.0/16'
   end
 end

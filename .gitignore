@@ -17,9 +17,5 @@
 # Exuberant ctags
 tags
 
-# RVM
-.ruby-version
-.ruby-gemset
-
 # SimpleCov
 /coverage

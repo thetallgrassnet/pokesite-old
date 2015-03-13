@@ -7,11 +7,8 @@ require 'socket'
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
 
 def get_ip container, port
-  ip, port = `docker port #{container} #{port} 2>/dev/null`.strip.split ':'
-
-  if `which boot2docker`.strip.length > 0
-    ip = `boot2docker ip`.strip
-  end
+  ip = /(?:\d{1,3}\.){3}\d{1,3}/.match(ENV['DOCKER_HOST'])[0]
+  port = `docker port #{container} #{port} 2>/dev/null`.strip.split(':')[1]
 
   return ip, port
 end

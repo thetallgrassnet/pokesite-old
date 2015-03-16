@@ -1,4 +1,9 @@
 #footer
-  | © #{Time.now.year} #{link_to t("site.title"), root_url}
+  div © #{Time.now.year} #{link_to t("site.title"), root_url}
+  div
+    ul.list-inline
+      li = link_to t("welcome.index"), root_path
+      li = link_to "About Us"
+      li = link_to "Privacy Policy"
 
 = javascript_include_tag "application"

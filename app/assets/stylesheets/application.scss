@@ -9,8 +9,10 @@
 }
 
 .navbar {
-  margin-left: $grid-gutter-width / -2;
-  margin-right: $grid-gutter-width / -2;
+  @media(max-width: $screen-sm-max) {
+    margin-left: $grid-gutter-width / -2;
+    margin-right: $grid-gutter-width / -2;
+  }
 }
 
 input ~ .hint {
@@ -22,4 +24,17 @@ input ~ .hint {
 
 input.error ~ .hint {
   display: none;
+}
+
+#footer {
+  > div {
+    @include make-xs-column($columns: 12);
+    @include make-md-column($columns: 6);
+
+    &:last-child {
+      @media(min-width: $screen-md-min) {
+        text-align: right;
+      }
+    }
+  }
 }

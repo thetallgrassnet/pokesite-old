@@ -1,4 +1,4 @@
-body > .container > div {
+.container > div {
   @include make-row();
 }
 

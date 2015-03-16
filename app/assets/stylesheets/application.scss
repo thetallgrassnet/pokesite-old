@@ -4,15 +4,23 @@
 @import "grid";
 @import "devise";
 
+$footer-height: 60px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $footer-height + $line-height-computed;
+}
+
 #header #logo {
   display: block;
 }
 
 .navbar {
-  @media(max-width: $screen-sm-max) {
-    margin-left: $grid-gutter-width / -2;
-    margin-right: $grid-gutter-width / -2;
-  }
+  border-radius: 0;
 }
 
 input ~ .hint {
@@ -27,12 +35,34 @@ input.error ~ .hint {
 }
 
 #footer {
-  > div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $gray-lighter;
+
+  @media(min-width: $screen-md-min) {
+    min-height: $footer-height;
+  }
+
+  .container > div > div {
     @include make-xs-column($columns: 12);
     @include make-md-column($columns: 6);
 
+    margin-top: 1rem;
+
+    @media(min-width: $screen-md-min) {
+      margin-top: ($footer-height / 2) - ($line-height-computed / 2);
+    }
+
     &:last-child {
+      margin-bottom: 1rem;
+
+      ul {
+        margin-bottom: 0;
+      }
+
       @media(min-width: $screen-md-min) {
+        margin-bottom: 0;
         text-align: right;
       }
     }

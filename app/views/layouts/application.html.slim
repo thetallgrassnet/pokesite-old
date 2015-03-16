@@ -10,9 +10,9 @@ html lang=I18n.locale
     = csrf_meta_tag
 
   body class=controller_classes
-    .container
-      = render 'layouts/header'
+    = render 'layouts/header'
 
+    .container
       #body == yield
 
-      = render 'layouts/footer'
+    = render 'layouts/footer'

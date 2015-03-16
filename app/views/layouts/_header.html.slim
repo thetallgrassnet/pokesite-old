@@ -1,8 +1,10 @@
-#header.hidden-xs.hidden-sm
-  = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
+header#header.hidden-xs.hidden-sm
+  .container
+    div
+      = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
 nav.navbar.navbar-inverse
-  .container-fluid
+  .container
     .navbar-header
       button.navbar-toggle.collapsed data={ toggle: "collapse", target: ".navbar-collapse" }
         span.sr-only = t("nav.toggle")

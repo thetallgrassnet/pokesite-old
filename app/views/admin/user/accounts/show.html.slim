@@ -1,2 +1,23 @@
-h1 = @account.to_s
-p Find me in app/views/admin/user/accounts/show.html.slim
+header
+  h1 = @account.to_s
+
+.table-container
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Attribute
+          th Value
+      tbody
+        tr
+          th = t("users.accounts.username")
+          td = @account.username
+        tr
+          th = t("users.accounts.email")
+          td = @account.email
+
+footer
+  ul.list-inline
+    li = link_to t("admin.edit"), edit_admin_user_account_path(@account.uuid)
+    - if can? :destroy, @account
+      li = link_to t("admin.destroy"), admin_user_account_path(@account.uuid), method: :delete

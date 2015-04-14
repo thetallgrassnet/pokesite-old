@@ -1,23 +1,24 @@
-header
-  h1 = @account.to_s
+header.row
+  h1.col-xs-12 = @account.to_s
 
-.table-container
-  .table-responsive
-    table.table.table-striped.table-hover
-      thead
-        tr
-          th Attribute
-          th Value
-      tbody
-        tr
-          th = t("users.accounts.username")
-          td = @account.username
-        tr
-          th = t("users.accounts.email")
-          td = @account.email
+.table-container.row
+  .col-xs-12
+    .table-responsive
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Attribute
+            th Value
+        tbody
+          tr
+            th = t("users.accounts.username")
+            td = @account.username
+          tr
+            th = t("users.accounts.email")
+            td = @account.email
 
-footer
-  ul.list-inline
+footer.row
+  ul.list-inline.col-xs-12
     li = link_to t("admin.edit"), edit_admin_user_account_path(@account.uuid)
     - if can? :destroy, @account
       li = link_to t("admin.destroy"), admin_user_account_path(@account.uuid), method: :delete

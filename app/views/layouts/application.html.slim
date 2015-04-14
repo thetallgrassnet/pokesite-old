@@ -13,6 +13,8 @@ html lang=I18n.locale
     = render 'layouts/header'
 
     .container
-      #body == yield
+      #flash.row == display_flash_messages
+
+      main role="main" == yield
 
     = render 'layouts/footer'

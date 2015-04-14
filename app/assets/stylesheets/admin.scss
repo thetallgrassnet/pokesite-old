@@ -4,14 +4,7 @@
 @import "grid";
 
 body {
-  padding-top: $navbar-height + 20px;
-}
-
-#body {
-  & > header, & > .table-container {
-    @include clearfix();
-    @include make-xs-column($columns: 12);
-  }
+  padding-top: $navbar-height;
 }
 
 table {

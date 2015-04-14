@@ -1,7 +1,7 @@
 header#header.hidden-xs.hidden-sm
   .container
-    div
-      = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
+    .row
+      .col-xs-12 = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
 
 nav.navbar.navbar-inverse
   .container
@@ -35,5 +35,3 @@ nav.navbar.navbar-inverse
             - else
               li = link_to t("devise.registrations.new.title"), new_user_registration_path
               li = link_to t("devise.sessions.new"), new_user_session_path
-
-#flash == display_flash_messages

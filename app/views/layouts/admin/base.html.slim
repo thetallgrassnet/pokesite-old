@@ -40,8 +40,8 @@ html lang=I18n.locale
                 li = link_to t("admin.return", loc: t("site.title")), root_path
 
     .container
-      #flash == display_flash_messages
+      #flash.row == display_flash_messages
 
-      #body == yield
+      main role="main" == yield
 
     = javascript_include_tag "application"

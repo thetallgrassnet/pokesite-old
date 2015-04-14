@@ -21,6 +21,7 @@ body {
 
 .navbar {
   border-radius: 0;
+  margin-bottom: 0;
 }
 
 input ~ .hint {
@@ -45,9 +46,6 @@ input.error ~ .hint {
   }
 
   .container > div > div {
-    @include make-xs-column($columns: 12);
-    @include make-md-column($columns: 6);
-
     margin-top: 1rem;
 
     @media(min-width: $screen-md-min) {

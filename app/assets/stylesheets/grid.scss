@@ -2,4 +2,8 @@
   @include make-xs-column($columns: 10);
   @include make-xs-column-offset($columns: 1);
   padding-right: 35px;
+
+  &:first-child {
+    margin-top: $line-height-computed;
+  }
 }

@@ -35,6 +35,6 @@ module Pokesite
     config.autoload_paths << Rails.root.join('lib')
 
     # Allow web console access from boot2docker host
-    config.web_console.whitelisted_ips = '192.168.0.0/16'
+    config.web_console.whitelisted_ips = %w( 172.17.42.0/24 192.168.0.0/16 )
   end
 end

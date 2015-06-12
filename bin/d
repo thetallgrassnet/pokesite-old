@@ -81,24 +81,27 @@ Dir.chdir APP_ROOT do
   cmd = ARGV.shift
   cmd ||= "help"
 
-  case cmd
-  when "start"
-    start "dev"
+  begin
+    case cmd
+    when "start"
+      start "dev"
 
-    ip, port = get_ip("pokesite-dev", 3000)
-    puts "Server available at http://#{ip}:#{port}"
+      ip, port = get_ip("pokesite-dev", 3000)
+      puts "Server available at http://#{ip}:#{port}"
 
-    system "docker attach pokesite-dev"
-  when "stop"
-    stop "dev"
-    stop_db "test"
-  when "spec"
-    run "test", "bin/rspec", ARGV
-  when "commit"
-    system "docker commit pokesite-dev pokesite"
-  when "help"
-    puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|help|COMMAND [ARGUMENTS]}"
-  else
-    exec "dev", cmd, ARGV
+      system "docker attach pokesite-dev"
+    when "stop"
+      stop "dev"
+      stop_db "test"
+    when "spec"
+      run "test", "bin/rspec", ARGV
+    when "commit"
+      system "docker commit pokesite-dev pokesite"
+    when "help"
+      puts "Usage: bin/d {start|stop|spec [ARGUMENTS]|help|COMMAND [ARGUMENTS]}"
+    else
+      exec "dev", cmd, ARGV
+    end
+  rescue
   end
 end

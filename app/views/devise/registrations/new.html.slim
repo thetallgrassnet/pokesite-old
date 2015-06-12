@@ -9,7 +9,7 @@
 
     .field = f.email_field :email
 
-    .field = f.password_field :password, autocomplete: "off", hint: t('devise.registrations.new.password', length: @minimum_password_length) if @validatable
+    .field = f.password_field :password, autocomplete: "off", hint: t('devise.registrations.new.password', length: @minimum_password_length)
 
     .field = f.password_field :password_confirmation, autocomplete: "off"
 
@@ -17,3 +17,5 @@
       = f.submit t('devise.registrations.new.title')
 
     = render "devise/shared/links"
+
+= console

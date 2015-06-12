@@ -32,7 +32,7 @@ gem 'slim-rails', '~> 3.0.1'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'bootstrap_form', '~> 2.3.0'
 
-gem 'neo4j', '~> 4.1'
+gem 'neo4j', '~> 5.0.0.rc.3'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.5'

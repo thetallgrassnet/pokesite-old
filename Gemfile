@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 4.0.2'
+gem 'jquery-rails', '~> 4.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -29,10 +29,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'slim-rails', '~> 3.0.1'
-gem 'bootstrap-sass', '~> 3.3.4'
+gem 'bootstrap-sass', '~> 3.3'
 gem 'bootstrap_form', '~> 2.3.0'
 
-gem 'neo4j', '~> 5.0.0.rc.3'
+gem 'neo4j', '~> 5.0'
 gem 'devise-neo4j', '~> 2.0.0'
 
 gem 'devise', '~> 3.5'
@@ -40,7 +40,7 @@ gem 'obscenity', '~> 1.0.2'
 gem 'allowy', '~> 2.1.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.2'
+  gem 'rspec-rails', '~> 3.3'
   gem 'capybara'
   gem 'factory_girl_rails'
 
@@ -48,7 +48,7 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.1.0'
+  gem 'web-console', '~> 2.1'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

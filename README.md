@@ -14,9 +14,11 @@ Your one-stop Pokémon fan community and database.
 ### Requirements
 
   * Ruby (the OS X or your Linux distribution's default installation is okay)
-  * [VirtualBox](https://www.virtualbox.org/)
   * [Docker](https://www.docker.com/)
-  * [boot2docker](http://boot2docker.io/) on Mac OS X or Windows
+
+On Mac OS X or Windows:
+  * [VirtualBox](https://www.virtualbox.org/)
+  * [boot2docker](http://boot2docker.io/)
 
 This project uses Docker images and containers to ensure parity between
 development, testing, and production environments, without needing to keep

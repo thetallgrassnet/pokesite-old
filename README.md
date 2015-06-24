@@ -56,9 +56,13 @@ application code and database instance are created and linked.
 
 #### Updating
 
+With the server (`bin/d start`) running:
+
     $ git pull
     $ bin/d bundle
     $ bin/d commit
+
+Then restart the server.
 
 ### Testing
 

@@ -1,2 +1,15 @@
-h1 Admin::User::Accounts#edit
-p Find me in app/views/admin/user/accounts/edit.html.slim
+header.row
+  h1.col-xs-12 = "Editing " + @account.to_s
+
+= bootstrap_form_for(@account, url: admin_user_account_path(@account.uuid), method: :put) do |f|
+  fieldset
+    .field = f.text_field :username
+
+    .field = f.email_field :email
+
+    .field = f.password_field :password, autocomplete: "off", hint: t('devise.registrations.new.password', length: @minimum_password_length)
+
+    .field = f.password_field :password_confirmation, autocomplete: "off"
+
+    .actions
+      = f.submit "Update account"

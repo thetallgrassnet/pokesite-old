@@ -14,13 +14,7 @@ class Admin::User::AccountsController < Admin::BaseController
 
   def update
     begin
-      if params[:user_account][:password].blank? && params[:user_account][:password_confirmation].blank?
-        params[:user_account].delete(:password)
-        params[:user_account].delete(:password_confirmation)
-      end
-
       authorize! :demote, @account if @account.is_admin? and params[:user_account][:is_admin] == false
-
       @account.update_attributes! user_account_params
 
       flash[:success] = "#{@account} updated successfully."
@@ -43,6 +37,11 @@ class Admin::User::AccountsController < Admin::BaseController
   end
 
   def user_account_params
+    if params[:user_account][:password].blank? && params[:user_account][:password_confirmation].blank?
+      params[:user_account].delete(:password)
+      params[:user_account].delete(:password_confirmation)
+    end
+
     params.require(:user_account).permit(:username, :email, :password, :password_confirmation, :is_admin)
   end
 end

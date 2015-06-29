@@ -18,10 +18,10 @@ class Admin::User::AccountsController < Admin::BaseController
       @account.update_attributes! user_account_params
 
       flash[:success] = "#{@account} updated successfully."
-      redirect_to admin_user_account_path(@account.uuid)
+      redirect_to action: :show, id: @account.uuid
     rescue Allowy::AccessDenied
       flash[:error] = "You cannot demote your own admin account."
-      render :edit
+      redirect_to action: :edit, id: @account.uuid
     rescue
       render :edit
     end

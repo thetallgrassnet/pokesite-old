@@ -11,5 +11,8 @@ header.row
 
     .field = f.password_field :password_confirmation, autocomplete: "off"
 
+    - if can? :demote, @account
+      .field = f.check_box :is_admin
+
     .actions
       = f.submit "Update account"

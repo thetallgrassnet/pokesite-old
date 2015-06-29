@@ -19,10 +19,15 @@ class Admin::User::AccountsController < Admin::BaseController
         params[:user_account].delete(:password_confirmation)
       end
 
+      authorize! :demote, @account if @account.is_admin? and params[:user_account][:is_admin] == false
+
       @account.update_attributes! user_account_params
 
       flash[:success] = "#{@account} updated successfully."
       redirect_to admin_user_account_path(@account.uuid)
+    rescue Allowy::AccessDenied
+      flash[:error] = "You cannot demote your own admin account."
+      render :edit
     rescue
       render :edit
     end

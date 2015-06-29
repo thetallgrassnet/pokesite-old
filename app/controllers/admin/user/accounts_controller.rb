@@ -19,9 +19,11 @@ class Admin::User::AccountsController < Admin::BaseController
         params[:user_account].delete(:password_confirmation)
       end
 
-      @account.update_attributes! params[:user_account]
+      @account.update_attributes! user_account_params
+
+      flash[:success] = "#{@account} updated successfully."
       redirect_to admin_user_account_path(@account.uuid)
-    rescue Exception => e
+    rescue
       render :edit
     end
   end
@@ -33,5 +35,9 @@ class Admin::User::AccountsController < Admin::BaseController
 
   def load_user_account
     @account = User::Account.find_by uuid: params[:id]
+  end
+
+  def user_account_params
+    params.require(:user_account).permit(:username, :email, :password, :password_confirmation, :is_admin)
   end
 end

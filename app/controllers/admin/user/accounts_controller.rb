@@ -28,6 +28,21 @@ class Admin::User::AccountsController < Admin::BaseController
   end
 
   def delete
+    begin
+      authorize! :destroy, @account
+
+      name = @account.to_s
+      @account.destroy!
+
+      flash[:success] = "#{name} deleted successfully."
+      redirect_to action: :index
+    rescue Allowy::AccessDenied
+      flash[:error] = "You cannot delete your own admin account."
+      redirect_to action: :show, id: @account.uuid
+    rescue
+      flash[:error] = "Could not delete #{@account}."
+      redirect_to action: :show, id: @account.uuid
+    end
   end
 
   private

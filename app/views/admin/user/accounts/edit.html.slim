@@ -1,5 +1,5 @@
 header.row
-  h1.col-xs-12 = "Editing " + @account.to_s
+  h1.col-xs-12 = "Editing #{@account}"
 
 = bootstrap_form_for(@account, url: admin_user_account_path(@account.uuid), method: :put) do |f|
   fieldset

@@ -1,16 +1,5 @@
-class Admin::User::AccountsController < Admin::BaseController
-  before_action { authorize_manage(User::Account) }
-  before_action :load_user_account, except: [:index]
-
-  def index
-    @accounts = User::Account.all
-  end
-
-  def show
-  end
-
-  def edit
-  end
+class Admin::User::AccountsController < Admin::ResourceController
+  resource User::Account, :account
 
   def update
     begin
@@ -46,10 +35,6 @@ class Admin::User::AccountsController < Admin::BaseController
   end
 
   private
-
-  def load_user_account
-    @account = User::Account.find_by uuid: params[:id]
-  end
 
   def user_account_params
     if params[:user_account][:password].blank? && params[:user_account][:password_confirmation].blank?

@@ -1,4 +1,15 @@
 class Admin::ResourceController < Admin::BaseController
+  class << self
+    protected
+
+    def resource(klass, resource)
+      prepend_before_action do
+        @klass = klass
+        @resource = '@' + resource.to_s
+      end
+    end
+  end
+
   before_action :authorize_manage_resource
   before_action :load_resource, except: [:index]
 
@@ -16,15 +27,6 @@ class Admin::ResourceController < Admin::BaseController
   end
 
   def delete
-  end
-
-  protected
-
-  def self.resource(klass, resource)
-    prepend_before_action do
-      @klass = klass
-      @resource = '@' + resource.to_s
-    end
   end
 
   private

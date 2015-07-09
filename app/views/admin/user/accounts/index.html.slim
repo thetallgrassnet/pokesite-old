@@ -10,7 +10,7 @@ header
           th = t("users.accounts.email")
           th
       tbody
-        - for account in @accounts
+        - for account in @user_accounts
           tr
             td = account.username
             td = account.email

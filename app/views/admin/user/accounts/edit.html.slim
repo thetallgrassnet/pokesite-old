@@ -1,7 +1,7 @@
 header.row
-  h1.col-xs-12 = "Editing #{@account}"
+  h1.col-xs-12 = "Editing #{@user_account}"
 
-= bootstrap_form_for(@account, url: admin_user_account_path(@account.uuid), method: :put) do |f|
+= bootstrap_form_for(@user_account, url: admin_user_account_path(@user_account.uuid), method: :put) do |f|
   fieldset
     .field = f.text_field :username
 
@@ -11,7 +11,7 @@ header.row
 
     .field = f.password_field :password_confirmation, autocomplete: "off"
 
-    - if can? :demote, @account
+    - if can? :demote, @user_account
       .field = f.check_box :is_admin
 
     .actions

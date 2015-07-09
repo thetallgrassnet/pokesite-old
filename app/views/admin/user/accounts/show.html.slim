@@ -1,5 +1,5 @@
 header.row
-  h1.col-xs-12 = @account.to_s
+  h1.col-xs-12 = @user_account.to_s
 
 .table-container.row
   .col-xs-12
@@ -12,13 +12,13 @@ header.row
         tbody
           tr
             th = t("users.accounts.username")
-            td = @account.username
+            td = @user_account.username
           tr
             th = t("users.accounts.email")
-            td = @account.email
+            td = @user_account.email
 
 footer.row
   ul.list-inline.col-xs-12
-    li = link_to t("admin.edit"), edit_admin_user_account_path(@account.uuid)
-    - if can? :destroy, @account
-      li = link_to t("admin.destroy"), admin_user_account_path(@account.uuid), method: :delete
+    li = link_to t("admin.edit"), edit_admin_user_account_path(@user_account.uuid)
+    - if can? :destroy, @user_account
+      li = link_to t("admin.destroy"), admin_user_account_path(@user_account.uuid), method: :delete

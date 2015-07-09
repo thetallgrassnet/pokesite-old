@@ -2,10 +2,12 @@ class Admin::ResourceController < Admin::BaseController
   class << self
     protected
 
-    def resource(klass, resource)
+    def resource(klass, params)
       prepend_before_action do
         @klass = klass
-        @resource = '@' + resource.to_s
+        @resource = @klass.name.underscore.gsub(/\]\[|[^-a-zA-Z0-9:.]/, "_").sub(/_$/, "")
+        @resource_instance_var = '@' + @resource
+        @params = params
       end
     end
   end
@@ -14,7 +16,7 @@ class Admin::ResourceController < Admin::BaseController
   before_action :load_resource, except: [:index]
 
   def index
-    instance_variable_set @resource.to_s.pluralize, @klass.all
+    instance_variable_set @resource_instance_var.to_s.pluralize, @klass.all
   end
 
   def show
@@ -32,10 +34,14 @@ class Admin::ResourceController < Admin::BaseController
   private
 
   def load_resource
-    instance_variable_set @resource, @klass.find_by(uuid: params[:id])
+    instance_variable_set @resource_instance_var, @klass.find_by(uuid: params[:id])
   end
 
   def authorize_manage_resource
     authorize_manage(@klass)
+  end
+
+  def resource_params
+    params.require(@resource).permit(*@params)
   end
 end

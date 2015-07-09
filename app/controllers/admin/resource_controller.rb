@@ -16,7 +16,7 @@ class Admin::ResourceController < Admin::BaseController
   before_action :load_resource, except: [:index]
 
   def index
-    instance_variable_set @resource_instance_var.to_s.pluralize, @klass.all
+    instance_variable_set @resource_instance_var.pluralize, @klass.all
   end
 
   def show
@@ -26,9 +26,34 @@ class Admin::ResourceController < Admin::BaseController
   end
 
   def update
+    begin
+      resource = instance_variable_get(@resource_instance_var)
+      resource.update_attributes! resource_params
+
+      flash[:success] = "#{resource} updated successfully."
+      redirect_to action: :show, id: resource.uuid
+    rescue
+      render :edit
+    end
   end
 
   def delete
+    begin
+      resource = instance_variable_get(@resource_instance_var)
+      authorize! :destroy, resource
+
+      name = resource.to_s
+      resource.destroy!
+
+      flash[:success] = "#{name} deleted successfully."
+      redirect_to action: :index
+    rescue Allowy::AccessDenied
+      flash[:error] = "You are not allowed to delete #{name}."
+      redirect_to action: :show, id: resource.uuid
+    rescue
+      flash[:error] = "Could not delete #{name}."
+      redirect_to action: :show, id: resource.uuid
+    end
   end
 
   private

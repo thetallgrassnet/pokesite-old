@@ -1,5 +1,5 @@
 class Admin::User::AccountsController < Admin::ResourceController
-  resource User::Account, %w( username email password password_confirmation is_admin )
+  resource ::User::Account, %w( username email password password_confirmation is_admin )
 
   def update
     begin

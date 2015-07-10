@@ -1,7 +1,7 @@
 header#header.hidden-xs.hidden-sm
   .container
     .row
-      .col-xs-12 = link_to join_title(t("site.title"), t("site.subtitle")), root_url, { id: "logo" }
+      .col-xs-12 = link_to join_title(t("site.title"), t("site.subtitle").downcase), root_url, { id: "logo" }
 
 nav.navbar.navbar-inverse
   .container

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
 
+    namespace :article, path: "articles" do
+      resources :columns
+    end
+
     namespace :user, path: "users" do
       resources :accounts, except: [:new, :create]
     end

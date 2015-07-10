@@ -56,6 +56,12 @@ en:
       new: Sign in
       destroy: Sign out
       new_omniauth: Sign in with %{provider}
+  articles:
+    columns:
+      title: Columns
+      name: Name
+      description: Description
+    title: Articles
   users:
     accounts:
       title: Accounts

@@ -1,2 +1,22 @@
-h1 Admin::Article::Columns#index
-p Find me in app/views/admin/article/columns/index.html.slim
+header
+  h1 = "#{t("articles.title")} / #{t("articles.columns.title")}"
+
+.table-container
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th = t("articles.columns.name")
+          th = t("articles.columns.description")
+          th
+      tbody
+        - for column in @article_columns
+          tr
+            td = column.name
+            td = column.description
+            td.table-actions
+              ul.list-inline
+                li = link_to glyphicon("eye-open", t("admin.show")), admin_article_column_path(account.uuid)
+                li = link_to glyphicon("pencil", t("admin.edit")), edit_admin_article_column_path(account.uuid)
+                - if can? :destroy, account
+                  li = link_to glyphicon("trash", t("admin.destroy")), admin_article_column_path(account.uuid), method: :delete

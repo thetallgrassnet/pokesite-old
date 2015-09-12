@@ -52,21 +52,21 @@ class Admin::ResourceController < Admin::BaseController
     end
   end
 
-  def delete
+  def destroy
     begin
       resource = instance_variable_get(@resource_instance_var)
       authorize! :destroy, resource
 
       name = resource.to_s
-      resource.destroy!
+      resource.destroy or throw new Exception
 
-      flash[:success] = "#{name} deleted successfully."
+      flash[:success] = "#{name} destroyed successfully."
       redirect_to action: :index
     rescue Allowy::AccessDenied
-      flash[:error] = "You are not allowed to delete #{name}."
+      flash[:error] = "You are not allowed to destroy #{name}."
       redirect_to action: :show, id: resource.uuid
     rescue
-      flash[:error] = "Could not delete #{name}."
+      flash[:error] = "Could not destroy #{name}."
       redirect_to action: :show, id: resource.uuid
     end
   end

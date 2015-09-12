@@ -7,6 +7,15 @@ body {
   padding-top: $navbar-height;
 }
 
+header {
+  @media(min-width: $screen-md-min) {
+    .btn {
+      margin-top: 25px;
+      float: right;
+    }
+  }
+}
+
 table {
   ul.list-inline {
     margin-bottom: 0;

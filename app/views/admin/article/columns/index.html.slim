@@ -1,5 +1,7 @@
-header
-  h1 = "#{t("articles.title")} / #{t("articles.columns.title")}"
+header.row
+  h1.col-sm-9 = "#{t("articles.title")} / #{t("articles.columns.title")}"
+  .col-sm-3
+    = link_to t("admin.new"), new_admin_article_column_path, class: "btn btn-success"
 
 .table-container
   .table-responsive

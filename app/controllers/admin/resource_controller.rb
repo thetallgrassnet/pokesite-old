@@ -13,10 +13,25 @@ class Admin::ResourceController < Admin::BaseController
   end
 
   before_action :authorize_manage_resource
-  before_action :load_resource, except: [:index]
+  before_action :load_resource, except: [:index, :new, :create]
 
   def index
     instance_variable_set @resource_instance_var.pluralize, @klass.all
+  end
+
+  def new
+    instance_variable_set @resource_instance_var, @klass.new
+  end
+
+  def create
+    begin
+      resource = @klass.create!(resource_params)
+
+      flash[:success] = "#{resource} created successfully."
+      redirect_to action: :show, id: resource.uuid
+    rescue
+      render :new
+    end
   end
 
   def show

@@ -33,8 +33,7 @@ class User::Account
   property :is_admin, type: Boolean, null: false, default: false
 
   devise :database_authenticatable, :registerable, :confirmable,
-        #  :recoverable, :rememberable, :trackable, :validatable
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
 
   validates :username,
     format: {

@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  @media(min-width: $screen-md-min) {
+  @media(min-width: $screen-sm-min) {
     .btn {
       margin-top: 25px;
       float: right;

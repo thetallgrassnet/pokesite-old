@@ -1,0 +1,18 @@
+db:
+  image: neo4j/neo4j:stable
+  environment:
+    NEO4J_NO_AUTH: 1
+  ports:
+    - "48461:7474"
+  volumes:
+    - ./db/neo4j/development/data:/data
+
+web:
+  build: .
+  command: bin/rails s -b 0.0.0.0
+  links:
+    - db
+  ports:
+    - "48460:3000"
+  volumes:
+    - .:/usr/src/app

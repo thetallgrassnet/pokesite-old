@@ -73,6 +73,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colored (1.2)
+    database_cleaner (1.5.0)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -268,6 +269,7 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
+  database_cleaner
   devise (~> 3.5)
   devise-neo4j (~> 2.0.0)
   factory_girl_rails

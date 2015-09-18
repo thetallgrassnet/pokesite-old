@@ -22,9 +22,8 @@ require 'support/controller_macros'
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-  end
+  db_path = "http://#{ENV.fetch("DB_TEST_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_TEST_PORT_7474_TCP_PORT", 7474)}"
+  DatabaseCleaner[:neo4j, connection: { type: :server_db, path: db_path }].clean_with :deletion
 
   config.around(:each) do |example|
     DatabaseCleaner.cleaning do

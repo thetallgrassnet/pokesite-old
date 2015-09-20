@@ -1,0 +1,4 @@
+db_base:
+  image: neo4j/neo4j:stable
+  environment:
+    NEO4J_NO_AUTH: 1

@@ -1,0 +1,29 @@
+db:
+  extends:
+    file: docker-compose.base.yml
+    service: db_base
+  ports:
+    - "48461:7474"
+  volumes:
+    - ./db/neo4j/development/data:/data
+
+db_test:
+  extends:
+    file: docker-compose.base.yml
+    service: db_base
+  ports:
+    - "48462:7474"
+  volumes:
+    - ./db/neo4j/test/data:/data
+
+web:
+  build: .
+  command: bin/rails s -b 0.0.0.0
+  links:
+    - db
+    - db_test
+  ports:
+    - "48460:3000"
+  volumes:
+    - /ruby_gems
+    - .:/usr/src/app

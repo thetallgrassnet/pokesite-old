@@ -13,69 +13,58 @@ Your one-stop Pokémon fan community and database.
 
 ### Requirements
 
-  * Ruby (the OS X or your Linux distribution's default installation is okay)
-  * [Docker](https://www.docker.com/)
+  * [Docker Toolbox](https://www.docker.com/toolbox)
+  * A running Docker machine:
 
-On Mac OS X or Windows:
-  * [VirtualBox](https://www.virtualbox.org/)
-  * [boot2docker](http://boot2docker.io/)
-
-This project uses Docker images and containers to ensure parity between
-development, testing, and production environments, without needing to keep
-multiple dependencies manually up-to-date on different machines. The correct
-versions of Ruby and Neo4j are used from Docker images, and containers for the
-application code and database instance are created and linked.
+    ```bash
+    $ docker-machine create --driver=virtualbox default
+    $ docker-machine start default
+    $ eval "$(docker-machine env default)"
+    $ docker-machine ip default
+    ```
 
 ### Setup
 
- 1. Clone the project and `cd` into it:
+```bash
+$ git clone https://github.com/thetallgrassnet/pokesite.git
+$ cd pokesite
+$ docker-compose up
+```
 
-        $ git clone https://github.com/thetallgrassnet/pokesite.git
-        $ cd pokesite
+If the output of `docker-machine ip` was `192.168.99.100`, the servers will
+be listening on the following ports:
 
- 2. Bootstrap the application:
-
-        $ bin/setup
-
-    This builds a Docker image for the application, then creates Docker
-    containers for the development and test databases and the application code,
-    mounting the project directory to the application directory in the
-    application container, and the `db/neo4j/[environment]/data/graph.db`
-    directory to the location of the `graph.db` directory in the database
-    containers, and linking the containers appropriately.
-
- 3. Start the server using the helper script at `bin/d`:
-
-        $ bin/d start
-
-    The helper script start or stop the server, run specs, or run an arbitrary
-    command. The `start` command starts the Neo4j database for the development
-    environment, waits for it to be ready to accept connections, then starts the
-    application server. The address and port for connecting to the server will
-    be shown above the server output in the terminal.
+ * Web server: http://192.168.99.100:48460
+ * Development Neo4j server: http://192.168.99.100:48461
+ * Testing Neo4j server: http://192.168.99.100:48462
 
 #### Updating
 
-With the server (`bin/d start`) running:
-
-    $ git pull
-    $ bin/d bundle
-    $ bin/d commit
-
-Then restart the server.
+```bash
+$ git pull
+$ docker-compose run --rm web bundle
+```
 
 ### Testing
 
-    $ bin/d spec [ARGUMENTS]
+```bash
+$ docker-compose run --rm web bin/rspec
+```
 
 ### Running commands
 
-    $ bin/d COMMAND [ARGUMENTS]
+```bash
+$ docker-compose rm --rm web COMMAND [ARGUMENTS]
+```
 
 For example, to start a Rails console:
 
-    $ bin/d bin/rails c
+```bash
+$ docker-compose rm --rm web bin/rails c
+```
 
 ### Shutdown
 
-    $ bin/d stop
+```bash
+$ docker-compose stop
+```

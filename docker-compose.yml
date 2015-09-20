@@ -1,11 +1,6 @@
-db_base:
-  image: neo4j/neo4j:stable
-  environment:
-    NEO4J_NO_AUTH: 1
-
 db:
   extends:
-    file: docker-compose.yml
+    file: docker-compose.base.yml
     service: db_base
   ports:
     - "48461:7474"
@@ -14,7 +9,7 @@ db:
 
 db_test:
   extends:
-    file: docker-compose.yml
+    file: docker-compose.base.yml
     service: db_base
   ports:
     - "48462:7474"

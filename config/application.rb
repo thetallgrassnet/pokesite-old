@@ -10,6 +10,8 @@ require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
+require File.expand_path('../../lib/wait_for_neo4j', __FILE__)
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -28,9 +30,12 @@ module Pokesite
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Configure Neo4j connection
+    # Configure Neo4j connection after waiting for 30 seconds for connection to become available
+    db_path = "http://#{ENV.fetch("DB_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_PORT_7474_TCP_PORT", 7474)}"
+    WaitForNeo4j::wait_for db_path
+
     config.neo4j.session_type = :server_db
-    config.neo4j.session_path = "http://#{ENV.fetch("DB_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_PORT_7474_TCP_PORT", 7474)}"
+    config.neo4j.session_path = db_path
 
     config.autoload_paths << Rails.root.join('lib')
 

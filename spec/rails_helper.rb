@@ -23,6 +23,8 @@ require 'support/controller_macros'
 
 RSpec.configure do |config|
   db_path = "http://#{ENV.fetch("DB_TEST_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_TEST_PORT_7474_TCP_PORT", 7474)}"
+  WaitForNeo4j::wait_for db_path
+
   DatabaseCleaner[:neo4j, connection: { type: :server_db, path: db_path }].clean_with :deletion
 
   config.around(:each) do |example|

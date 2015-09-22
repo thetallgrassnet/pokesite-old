@@ -1,4 +1,4 @@
 db_base:
-  image: neo4j/neo4j:stable
+  image: thetallgrassnet/alpine-neo4j:latest
   environment:
     NEO4J_NO_AUTH: 1

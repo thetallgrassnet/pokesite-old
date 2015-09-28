@@ -30,7 +30,7 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
   end
 
   describe "GET show" do
-    let(:user) { FactoryGirl.create(:user_account, confirmed_at: DateTime.now) }
+    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
     login_admin
 
     it "retrieves the user" do

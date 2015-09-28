@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User::Account, type: :model do
   let(:user) { FactoryGirl.create(:user_account) }
-  let(:admin) { FactoryGirl.create(:admin) }
+  let(:admin) { FactoryGirl.create(:user_account, :is_admin) }
 
   context "username" do
     it "is required" do

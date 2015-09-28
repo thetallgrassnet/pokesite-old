@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "User accounts", type: :feature do
-  let(:user) { FactoryGirl.create(:user_account, confirmed_at: DateTime.now)}
+  let(:user) { FactoryGirl.create(:user_account, :confirmed)}
 
   scenario "User creates a new account" do
     visit "/user/sign_up"

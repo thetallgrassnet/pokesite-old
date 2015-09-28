@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Admin dashboard", type: :feature do
-  let(:admin) { FactoryGirl.create(:admin, confirmed_at: DateTime.now) }
+  let(:admin) { FactoryGirl.create(:user_account, :is_admin, :confirmed) }
 
   scenario "Admin visits the dashboard" do
     visit "/user/sign_in"

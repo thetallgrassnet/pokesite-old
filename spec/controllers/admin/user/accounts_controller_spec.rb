@@ -87,4 +87,27 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
     end
   end
 
+  describe "DELETE destroy" do
+    login_admin
+
+    context "user" do
+      let(:user) { FactoryGirl.create(:user_account, :confirmed) }
+
+      it "deletes the user" do
+        delete :destroy, id: user.uuid
+        expect(response).to have_http_status(:redirect)
+        expect(flash[:success]).to be_present
+      end
+    end
+
+    context "admin" do
+      it "cannot delete themselves" do
+        delete :destroy, id: subject.current_user.uuid
+        expect(response).to have_http_status(:redirect)
+        expect(flash[:error]).to be_present
+        expect(assigns(:user_account)).to eql(subject.current_user)
+      end
+    end
+  end
+
 end

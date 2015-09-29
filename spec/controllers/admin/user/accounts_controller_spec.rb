@@ -60,6 +60,15 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
       expect(response).to have_http_status(:redirect)
       expect(user.username).to eql(username)
     end
+
+    context "an admin user" do
+      it "can't demote themselves" do
+        put :update, id: subject.current_user.uuid, user_account: { is_admin: false }
+        expect(response).to have_http_status(:redirect)
+        expect(subject.current_user.is_admin).to be true
+        expect(flash[:error]).to be_present
+      end
+    end
   end
 
 end

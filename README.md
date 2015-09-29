@@ -29,6 +29,7 @@ Your one-stop Pokémon fan community and database.
 $ git clone https://github.com/thetallgrassnet/pokesite.git
 $ cd pokesite
 $ bin/setup
+$ docker-compose up
 ```
 
 If the output of `docker-machine ip` was `192.168.99.100`, the servers will

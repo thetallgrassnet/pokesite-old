@@ -50,15 +50,31 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
   end
 
   describe "PUT update" do
-    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
-    let(:username) { FactoryGirl.generate(:username) }
     login_admin
 
-    it "updates the user" do
-      put :update, id: user.uuid, user_account: { username: username }
-      user.reload
-      expect(response).to have_http_status(:redirect)
-      expect(user.username).to eql(username)
+    context "updating a user" do
+      let(:user) { FactoryGirl.create(:user_account, :confirmed) }
+
+      context "with valid parameters" do
+        let(:username) { FactoryGirl.generate(:username) }
+
+        it "updates the user and redirects" do
+          put :update, id: user.uuid, user_account: { username: username }
+          user.reload
+          expect(response).to have_http_status(:redirect)
+          expect(user.username).to eql(username)
+          expect(flash[:success]).to be_present
+        end
+      end
+
+      context "with invalid parameters" do
+        it "renders the edit form" do
+          put :update, id: user.uuid, user_account: { username: "" }
+          expect(response).not_to have_http_status(:redirect)
+          expect(user.username).to eql(user.username)
+          expect(assigns(:user_account)).to eql(user)
+        end
+      end
     end
 
     context "an admin user" do

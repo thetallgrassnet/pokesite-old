@@ -55,13 +55,13 @@ $ docker-compose run --rm web bin/rspec
 ### Running commands
 
 ```bash
-$ docker-compose rm --rm web COMMAND [ARGUMENTS]
+$ docker-compose run --rm web COMMAND [ARGUMENTS]
 ```
 
 For example, to start a Rails console:
 
 ```bash
-$ docker-compose rm --rm web bin/rails c
+$ docker-compose run --rm web bin/rails c
 ```
 
 ### Shutdown

@@ -10,8 +10,6 @@ require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
-require File.expand_path('../../lib/wait_for_neo4j', __FILE__)
-
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -30,16 +28,19 @@ module Pokesite
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Configure Neo4j connection after waiting for 30 seconds for connection to become available
-    db_path = "http://#{ENV.fetch("DB_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_PORT_7474_TCP_PORT", 7474)}"
-    WaitForNeo4j::wait_for db_path
-
+    # Configure Neo4j connection
     config.neo4j.session_type = :server_db
-    config.neo4j.session_path = db_path
+    config.neo4j.session_path = "http://#{ENV.fetch("DB_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_PORT_7474_TCP_PORT", 7474)}"
 
     config.autoload_paths << Rails.root.join('lib')
 
     # Allow web console access from boot2docker host
     config.web_console.whitelisted_ips = %w( 172.17.42.0/24 192.168.0.0/16 )
+
+    # Wait 30 seconds or until Neo4j connection is available before continuing
+    initializer 'neo4j.wait', before: 'neo4j.start' do |app|
+      WaitForNeo4j.logger = Rails.logger
+      WaitForNeo4j.wait_for app.config.neo4j.session_path
+    end
   end
 end

@@ -40,4 +40,6 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  config.neo4j.session_path = "http://#{ENV.fetch("DB_TEST_PORT_7474_TCP_ADDR", "localhost")}:#{ENV.fetch("DB_TEST_PORT_7474_TCP_PORT", 7474)}"
 end

@@ -18,6 +18,7 @@ db_test:
 
 web:
   build: .
+  command: bin/guard
   links:
     - db
     - db_test
@@ -27,6 +28,8 @@ web:
     - .:/usr/src/app
   volumes_from:
     - gems
+  stdin_open: true
+  tty: true
 
 gems:
   image: busybox

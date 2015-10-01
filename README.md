@@ -39,9 +39,22 @@ be listening on the following ports:
  * Development Neo4j server: http://192.168.99.100:48461
  * Testing Neo4j server: http://192.168.99.100:48462
 
+#### Attaching to Guard
+
+`Ctrl+Z` to suspend `docker-compose up` but leave the containers running in the
+background, or open a new terminal.
+
+```bash
+$ docker attach pokesite_web_1
+```
+
+`Ctrl+P Ctrl+Q` to detach from Guard, then `fg` to return to `docker-compose up`
+if you suspended it with `Ctrl+Z`.
+
 #### Updating
 
 ```bash
+$ docker-compose stop
 $ git pull
 $ docker-compose run --rm web bundle
 ```
@@ -65,6 +78,8 @@ $ docker-compose run --rm web bin/rails c
 ```
 
 ### Shutdown
+
+`Ctrl+C` from `docker-compose up`, and to be sure everything is down:
 
 ```bash
 $ docker-compose stop

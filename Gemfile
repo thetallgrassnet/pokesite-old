@@ -40,6 +40,10 @@ gem 'obscenity', '~> 1.0.2'
 gem 'allowy', '~> 2.1.0'
 
 group :development, :test do
+  gem 'guard'
+  gem 'guard-rails'
+  gem 'guard-rspec'
+
   gem 'rspec-rails', '~> 3.3'
   gem 'capybara'
   gem 'factory_girl_rails'

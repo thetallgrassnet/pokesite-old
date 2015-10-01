@@ -41,7 +41,8 @@ gem 'allowy', '~> 2.1.0'
 
 group :development, :test do
   gem 'guard'
-  
+  gem 'guard-rails'
+
   gem 'rspec-rails', '~> 3.3'
   gem 'capybara'
   gem 'factory_girl_rails'

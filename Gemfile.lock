@@ -119,6 +119,10 @@ GEM
       pry (>= 0.9.12)
       shellany (~> 0.0)
       thor (>= 0.18.1)
+    guard-compat (1.2.1)
+    guard-rails (0.7.2)
+      guard (~> 2.11)
+      guard-compat (~> 1.0)
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -304,6 +308,7 @@ DEPENDENCIES
   devise-neo4j (~> 2.0.0)
   factory_girl_rails
   guard
+  guard-rails
   jbuilder (~> 2.0)
   jquery-rails (~> 4.0)
   neo4j (~> 5.0)

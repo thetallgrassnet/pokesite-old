@@ -25,11 +25,11 @@ class Admin::ResourceController < Admin::BaseController
 
   def create
     begin
-      resource = @klass.create!(resource_params)
+      instance_variable_set @resource_instance_var, @klass.create!(resource_params)
 
-      flash[:success] = "#{resource} created successfully."
-      redirect_to action: :show, id: resource.uuid
-    rescue
+      flash[:success] = "#{instance_variable_get(@resource_instance_var)} created successfully."
+      redirect_to action: :show, id: instance_variable_get(@resource_instance_var).uuid
+    rescue Neo4j::ActiveNode::Persistence::RecordInvalidError
       render :new
     end
   end
@@ -47,7 +47,7 @@ class Admin::ResourceController < Admin::BaseController
 
       flash[:success] = "#{resource} updated successfully."
       redirect_to action: :show, id: resource.uuid
-    rescue
+    rescue Neo4j::ActiveNode::Persistence::RecordInvalidError
       render :edit
     end
   end

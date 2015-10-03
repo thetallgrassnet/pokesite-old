@@ -29,6 +29,38 @@ RSpec.describe Admin::Article::ColumnsController, type: :controller do
     end
   end
 
+  describe "GET new" do
+    login_admin
+
+    it "instantiates a new column" do
+      get :new
+      expect(assigns(:article_column)).to be_a_new(Article::Column)
+    end
+  end
+
+  describe "POST create" do
+    login_admin
+
+    context "with valid parameters" do
+      let(:column) { FactoryGirl.build(:article_column) }
+      subject { post :create, article_column: { name: column.name, description: column.description } }
+
+      it "creates the column" do
+        expect(subject).to redirect_to action: :show, id: assigns(:article_column).uuid
+        expect(flash[:success]).to be_present
+      end
+    end
+
+    context "with invalid parameters" do
+      let(:column) { FactoryGirl.build(:article_column, description: nil) }
+      subject { post :create, article_column: { name: column.name, description: column.description } }
+
+      it "doesn't create the column" do
+        expect(subject).to render_template :new
+      end
+    end
+  end
+
   describe "GET show" do
     let(:column) { FactoryGirl.create(:article_column) }
     login_admin

@@ -3,48 +3,46 @@ require 'rails_helper'
 RSpec.describe Admin::User::AccountsController, type: :controller do
 
   describe "GET index" do
+    subject { get :index }
+
     context "authenticated" do
       login_admin
+      it { is_expected.to have_http_status :success }
 
-      it "returns http success" do
-        get :index
-        expect(response).to have_http_status(:success)
+      it "assigns @user_accounts" do
+        subject
+        expect(assigns(:user_accounts).size).to be 1
       end
     end
 
     context "unauthenticated" do
-      it "returns http redirect" do
-        get :index
-        expect(response).to have_http_status(:redirect)
-      end
+      it { is_expected.to redirect_to '/' }
     end
 
     context "unauthorized" do
       login_user
-
-      it "reutrns http redirect" do
-        get :index
-        expect(response).to have_http_status(:redirect)
-      end
+      it { is_expected.to redirect_to '/' }
     end
   end
 
   describe "GET show" do
-    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
     login_admin
+    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
+    subject { get :show, id: user.uuid }
 
     it "retrieves the user" do
-      get :show, id: user.uuid
+      subject
       expect(assigns(:user_account)).to eql(user)
     end
   end
 
   describe "GET edit" do
-    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
     login_admin
+    let(:user) { FactoryGirl.create(:user_account, :confirmed) }
+    subject { get :edit, id: user.uuid }
 
     it "retrieves the user" do
-      get :edit, id: user.uuid
+      subject
       expect(assigns(:user_account)).to eql(user)
     end
   end
@@ -52,36 +50,52 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
   describe "PUT update" do
     login_admin
 
-    context "updating a user" do
+    context "a user" do
       let(:user) { FactoryGirl.create(:user_account, :confirmed) }
 
       context "with valid parameters" do
         let(:username) { FactoryGirl.generate(:username) }
+        subject { put :update, id: user.uuid, user_account: { username: username } }
 
-        it "updates the user and redirects" do
-          put :update, id: user.uuid, user_account: { username: username }
+        it { is_expected.to redirect_to action: :show, id: user.uuid }
+
+        it "updates the user" do
+          subject
           user.reload
-          expect(response).to have_http_status(:redirect)
           expect(user.username).to eql(username)
+        end
+
+        it "displays a success message" do
+          subject
           expect(flash[:success]).to be_present
         end
       end
 
       context "with invalid parameters" do
-        it "renders the edit form" do
-          put :update, id: user.uuid, user_account: { username: "" }
-          expect(response).not_to have_http_status(:redirect)
+        subject { put :update, id: user.uuid, user_account: { username: "" } }
+
+        it { is_expected.to render_template :edit }
+
+        it "does not update the user" do
+          subject
+          user.reload
           expect(user.username).to eql(user.username)
-          expect(assigns(:user_account)).to eql(user)
         end
       end
     end
 
-    context "an admin user" do
-      it "can't demote themselves" do
-        put :update, id: subject.current_user.uuid, user_account: { is_admin: false }
-        expect(response).to have_http_status(:redirect)
-        expect(subject.current_user.is_admin).to be true
+    context "an admin user attempting to demote themself" do
+      subject { put :update, id: controller.current_user.uuid, user_account: { is_admin: false } }
+
+      it { is_expected.to redirect_to action: :edit, id: controller.current_user.uuid }
+
+      it "can't demote themself" do
+        subject
+        expect(controller.current_user.is_admin).to be true
+      end
+
+      it "displays an error message" do
+        subject
         expect(flash[:error]).to be_present
       end
     end
@@ -92,27 +106,35 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
 
     context "user" do
       let(:user) { FactoryGirl.create(:user_account, :confirmed) }
+      subject { delete :destroy, id: user.uuid }
 
-      it "deletes the user" do
-        delete :destroy, id: user.uuid
-        expect(response).to redirect_to action: :index
+      it { is_expected.to redirect_to action: :index }
+
+      it "displays a success message" do
+        subject
         expect(flash[:success]).to be_present
       end
 
-      it "handles failure to delete" do
-        expect_any_instance_of(User::Account).to receive(:destroy).and_return(false)
-        delete :destroy, id: user.uuid
-        expect(response).to redirect_to action: :show, id: user.uuid
-        expect(flash[:error]).to be_present
+      context "that cannot be deleted" do
+        before { expect_any_instance_of(User::Account).to receive(:destroy).and_return(false) }
+
+        it { is_expected.to redirect_to action: :show, id: user.uuid }
+
+        it "displays an error message" do
+          subject
+          expect(flash[:error]).to be_present
+        end
       end
     end
 
-    context "admin" do
-      it "cannot delete themselves" do
-        delete :destroy, id: subject.current_user.uuid
-        expect(response).to have_http_status(:redirect)
+    context "admin attempting to delete themself" do
+      subject { delete :destroy, id: controller.current_user.uuid }
+
+      it { is_expected.to redirect_to action: :show, id: controller.current_user.uuid }
+
+      it "displays an error message" do
+        subject
         expect(flash[:error]).to be_present
-        expect(assigns(:user_account)).to eql(subject.current_user)
       end
     end
   end

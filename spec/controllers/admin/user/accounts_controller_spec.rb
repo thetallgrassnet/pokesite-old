@@ -95,8 +95,15 @@ RSpec.describe Admin::User::AccountsController, type: :controller do
 
       it "deletes the user" do
         delete :destroy, id: user.uuid
-        expect(response).to have_http_status(:redirect)
+        expect(response).to redirect_to action: :index
         expect(flash[:success]).to be_present
+      end
+
+      it "handles failure to delete" do
+        expect_any_instance_of(User::Account).to receive(:destroy).and_return(false)
+        delete :destroy, id: user.uuid
+        expect(response).to redirect_to action: :show, id: user.uuid
+        expect(flash[:error]).to be_present
       end
     end
 

@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   }
 
   root "welcome#index"
+
+  match "*path", via: :all, to: "application#not_found"
 end

@@ -73,7 +73,7 @@ class Admin::ResourceController < Admin::BaseController
   private
 
   def load_resource
-    instance_variable_set @resource_instance_var, @klass.find_by(uuid: params[:id])
+    instance_variable_set @resource_instance_var, @klass.find_by!(uuid: params[:id])
   end
 
   def authorize_manage_resource

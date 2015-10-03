@@ -4,6 +4,7 @@ class User::AccountAccess < BaseAccess
   end
 
   def destroy?(account)
-    not (current_user == account and current_user.is_admin?)
+    return false if current_user == account and current_user.is_admin?
+    current_user == account or super
   end
 end

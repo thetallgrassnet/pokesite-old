@@ -18,7 +18,7 @@ db_test:
 
 web:
   build: .
-  command: bin/guard
+  command: bin/guard -p -l 1
   links:
     - db
     - db_test

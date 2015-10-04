@@ -1,2 +1,4 @@
-h1 Admin::Article::Columns#edit
-p Find me in app/views/admin/article/columns/edit.html.slim
+header.row
+  h1.col-xs-12 = "Edit " + @article_column.to_s
+
+= render "form"

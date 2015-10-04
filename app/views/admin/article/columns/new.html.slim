@@ -1,11 +1,4 @@
 header.row
   h1.col-xs-12 New Article Column
 
-= bootstrap_form_for(@article_column, url: admin_article_columns_path) do |f|
-  fieldset
-    .field = f.text_field :name
-    
-    .field = f.text_field :description
-    
-    .actions
-      = f.submit "Create column"
+= render "form"

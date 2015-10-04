@@ -9,6 +9,8 @@ class Article::Column
   property :created_at, type: DateTime
   property :updated_at, type: DateTime
 
+  has_many :in, :authors, rel_class: :"User::Account::WritesFor"
+
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true, format: {
     with: %r{\A[0-9a-z-]+\Z},

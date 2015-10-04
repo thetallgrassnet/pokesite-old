@@ -46,4 +46,21 @@ RSpec.describe Article::Column, type: :model do
       expect(column.to_s).to eql(column.name)
     end
   end
+
+  context "with authors" do
+    let(:user) { FactoryGirl.create(:user_account) }
+    before { column.authors << user }
+
+    describe "#authors" do
+      subject { column.authors.to_a }
+      it { is_expected.to contain_exactly user }
+    end
+  end
+
+  context "without authors" do
+    describe "#authors" do
+      subject { column.authors.to_a }
+      it { is_expected.to be_empty }
+    end
+  end
 end

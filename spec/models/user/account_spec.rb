@@ -47,4 +47,31 @@ RSpec.describe User::Account, type: :model do
       expect(user.can_access_admin?).to eql(false)
     end
   end
+
+  context "with columns" do
+    let(:column) { FactoryGirl.create(:article_column) }
+    before { user.columns << column }
+
+    describe "#columns" do
+      subject { user.columns.to_a }
+      it { is_expected.to contain_exactly column }
+    end
+
+    describe "#can_access_admin?" do
+      subject { user.can_access_admin? }
+      it { is_expected.to be true }
+    end
+  end
+
+  context "without columns" do
+    describe "#columns" do
+      subject { user.columns.to_a }
+      it { is_expected.to be_empty }
+    end
+
+    describe "#can_access_admin?" do
+      subject { user.can_access_admin? }
+      it { is_expected.to be false }
+    end
+  end
 end

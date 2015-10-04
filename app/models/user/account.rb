@@ -35,6 +35,8 @@ class User::Account
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :out, :columns, rel_class: :"User::Account::WritesFor"
+
   validates :username,
     format: {
       with: %r{\A\w+\Z},
@@ -53,6 +55,6 @@ class User::Account
   end
 
   def can_access_admin?
-    is_admin?
+    is_admin? or columns.size > 0
   end
 end

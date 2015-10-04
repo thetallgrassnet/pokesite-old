@@ -17,4 +17,5 @@ header.row
 footer.row
   ul.list-inline.col-xs-12
     li = link_to t("admin.edit"), edit_admin_article_column_path(@article_column.uuid)
-    li = link_to t("admin.destroy"), admin_article_column_path(@article_column.uuid), method: :delete
+    li = link_to t("admin.destroy"), admin_article_column_path(@article_column.uuid), method: :delete,
+        data: { confirm: "Are you sure you want to destroy #{@article_column}?" }

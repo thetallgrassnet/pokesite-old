@@ -20,4 +20,4 @@ header
                 li = link_to glyphicon("pencil", t("admin.edit")), edit_admin_user_account_path(account.uuid)
                 - if can? :destroy, account
                   li = link_to glyphicon("trash", t("admin.destroy")), admin_user_account_path(account.uuid), method: :delete,
-                               data: { confirm: "Are you sure you want to destroy #{account}?" }
+                      data: { confirm: "Are you sure you want to destroy #{account}?" }

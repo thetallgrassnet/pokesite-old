@@ -1,5 +1,6 @@
 class User::Account
   include Neo4j::ActiveNode
+  include Neo4j::Timestamps
 
   # Database authenticatable
   property :email,              type: String, null: false, default: "", index: :exact, constraint: :unique
@@ -24,10 +25,6 @@ class User::Account
   property :confirmed_at,         type: DateTime
   property :confirmation_sent_at, type: DateTime
   property :unconfirmed_email,    type: String
-
-  # Timestamps
-  property :created_at, type: DateTime
-  property :updated_at, type: DateTime
 
   property :username, type: String,  null: false, default: "", index: :exact, constraint: :unique
   property :is_admin, type: Boolean, null: false, default: false

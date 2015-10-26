@@ -47,19 +47,19 @@ RSpec.describe Article::Column, type: :model do
     end
   end
 
-  context "with authors" do
+  context "with writers" do
     let(:user) { FactoryGirl.create(:user_account) }
-    before { column.authors << user }
+    before { column.writers << user }
 
-    describe "#authors" do
-      subject { column.authors.to_a }
+    describe "#writers" do
+      subject { column.writers.to_a }
       it { is_expected.to contain_exactly user }
     end
   end
 
-  context "without authors" do
-    describe "#authors" do
-      subject { column.authors.to_a }
+  context "without writers" do
+    describe "#writers" do
+      subject { column.writers.to_a }
       it { is_expected.to be_empty }
     end
   end

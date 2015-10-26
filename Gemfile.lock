@@ -156,11 +156,11 @@ GEM
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nenv (0.2.0)
-    neo4j (5.2.11)
+    neo4j (5.2.12)
       active_attr (~> 0.8)
       activemodel (~> 4)
       activesupport (~> 4)
-      neo4j-core (~> 5.1.0)
+      neo4j-core (~> 5.1.10)
       orm_adapter (~> 0.5.0)
     neo4j-core (5.1.10)
       activesupport

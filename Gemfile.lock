@@ -43,7 +43,7 @@ GEM
       activesupport (>= 3.2)
       i18n
     arel (6.0.3)
-    autoprefixer-rails (6.1.0.1)
+    autoprefixer-rails (6.1.1)
       execjs
       json
     bcrypt (3.1.10)
@@ -149,7 +149,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.6.2)
+    mime-types (2.99)
     mini_portile (0.6.2)
     minitest (5.8.3)
     multi_json (1.11.2)
@@ -162,7 +162,7 @@ GEM
       activesupport (~> 4)
       neo4j-core (~> 5.1.10)
       orm_adapter (~> 0.5.0)
-    neo4j-core (5.1.11)
+    neo4j-core (5.1.12)
       activesupport
       faraday (~> 0.9.0)
       faraday_middleware (~> 0.9.1)

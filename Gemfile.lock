@@ -43,7 +43,7 @@ GEM
       activesupport (>= 3.2)
       i18n
     arel (6.0.3)
-    autoprefixer-rails (6.2.3)
+    autoprefixer-rails (6.3.0)
       execjs
       json
     bcrypt (3.1.10)

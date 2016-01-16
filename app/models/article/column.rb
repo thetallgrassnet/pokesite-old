@@ -3,7 +3,7 @@ class Article::Column
   include Neo4j::Timestamps
 
   property :name, type: String, null: false, default: "", constraint: :unique
-  property :slug, type: String, null: false, default: "", constraint: :unique, index: :exact
+  property :slug, type: String, null: false, default: "", constraint: :unique
 
   property :description, type: String, null: false, default: ""
 

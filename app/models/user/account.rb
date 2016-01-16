@@ -3,11 +3,11 @@ class User::Account
   include Neo4j::Timestamps
 
   # Database authenticatable
-  property :email,              type: String, null: false, default: "", index: :exact, constraint: :unique
+  property :email,              type: String, null: false, default: "", constraint: :unique
   property :encrypted_password, type: String, null: false, default: ""
 
   # Recoverable
-  property :reset_password_token,   type: String, index: :exact, constraint: :unique
+  property :reset_password_token,   type: String, constraint: :unique
   property :reset_password_sent_at, type: DateTime
 
   # Rememberable
@@ -21,12 +21,12 @@ class User::Account
   property :last_sign_in_ip,    type: String
 
   # Confirmable
-  property :confirmation_token,   type: String, index: :exact, constraint: :unique
+  property :confirmation_token,   type: String, constraint: :unique
   property :confirmed_at,         type: DateTime
   property :confirmation_sent_at, type: DateTime
   property :unconfirmed_email,    type: String
 
-  property :username, type: String,  null: false, default: "", index: :exact, constraint: :unique
+  property :username, type: String,  null: false, default: "", constraint: :unique
   property :is_admin, type: Boolean, null: false, default: false
 
   devise :database_authenticatable, :registerable, :confirmable,

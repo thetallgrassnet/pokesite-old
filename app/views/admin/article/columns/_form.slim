@@ -6,4 +6,4 @@
     .field = f.text_field :description
     
     .actions
-      = f.submit "Create column"
+      = f.submit (@article_column.persisted? ? "Update" : "Create") + " column"

@@ -34,9 +34,6 @@ module Pokesite
 
     config.autoload_paths << Rails.root.join('lib')
 
-    # Allow web console access from boot2docker host
-    config.web_console.whitelisted_ips = %w( 172.17.42.0/24 192.168.0.0/16 )
-
     # Wait 30 seconds or until Neo4j connection is available before continuing
     initializer 'neo4j.wait', before: 'neo4j.start' do |app|
       WaitForNeo4j.logger = Rails.logger

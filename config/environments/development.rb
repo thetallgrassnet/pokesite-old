@@ -36,4 +36,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Allow web console access from boot2docker host
+  config.web_console.whitelisted_ips = %w( 172.17.42.0/24 192.168.0.0/16 )
 end

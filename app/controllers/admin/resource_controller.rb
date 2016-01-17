@@ -25,7 +25,9 @@ class Admin::ResourceController < Admin::BaseController
 
   def create
     begin
-      instance_variable_set @resource_instance_var, @klass.create!(resource_params)
+      instance_variable_set @resource_instance_var, @klass.new
+      instance_variable_get(@resource_instance_var).update_attributes resource_params
+      instance_variable_get(@resource_instance_var).save!
 
       flash[:success] = "#{instance_variable_get(@resource_instance_var)} created successfully."
       redirect_to action: :show, id: instance_variable_get(@resource_instance_var).uuid

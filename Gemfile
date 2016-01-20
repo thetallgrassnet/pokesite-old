@@ -62,3 +62,5 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "database_cleaner"
 end
+
+gem 'nokogiri', '>= 1.6.7.2'

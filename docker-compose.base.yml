@@ -1,4 +1,5 @@
 db_base:
-  image: thetallgrassnet/alpine-neo4j:2.3.0
+  image: thetallgrassnet/alpine-neo4j:2.3.2
   environment:
     NEO4J_AUTH: none
+    NEO4J_ALLOW_STORE_UPGRADE: 'true'

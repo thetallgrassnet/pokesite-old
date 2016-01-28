@@ -18,7 +18,6 @@ Your one-stop Pokémon fan community and database.
 
 On OS X:
 
- * [xhyve](https://github.com/mist64/xhyve)
  * [DLite](https://github.com/nlf/dlite)
  * Installing Docker and Docker Compose through [Homebrew](http://brew.sh/) is
    recommended.

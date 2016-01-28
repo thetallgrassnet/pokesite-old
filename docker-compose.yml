@@ -4,8 +4,6 @@ db:
     service: db_base
   ports:
     - "48461:7474"
-  volumes:
-    - ./db/neo4j/development/data:/data
 
 db_test:
   extends:
@@ -13,8 +11,6 @@ db_test:
     service: db_base
   ports:
     - "48462:7474"
-  volumes:
-    - ./db/neo4j/test/data:/data
 
 web:
   build: .

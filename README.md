@@ -13,15 +13,15 @@ Your one-stop Pokémon fan community and database.
 
 ### Requirements
 
-  * [Docker Toolbox](https://www.docker.com/toolbox)
-  * A running Docker machine:
+ * [Docker](https://www.docker.com/)
+ * [Docker Compose](https://docs.docker.com/compose/)
 
-    ```bash
-    $ docker-machine create --driver=virtualbox default
-    $ docker-machine start default
-    $ eval "$(docker-machine env default)"
-    $ docker-machine ip default
-    ```
+On OS X:
+
+ * [xhyve](https://github.com/mist64/xhyve)
+ * [DLite](https://github.com/nlf/dlite)
+ * Installing Docker and Docker Compose through [Homebrew](http://brew.sh/) is
+   recommended.
 
 ### Setup
 
@@ -32,12 +32,11 @@ $ bin/setup
 $ docker-compose up
 ```
 
-If the output of `docker-machine ip` was `192.168.99.100`, the servers will
-be listening on the following ports:
+The servers will be listening on the following ports:
 
- * Web server: http://192.168.99.100:48460
- * Development Neo4j server: http://192.168.99.100:48461
- * Testing Neo4j server: http://192.168.99.100:48462
+ * Web server: 48460
+ * Development Neo4j server: 48461
+ * Testing Neo4j server: 48462
 
 #### Attaching to Guard
 

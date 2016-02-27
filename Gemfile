@@ -64,3 +64,5 @@ group :test do
 end
 
 gem 'nokogiri', '>= 1.6.7.2'
+
+gem 'rails_12factor', group: :production

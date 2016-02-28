@@ -7,7 +7,7 @@
 
     = f.hidden_field :reset_password_token
 
-    .field = f.password_field :password, label: "New password", autofocus: true, autocomplete: "off", hint: "(#{ @minimum_password_length } characters minimum)" if @validatable
+    .field = f.password_field :password, label: "New password", autofocus: true, autocomplete: "off", hint: ("(#{ @minimum_password_length } characters minimum)" if @validatable)
 
     .field = f.password_field :password_confirmation, label: "Confirm new password", autocomplete: "off"
 

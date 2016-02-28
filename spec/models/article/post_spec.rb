@@ -51,7 +51,7 @@ RSpec.describe Article::Post, type: :model do
     it "must write for the column" do
       u = FactoryGirl.create(:user_account)
       expect(post.column.writers).not_to include(u)
-      
+
       post.author = u
       expect(post).to be_invalid
     end

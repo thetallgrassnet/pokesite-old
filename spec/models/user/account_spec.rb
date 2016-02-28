@@ -61,6 +61,22 @@ RSpec.describe User::Account, type: :model do
       subject { user.can_access_admin? }
       it { is_expected.to be true }
     end
+
+    context "with posts" do
+      let(:post) { FactoryGirl.create(:article_post) }
+      
+      describe "#posts" do
+        subject { post.author.posts.to_a }
+        it { is_expected.to contain_exactly post }
+      end
+    end
+
+    context "without posts" do
+      describe "#posts" do
+        subject { user.posts.to_a }
+        it { is_expected.to be_empty }
+      end
+    end
   end
 
   context "without columns" do

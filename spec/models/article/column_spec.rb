@@ -63,4 +63,20 @@ RSpec.describe Article::Column, type: :model do
       it { is_expected.to be_empty }
     end
   end
+
+  context "with posts" do
+    let(:post) { FactoryGirl.create(:article_post) }
+
+    describe "#posts" do
+      subject { post.column.posts.to_a }
+      it { is_expected.to contain_exactly post }
+    end
+  end
+
+  context "without posts" do
+    describe "#posts" do
+      subject { column.posts.to_a }
+      it { is_expected.to be_empty }
+    end
+  end
 end

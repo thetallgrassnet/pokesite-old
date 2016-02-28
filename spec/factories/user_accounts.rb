@@ -14,5 +14,11 @@ FactoryGirl.define do
     trait :is_admin do
       is_admin true
     end
+
+    factory :author do
+      after(:create) do |user, evaluator|
+        create_list(:article_column, 1, writers: [user])
+      end
+    end
   end
 end

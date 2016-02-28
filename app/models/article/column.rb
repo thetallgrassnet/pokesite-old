@@ -11,6 +11,7 @@ class Article::Column
   property :updated_at, type: DateTime
 
   has_many :in, :writers, rel_class: :"User::Account::WritesFor"
+  has_many :in, :posts, origin: :column, model_class: :"Article::Post"
 
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true, format: {

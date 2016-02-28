@@ -33,6 +33,7 @@ class User::Account
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :out, :columns, rel_class: :"User::Account::WritesFor"
+  has_many :in, :posts, origin: :author, model_class: :"Article::Post"
 
   validates :username,
     format: {

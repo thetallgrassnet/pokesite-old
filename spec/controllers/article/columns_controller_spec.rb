@@ -10,8 +10,9 @@ RSpec.describe Article::ColumnsController, type: :controller do
   end
 
   describe "GET #show" do
+    let(:column) { FactoryGirl.create(:article_column) }
     it "returns http success" do
-      get :show
+      get :show, id: column.slug
       expect(response).to have_http_status(:success)
     end
   end

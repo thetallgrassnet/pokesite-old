@@ -1,5 +1,7 @@
 - content_for :title
   = @title
 
-h1 Article::Posts#index
-p Find me in app/views/article/posts/index.html.slim
+h1 = @title
+
+- for post in @posts
+  = link_to post, [post.column, post]

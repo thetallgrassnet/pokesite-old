@@ -31,6 +31,10 @@ class Article::Post
     slug
   end
 
+  def to_s
+    headline
+  end
+
   private
 
   def author_writes_for_column

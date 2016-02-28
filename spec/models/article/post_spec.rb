@@ -77,4 +77,10 @@ RSpec.describe Article::Post, type: :model do
       expect(post.to_param).to eql(post.slug)
     end
   end
+
+  context "to_s" do
+    it "returns the headline" do
+      expect(post.to_s).to eql(post.headline)
+    end
+  end
 end

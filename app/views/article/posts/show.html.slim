@@ -1,2 +1,7 @@
-h1 Article::Posts#show
-p Find me in app/views/article/posts/show.html.slim
+- content_for :title
+  = @post.headline
+
+h1 = @post.headline
+h2 = @post.subhead
+
+= @post.body

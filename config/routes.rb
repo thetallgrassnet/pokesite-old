@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   namespace :article, path: "articles" do
     resources :columns, path: "", only: [:index, :show] do
-      resources :posts, path: "", only: [:show]
+      resources :posts, as: :article_post, path: "", only: [:show]
     end
   end
 

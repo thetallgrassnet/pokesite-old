@@ -64,7 +64,7 @@ RSpec.describe User::Account, type: :model do
 
     context "with posts" do
       let(:post) { FactoryGirl.create(:article_post) }
-      
+ 
       describe "#posts" do
         subject { post.author.posts.to_a }
         it { is_expected.to contain_exactly post }

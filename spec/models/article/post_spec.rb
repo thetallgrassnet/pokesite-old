@@ -72,6 +72,29 @@ RSpec.describe Article::Post, type: :model do
     end
   end
 
+  context "published" do
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.to contain_exactly post }
+    end
+  end
+
+  context "unpublished" do
+    let(:p) { FactoryGirl.create(:article_post, :unpublished) }
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.not_to include p }
+    end
+  end
+
+  context "scheduled" do
+    let(:p) { FactoryGirl.create(:article_post, :scheduled) }
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.not_to include p }
+    end
+  end
+
   context "to_param" do
     it "returns the slug" do
       expect(post.to_param).to eql(post.slug)

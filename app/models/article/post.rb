@@ -1,4 +1,4 @@
-class Article::Post 
+class Article::Post
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
 
@@ -17,7 +17,7 @@ class Article::Post
     with: %r{\A[0-9a-z-]+\Z},
     message: "may only contain lowercase letters (a-z), numbers (0-9), and dashes (-)"
   }
-  
+
   validates :subhead, presence: true
   validates :body,    presence: true
   validates :author,  presence: true

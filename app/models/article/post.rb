@@ -29,6 +29,7 @@ class Article::Post
 
   scope :published, ->(identifier) {
     where("#{identifier}.published_at < {now}")
+      .order(published_at: :desc)
       .params(now: DateTime.now.to_time.to_i)
   }
 

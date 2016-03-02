@@ -60,4 +60,7 @@ end
 
 gem 'nokogiri', '>= 1.6.7.2'
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor'
+end

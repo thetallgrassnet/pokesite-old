@@ -32,6 +32,8 @@ gem 'devise', '~> 3.5'
 gem 'obscenity', '~> 1.0.2'
 gem 'allowy', '~> 2.1.0'
 
+gem 'kaminari-neo4j', '>= 0.0.4'
+
 group :development, :test do
   gem 'guard'
   gem 'guard-rails'

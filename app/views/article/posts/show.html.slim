@@ -1,7 +1,4 @@
 - content_for :title
   = @post.headline
 
-h1 = @post.headline
-h2 = @post.subhead
-
-= @post.body
+= render @post

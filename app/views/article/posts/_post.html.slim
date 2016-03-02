@@ -1,0 +1,11 @@
+article
+  header
+    h1= link_to post.headline, [post.column, post]
+    h2= post.subhead
+    p
+      | By #{link_to post.author, post.author}
+      |  in #{link_to post.column, post.column}
+      |  on #{time_tag post.published_at, post.published_at.strftime("%A, %B %e, %Y at %l:%M%P"), pubdate: true}
+
+  section
+    = post.body

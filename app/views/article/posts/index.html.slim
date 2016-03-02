@@ -3,5 +3,6 @@
 
 h1 = @title
 
-- for post in @posts
-  = link_to post, [post.column, post]
+= render @posts
+
+= paginate @posts

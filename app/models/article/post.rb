@@ -27,10 +27,10 @@ class Article::Post
 
   before_validation :slugify
 
-  def self.published
-    as(:article_post).where('article_post.published_at < {now}')
+  scope :published, ->(identifier) {
+    where("#{identifier}.published_at < {now}")
       .params(now: DateTime.now.to_time.to_i)
-  end
+  }
 
   def to_param
     slug

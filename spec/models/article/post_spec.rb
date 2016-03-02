@@ -74,7 +74,7 @@ RSpec.describe Article::Post, type: :model do
 
   context "published" do
     describe ".published" do
-      subject { Article::Post.published }
+      subject { Article::Post.published(:result_articlepost) }
       it { is_expected.to contain_exactly post }
     end
   end
@@ -82,7 +82,7 @@ RSpec.describe Article::Post, type: :model do
   context "unpublished" do
     let(:p) { FactoryGirl.create(:article_post, :unpublished) }
     describe ".published" do
-      subject { Article::Post.published }
+      subject { Article::Post.published(:result_articlepost) }
       it { is_expected.not_to include p }
     end
   end
@@ -90,7 +90,7 @@ RSpec.describe Article::Post, type: :model do
   context "scheduled" do
     let(:p) { FactoryGirl.create(:article_post, :scheduled) }
     describe ".published" do
-      subject { Article::Post.published }
+      subject { Article::Post.published(:result_articlepost) }
       it { is_expected.not_to include p }
     end
   end

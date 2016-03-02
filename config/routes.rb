@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   end
 
   namespace :article, path: "articles" do
+    get "(page/:page)", controller: :columns, action: :index
+
     resources :columns, only: [:show], shallow: true do
+      get "page/:page", action: :show, on: :member
       resources :posts, only: [:show], shallow: true
     end
   end

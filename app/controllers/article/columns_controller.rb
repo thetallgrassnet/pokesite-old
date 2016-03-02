@@ -1,5 +1,6 @@
 class Article::ColumnsController < ApplicationController
   def index
+    (redirect_to(article_path) and return) if params[:page] == "1"
     @title = "Articles"
 
     @posts = Article::Post.as(:p).published(:p).order(published_at: :desc).page(params[:page]).per(10)
@@ -9,6 +10,8 @@ class Article::ColumnsController < ApplicationController
   end
 
   def show
+    (redirect_to(article_column_path(id: params[:id])) and return) if params[:page] == "1"
+
     @column = Article::Column.find_by! slug: params[:id]
     @title = @column.name
 

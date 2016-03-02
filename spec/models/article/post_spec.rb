@@ -51,7 +51,7 @@ RSpec.describe Article::Post, type: :model do
     it "must write for the column" do
       u = FactoryGirl.create(:user_account)
       expect(post.column.writers).not_to include(u)
-      
+
       post.author = u
       expect(post).to be_invalid
     end
@@ -72,9 +72,38 @@ RSpec.describe Article::Post, type: :model do
     end
   end
 
+  context "published" do
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.to contain_exactly post }
+    end
+  end
+
+  context "unpublished" do
+    let(:p) { FactoryGirl.create(:article_post, :unpublished) }
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.not_to include p }
+    end
+  end
+
+  context "scheduled" do
+    let(:p) { FactoryGirl.create(:article_post, :scheduled) }
+    describe ".published" do
+      subject { Article::Post.published }
+      it { is_expected.not_to include p }
+    end
+  end
+
   context "to_param" do
     it "returns the slug" do
       expect(post.to_param).to eql(post.slug)
+    end
+  end
+
+  context "to_s" do
+    it "returns the headline" do
+      expect(post.to_s).to eql(post.headline)
     end
   end
 end

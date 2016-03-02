@@ -1,0 +1,7 @@
+- content_for :title
+  = @title
+
+h1 = @title
+
+- for post in @posts
+  = link_to post, [post.column, post]

@@ -11,6 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :article, path: "articles" do
+    resources :columns, path: "", only: [:index, :show] do
+      resources :posts, as: :article_post, path: "", only: [:show]
+    end
+  end
+
   namespace :user, path: "users" do
     resources :accounts, path: "", only: [:show]
   end

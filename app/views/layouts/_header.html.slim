@@ -16,7 +16,14 @@ nav.navbar.navbar-inverse
 
     .navbar-collapse.collapse
       ul.nav.navbar-nav
-        /li = link_to t("welcome.index"), root_path
+        li = link_to t("welcome.index"), root_path, class: "visible-xs visible-sm"
+        li.dropdown
+          = link_to article_columns_path, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
+            = t("articles.title")
+            span.caret
+          ul.dropdown-menu role="menu"
+            - for column in @columns
+              li = link_to column, column
 
       ul.nav.navbar-nav.navbar-right
         li.dropdown

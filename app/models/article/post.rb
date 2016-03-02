@@ -1,4 +1,4 @@
-class Article::Post 
+class Article::Post
   include Neo4j::ActiveNode
   include Neo4j::Timestamps
 
@@ -17,7 +17,7 @@ class Article::Post
     with: %r{\A[0-9a-z-]+\Z},
     message: "may only contain lowercase letters (a-z), numbers (0-9), and dashes (-)"
   }
-  
+
   validates :subhead, presence: true
   validates :body,    presence: true
   validates :author,  presence: true
@@ -27,8 +27,17 @@ class Article::Post
 
   before_validation :slugify
 
+  scope :published, -> {
+    where('result_articlepost.published_at < {now}')
+      .params(now: DateTime.now.to_time.to_i)
+  }
+
   def to_param
     slug
+  end
+
+  def to_s
+    headline
   end
 
   private

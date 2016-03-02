@@ -18,7 +18,7 @@ nav.navbar.navbar-inverse
       ul.nav.navbar-nav
         li = link_to t("welcome.index"), root_path, class: "visible-xs visible-sm"
         li.dropdown
-          = link_to article_columns_path, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
+          = link_to article_path, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
             = t("articles.title")
             span.caret
           ul.dropdown-menu role="menu"

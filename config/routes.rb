@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   }
 
   get "about", to: "welcome#about"
+  get "privacy", to: "welcome#privacy"
   root "welcome#index"
 
   match "*path", via: :all, to: "application#not_found"

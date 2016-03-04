@@ -40,6 +40,10 @@ class Article::Post
     headline
   end
 
+  def published?
+    (not published_at.nil?) and published_at <= DateTime.now
+  end
+
   private
 
   def author_writes_for_column

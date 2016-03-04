@@ -106,4 +106,20 @@ RSpec.describe Article::Post, type: :model do
       expect(post.to_s).to eql(post.headline)
     end
   end
+
+  describe "published?" do
+    it "returns true if the post is published" do
+      expect(post.published?).to be true
+    end
+
+    it "returns false if the post is unpublished" do
+      p = FactoryGirl.create(:article_post, :unpublished)
+      expect(p.published?).to be false
+    end
+
+    it "returns false if the post is scheduled" do
+      p = FactoryGirl.create(:article_post, :scheduled)
+      expect(p.published?).to be false
+    end
+  end
 end

@@ -40,8 +40,9 @@ RSpec.describe Article::Post, type: :model do
     end
 
     it "is unique" do
-      p = FactoryGirl.build(:article_post, slug: post.slug)
+      p = FactoryGirl.build(:article_post, headline: post.headline)
       expect(p).to be_invalid
+      expect(p.errors.include? :slug).to be true
     end
   end
 

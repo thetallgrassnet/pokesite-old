@@ -9,8 +9,8 @@ class Article::Post
   property :is_featured,  type: Boolean, null: false, default: false
   property :published_at, type: DateTime
 
-  has_one :out, :author, type: :author, model_class: :"User::Account"
-  has_one :out, :column, type: :column, model_class: :"Article::Column"
+  has_one :out, :author, type: :author, unique: true, model_class: :"User::Account"
+  has_one :out, :column, type: :column, unique: true, model_class: :"Article::Column"
 
   validates :headline, presence: true, uniqueness: true
   validates :slug,     presence: true, uniqueness: true, format: {

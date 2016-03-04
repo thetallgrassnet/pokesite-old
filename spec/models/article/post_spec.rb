@@ -3,6 +3,23 @@ require 'rails_helper'
 RSpec.describe Article::Post, type: :model do
   let(:post) { FactoryGirl.create(:article_post) }
 
+  describe ".published" do
+    let(:unpublished) { FactoryGirl.create(:article_post, :unpublished) }
+    let(:scheduled) { FactoryGirl.create(:article_post, :scheduled) }
+
+    it "only returns published posts" do
+      expect(Article::Post.as(:p).published(:p).all?(&:published?)).to be true
+      expect { unpublished.update_attribute! :published_at, DateTime.now }.to change { Article::Post.as(:p).published(:p).count }.by 1
+    end
+
+    it "returns published posts in order" do
+      p1 = FactoryGirl.create(:article_post, published_at: post.published_at - 1.day)
+      p2 = FactoryGirl.create(:article_post, published_at: post.published_at - 2.day)
+
+      expect(Article::Post.as(:p).published(:p)).to eq [post, p1, p2]
+    end
+  end
+
   context "headline" do
     it "is required" do
       post.headline = ""
@@ -69,29 +86,6 @@ RSpec.describe Article::Post, type: :model do
 
       post.column = c
       expect(post).to be_invalid
-    end
-  end
-
-  context "published" do
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.to contain_exactly post }
-    end
-  end
-
-  context "unpublished" do
-    let(:p) { FactoryGirl.create(:article_post, :unpublished) }
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.not_to include p }
-    end
-  end
-
-  context "scheduled" do
-    let(:p) { FactoryGirl.create(:article_post, :scheduled) }
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.not_to include p }
     end
   end
 

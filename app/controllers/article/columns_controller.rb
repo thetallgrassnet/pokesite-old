@@ -3,7 +3,7 @@ class Article::ColumnsController < ApplicationController
     (redirect_to(article_path) and return) if params[:page] == "1"
     @title = "Articles"
 
-    @posts = Article::Post.as(:p).published(:p).order(published_at: :desc).page(params[:page]).per(10)
+    @posts = Article::Post.as(:p).published(:p).page(params[:page]).per(10)
     (not_found and return) if params[:page] and @posts.count == 0
 
     render "article/posts/index"
@@ -15,7 +15,7 @@ class Article::ColumnsController < ApplicationController
     @column = Article::Column.find_by! slug: params[:id]
     @title = @column.name
 
-    @posts = @column.posts(:p).published(:p).order(published_at: :desc).page(params[:page]).per(10)
+    @posts = @column.posts(:p).published(:p).page(params[:page]).per(10)
     (not_found and return) if params[:page] and @posts.count == 0
 
     render "article/posts/index"

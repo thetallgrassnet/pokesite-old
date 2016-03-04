@@ -3,6 +3,23 @@ require 'rails_helper'
 RSpec.describe Article::Post, type: :model do
   let(:post) { FactoryGirl.create(:article_post) }
 
+  describe ".published" do
+    let(:unpublished) { FactoryGirl.create(:article_post, :unpublished) }
+    let(:scheduled) { FactoryGirl.create(:article_post, :scheduled) }
+
+    it "only returns published posts" do
+      expect(Article::Post.as(:p).published(:p).all?(&:published?)).to be true
+      expect { unpublished.update_attribute! :published_at, DateTime.now }.to change { Article::Post.as(:p).published(:p).count }.by 1
+    end
+
+    it "returns published posts in order" do
+      p1 = FactoryGirl.create(:article_post, published_at: post.published_at - 1.day)
+      p2 = FactoryGirl.create(:article_post, published_at: post.published_at - 2.day)
+
+      expect(Article::Post.as(:p).published(:p)).to eq [post, p1, p2]
+    end
+  end
+
   context "headline" do
     it "is required" do
       post.headline = ""
@@ -23,8 +40,9 @@ RSpec.describe Article::Post, type: :model do
     end
 
     it "is unique" do
-      p = FactoryGirl.build(:article_post, slug: post.slug)
+      p = FactoryGirl.build(:article_post, headline: post.headline)
       expect(p).to be_invalid
+      expect(p.errors.include? :slug).to be true
     end
   end
 
@@ -72,29 +90,6 @@ RSpec.describe Article::Post, type: :model do
     end
   end
 
-  context "published" do
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.to contain_exactly post }
-    end
-  end
-
-  context "unpublished" do
-    let(:p) { FactoryGirl.create(:article_post, :unpublished) }
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.not_to include p }
-    end
-  end
-
-  context "scheduled" do
-    let(:p) { FactoryGirl.create(:article_post, :scheduled) }
-    describe ".published" do
-      subject { Article::Post.published(:result_articlepost) }
-      it { is_expected.not_to include p }
-    end
-  end
-
   context "to_param" do
     it "returns the slug" do
       expect(post.to_param).to eql(post.slug)
@@ -104,6 +99,22 @@ RSpec.describe Article::Post, type: :model do
   context "to_s" do
     it "returns the headline" do
       expect(post.to_s).to eql(post.headline)
+    end
+  end
+
+  describe "published?" do
+    it "returns true if the post is published" do
+      expect(post.published?).to be true
+    end
+
+    it "returns false if the post is unpublished" do
+      p = FactoryGirl.create(:article_post, :unpublished)
+      expect(p.published?).to be false
+    end
+
+    it "returns false if the post is scheduled" do
+      p = FactoryGirl.create(:article_post, :scheduled)
+      expect(p.published?).to be false
     end
   end
 end

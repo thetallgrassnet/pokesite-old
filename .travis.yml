@@ -1,22 +1,25 @@
 sudo: false
 language: ruby
-
-bundler_args: --without development
-
+bundler_args: "--without development"
 before_script:
-  - bundle exec rake neo4j:install[community-2.3.2,travis]
-  - bundle exec rake neo4j:start[travis]
-
+- bundle exec rake neo4j:install[community-2.3.2,travis]
+- bundle exec rake neo4j:start[travis]
 addons:
   code_climate:
     repo_token: 2bad87358c11ee381ee49df1e7a6075a8be92998b2d7d6a65c472270b494bcee
-
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/44f620873e2b1e8f050b
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: false     # default: false
+    - https://webhooks.gitter.im/e/44f620873e2b1e8f050b
+    on_success: change
+    on_failure: always
+    on_start: false
   slack:
     secure: fX15SFWc+Y8RAaZSmYfXLKzl+HZMCuhxVKzG/UrxG7sL5kkY0R+MHATIxyNoLmi72hWmx6oBUfmvr/mdRyjr9PDmTWQsy+/KOl4O6YBFHWcfOJORDRvJtarvuTRz7bEHVADS2NelRnzFZHW+vWarJoK7fNOakYZfoNjhUb/6otk=
+env:
+  global:
+  - AWS_REGION=us-east-1
+  - AWS_HOST=s3.amazonaws.com
+  - AWS_ENDPOINT=https://s3.amazonaws.com
+  - AWS_S3_BUCKET=ttgn-pokesite-development
+  - secure: H8Tbj22vC9YbkKwS1lV1lTr+r1N+LQsiuWCY1bIwOKnqSxkIaesBgUO7SA0C4VfKoXTR2nHHD6/b4O9KdFXznrke/yzqx7mLmTW73+jp80pZutiAUSVTMnfvN1p7gwCYH2yYxTluqnsXWBaYycZx7S+1zlOKDk04LwnBoprGmHM=

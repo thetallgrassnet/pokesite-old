@@ -34,6 +34,8 @@ gem 'allowy', '~> 2.1.0'
 
 gem 'kaminari-neo4j', '>= 0.0.4'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', branch: '0.11-stable'
+
 group :development, :test do
   gem 'guard'
   gem 'guard-rails'

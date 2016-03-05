@@ -15,5 +15,9 @@ FactoryGirl.define do
     trait :scheduled do
       published_at DateTime.now + 1.day
     end
+
+    trait :featured do
+      is_featured true
+    end
   end
 end

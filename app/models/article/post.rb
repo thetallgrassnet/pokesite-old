@@ -33,6 +33,10 @@ class Article::Post
       .params(now: DateTime.now.to_time.to_i)
   }
 
+  scope :featured, -> {
+    where(is_featured: true)
+  }
+
   def to_param
     slug
   end

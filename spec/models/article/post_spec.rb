@@ -20,6 +20,16 @@ RSpec.describe Article::Post, type: :model do
     end
   end
 
+  describe ".featured" do
+    let(:featured) { FactoryGirl.create(:article_post, :featured) }
+    let(:unfeatured) { FactoryGirl.create(:article_post) }
+
+    it "only returns featured posts" do
+      expect(Article::Post.featured.all?(&:is_featured)).to be true
+      expect { unfeatured.update_attribute! :is_featured, true }.to change { Article::Post.featured.count }.by 1
+    end
+  end
+
   context "headline" do
     it "is required" do
       post.headline = ""

@@ -4,7 +4,7 @@ FactoryGirl.define do
     subhead { headline }
     body { headline }
     is_featured false
-    published_at "2016-02-28 02:04:06"
+    published_at DateTime.now
     author
     column { author.columns.first }
 

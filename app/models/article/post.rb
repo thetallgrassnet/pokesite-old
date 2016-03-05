@@ -28,8 +28,7 @@ class Article::Post
   before_validation :slugify
 
   scope :published, ->(identifier) {
-    where("#{identifier}.published_at <= {now}")
-      .order_by(published_at: :desc)
+    where("#{identifier}.published_at <= {now}").order(published_at: :desc)
       .params(now: DateTime.now.to_time.to_i)
   }
 

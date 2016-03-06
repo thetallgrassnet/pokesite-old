@@ -37,6 +37,7 @@ gem 'kaminari-neo4j', '>= 0.0.4'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', branch: '0.11-stable'
 gem 'carrierwave-neo4j', require: 'carrierwave/neo4j'
 gem 'fog-aws', '~> 0.9'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'guard'

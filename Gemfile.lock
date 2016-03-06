@@ -191,6 +191,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99.1)
+    mini_magick (4.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -374,6 +375,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails (~> 4.0)
   kaminari-neo4j (>= 0.0.4)
+  mini_magick
   neo4j (~> 6.0)
   newrelic_rpm
   nokogiri (>= 1.6.7.2)

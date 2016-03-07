@@ -1,6 +1,6 @@
 FROM ruby:2.3.0-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential nodejs && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential git nodejs imagemagick && rm -rf /var/lib/apt/lists/*
 
 ENV APP_HOME /usr/src/app
 RUN mkdir -p $APP_HOME

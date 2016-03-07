@@ -34,6 +34,11 @@ gem 'allowy', '~> 2.1.0'
 
 gem 'kaminari-neo4j', '>= 0.0.4'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', branch: '0.11-stable'
+gem 'carrierwave-neo4j', require: 'carrierwave/neo4j'
+gem 'fog-aws', '~> 0.9'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'guard'
   gem 'guard-rails'
@@ -48,6 +53,8 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'dotenv-rails'
 end
 
 # Access an IRB console on exception pages or by using <%= console %> in views

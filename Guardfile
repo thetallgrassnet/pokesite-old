@@ -32,6 +32,7 @@
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
 
 guard 'rails', host: '0.0.0.0' do
+  watch('.env')
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})
 end

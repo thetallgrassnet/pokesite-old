@@ -72,4 +72,5 @@ gem 'nokogiri', '>= 1.6.7.2'
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
+  gem 'raygun4ruby'
 end

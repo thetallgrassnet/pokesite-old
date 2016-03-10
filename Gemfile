@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma'
+gem 'raygun4ruby'
 
 gem 'slim-rails', '~> 3.0.1'
 gem 'bootstrap-sass', '~> 3.3'
@@ -72,5 +73,4 @@ gem 'nokogiri', '>= 1.6.7.2'
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
-  gem 'raygun4ruby'
 end

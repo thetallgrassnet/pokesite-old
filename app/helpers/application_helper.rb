@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def join_title(*args)
-    args.join(" | ")
+    args.join(" | ").html_safe
   end
 
   def display_flash_messages

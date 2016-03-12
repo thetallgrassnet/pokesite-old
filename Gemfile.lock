@@ -197,6 +197,9 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    namekuji (1.0.0)
+      activemodel (~> 4.2.6)
+      activesupport (~> 4.2.6)
     nenv (0.3.0)
     neo4j (6.1.9)
       active_attr (~> 0.8)
@@ -380,6 +383,7 @@ DEPENDENCIES
   jquery-rails (~> 4.0)
   kaminari-neo4j (>= 0.0.4)
   mini_magick
+  namekuji
   neo4j (~> 6.0)
   newrelic_rpm
   nokogiri (>= 1.6.7.2)

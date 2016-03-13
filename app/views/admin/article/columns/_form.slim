@@ -2,8 +2,8 @@
     url: @article_column.persisted? ? admin_article_column_path(@article_column.uuid) : admin_article_columns_path) do |f|
   fieldset
     .field = f.text_field :name
-    
+
     .field = f.text_field :description
-    
+
     .actions
       = f.submit (@article_column.persisted? ? "Update" : "Create") + " column"

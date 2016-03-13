@@ -1,0 +1,32 @@
+header.row
+  h1.col-sm-9 = "#{t("articles.title")} / #{t("articles.posts.title")}"
+  .col-sm-3
+    = link_to t("admin.new"), new_admin_article_post_path, class: "btn btn-success"
+
+.table-container
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th = t("articles.posts.headline")
+          th = t("articles.posts.column")
+          th = t("articles.posts.author")
+          th = t("articles.posts.created_at")
+          th = t("articles.posts.published_at")
+          th
+      tbody
+        - for post in @article_posts
+          tr
+            td = post.headline
+            td = post.column
+            td = post.author
+            td = post.created_at
+            td = post.published_at
+            td.table-actions
+              ul.list-inline
+                li = link_to glyphicon("eye-open", t("admin.show")), admin_article_post_path(post.uuid)
+                - if can? :update, post
+                  li = link_to glyphicon("pencil", t("admin.edit")), edit_admin_article_post_path(post.uuid)
+                - if can? :destroy, post
+                  li = link_to glyphicon("trash", t("admin.destroy")), admin_article_post_path(post.uuid), method: :delete,
+                      data: { confirm: "Are you sure you want to destroy #{post}?" }

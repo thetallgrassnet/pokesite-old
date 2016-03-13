@@ -1,8 +1,4 @@
 class Article::PostAccess < BaseAccess
-  def manage?(*)
-    current_user.is_admin? or current_user.columns.size > 0
-  end
-
   def show?(post)
     post.published?
   end
@@ -16,5 +12,9 @@ class Article::PostAccess < BaseAccess
   def destroy?(post)
     current_user.is_editor_for?(post.column) or
       current_user.is_admin?
+  end
+
+  def manage?(*)
+    current_user.is_admin? or current_user.columns.size > 0
   end
 end

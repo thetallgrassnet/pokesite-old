@@ -30,3 +30,5 @@ header.row
                 - if can? :destroy, post
                   li = link_to glyphicon("trash", t("admin.destroy")), admin_article_post_path(post.uuid), method: :delete,
                       data: { confirm: "Are you sure you want to destroy #{post}?" }
+
+= paginate @article_posts

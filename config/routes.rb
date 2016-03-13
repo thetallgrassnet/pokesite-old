@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  concern :paginatable do
+    get "(page/:page)", action: :index, on: :collection
+  end
+
   namespace :admin do
     root "dashboard#index"
 
     namespace :article, path: "articles" do
-      resources :columns
-      resources :posts
+      resources :columns, concerns: :paginatable
+      resources :posts, concerns: :paginatable
     end
 
     namespace :user, path: "users" do
-      resources :accounts, except: [:new, :create]
+      resources :accounts, except: [:new, :create], concerns: :paginatable
     end
   end
 

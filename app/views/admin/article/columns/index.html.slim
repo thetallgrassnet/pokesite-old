@@ -23,3 +23,5 @@ header.row
                 - if can? :destroy, column
                   li = link_to glyphicon("trash", t("admin.destroy")), admin_article_column_path(column.uuid), method: :delete,
                       data: { confirm: "Are you sure you want to destroy #{column}?" }
+
+= paginate @article_columns

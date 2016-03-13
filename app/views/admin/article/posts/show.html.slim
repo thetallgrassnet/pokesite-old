@@ -1,0 +1,33 @@
+header.row
+  h1.col-xs-12 = @article_post.to_s
+
+.table-container.row
+  .col-xs-12
+    .table-responsive
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Attribute
+            th Value
+        tbody
+          tr
+            th = t("articles.posts.column")
+            td = link_to @article_post.column, admin_article_column_path(@article_post.column.uuid)
+          tr
+            th = t("articles.posts.author")
+            td = link_to @article_post.author, admin_user_account_path(@article_post.author.uuid)
+          tr
+            th = t("articles.posts.is_featured")
+            td = @article_post.is_featured
+          tr
+            th = t("articles.posts.created_at")
+            td = @article_post.created_at.to_formatted_s :rfc822
+          tr
+            th = t("articles.posts.published_at")
+            td = @article_post.published_at&.to_formatted_s :rfc822
+          tr
+            th = t("articles.posts.feature_image")
+            td = image_tag(@article_post.feature_image_url) if @article_post.feature_image?
+          tr
+            th = t("articles.posts.body")
+            td = raw @article_post.body

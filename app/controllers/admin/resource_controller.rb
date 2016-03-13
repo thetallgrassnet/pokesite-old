@@ -40,14 +40,24 @@ class Admin::ResourceController < Admin::BaseController
   end
 
   def edit
+    begin
+      authorize! :update, instance_variable_get(@resource_instance_var)
+    rescue Allowy::AccessDenied
+      flash[:error] = "You are not allowed to update #{resource}."
+      redirect_to action: :show, id: instance_variable_get(@resource_instance_var).uuid
+    end
   end
 
   def update
     begin
       resource = instance_variable_get(@resource_instance_var)
+      authorize! :update, resource
       resource.update_attributes! resource_params
 
       flash[:success] = "#{resource} updated successfully."
+      redirect_to action: :show, id: resource.uuid
+    rescue Allowy::AccessDenied
+      flash[:error] = "You are not allowed to update #{resource}."
       redirect_to action: :show, id: resource.uuid
     rescue Neo4j::ActiveNode::Persistence::RecordInvalidError
       render :edit

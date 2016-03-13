@@ -1,5 +1,5 @@
 class Article::PostAccess < BaseAccess
-  def manage?(post)
+  def manage?(*)
     current_user.is_admin? or current_user.columns.size > 0
   end
 

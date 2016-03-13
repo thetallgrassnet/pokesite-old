@@ -10,7 +10,7 @@ class BaseAccess
     manage?(klass)
   end
 
-  def manage?(klass)
+  def manage?(*)
     current_user.is_admin?
   end
 end

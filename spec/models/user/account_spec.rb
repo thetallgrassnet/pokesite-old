@@ -62,9 +62,23 @@ RSpec.describe User::Account, type: :model do
       it { is_expected.to be true }
     end
 
+    describe "#is_editor_for?" do
+      subject { user.is_editor_for? column }
+      it { is_expected.to be false }
+    end
+
+    context "as editor" do
+      before { user.columns.first_rel_to(column).update_attribute! :is_editor, true }
+
+      describe "#is_editor_for?" do
+        subject { user.is_editor_for? column }
+        it { is_expected.to be true }
+      end
+    end
+
     context "with posts" do
       let(:post) { FactoryGirl.create(:article_post) }
- 
+
       describe "#posts" do
         subject { post.author.posts.to_a }
         it { is_expected.to contain_exactly post }
@@ -80,6 +94,8 @@ RSpec.describe User::Account, type: :model do
   end
 
   context "without columns" do
+    let(:column) { FactoryGirl.create(:article_column) }
+
     describe "#columns" do
       subject { user.columns.to_a }
       it { is_expected.to be_empty }
@@ -87,6 +103,11 @@ RSpec.describe User::Account, type: :model do
 
     describe "#can_access_admin?" do
       subject { user.can_access_admin? }
+      it { is_expected.to be false }
+    end
+
+    describe "#is_editor_for?" do
+      subject { user.is_editor_for? column }
       it { is_expected.to be false }
     end
   end

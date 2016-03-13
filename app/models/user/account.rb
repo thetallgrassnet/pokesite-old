@@ -55,4 +55,8 @@ class User::Account
   def can_access_admin?
     is_admin? or columns.size > 0
   end
+
+  def is_editor_for?(column)
+    !!columns.first_rel_to(column)&.is_editor?
+  end
 end

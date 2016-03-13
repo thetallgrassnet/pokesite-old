@@ -23,13 +23,16 @@ html lang=I18n.locale
 
         .navbar-collapse.collapse
           ul.nav.navbar-nav
-            - if can? :manage, Article::Column
+            - if can?(:manage, Article::Column) or can?(:manage, Article::Post)
               li.dropdown
                 = link_to nil, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }
                   = t("articles.title")
                   span.caret
                 ul.dropdown-menu role="menu"
-                  li = link_to t("articles.columns.title"), admin_article_columns_path
+                  - if can? :manage, Article::Column
+                    li = link_to t("articles.columns.title"), admin_article_columns_path
+                  - if can? :manage, Article::Post
+                    li = link_to t("articles.posts.title"), admin_article_posts_path
 
             - if can? :manage, User::Account
               li.dropdown

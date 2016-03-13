@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     namespace :article, path: "articles" do
       resources :columns
+      resources :posts
     end
 
     namespace :user, path: "users" do

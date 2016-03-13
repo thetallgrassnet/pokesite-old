@@ -61,6 +61,8 @@ en:
       title: Columns
       name: Name
       description: Description
+    posts:
+      title: Posts
     title: Articles
   users:
     accounts:

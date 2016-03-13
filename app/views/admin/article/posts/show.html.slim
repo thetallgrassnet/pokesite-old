@@ -31,3 +31,9 @@ header.row
           tr
             th = t("articles.posts.body")
             td = raw @article_post.body
+
+footer.row
+  ul.list-inline.col-xs-12
+    li = link_to t("admin.edit"), edit_admin_article_post_path(@article_post.uuid)
+    li = link_to t("admin.destroy"), admin_article_post_path(@article_post.uuid), method: :delete,
+        data: { confirm: "Are you sure you want to destroy #{@article_post}?" }

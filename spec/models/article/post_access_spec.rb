@@ -32,8 +32,8 @@ RSpec.describe Article::PostAccess do
     context "the author" do
       let(:author_access) { Article::PostAccess.new double(current_user: post.author) }
 
-      describe "#edit?" do
-        subject { author_access.edit? post }
+      describe "#update?" do
+        subject { author_access.update? post }
         it { is_expected.to be true }
       end
 
@@ -52,8 +52,8 @@ RSpec.describe Article::PostAccess do
         editor.columns.first_rel_to(post.column).update_attribute! :is_editor, true
       end
 
-      describe "#edit?" do
-        subject { editor_access.edit? post }
+      describe "#update?" do
+        subject { editor_access.update? post }
         it { is_expected.to be true }
       end
 
@@ -67,8 +67,8 @@ RSpec.describe Article::PostAccess do
       let(:admin) { FactoryGirl.create(:user_account, :is_admin) }
       let(:admin_access) { Article::PostAccess.new double(current_user: admin) }
 
-      describe "#edit?" do
-        subject { admin_access.edit? post }
+      describe "#update?" do
+        subject { admin_access.update? post }
         it { is_expected.to be true }
       end
 
@@ -79,8 +79,8 @@ RSpec.describe Article::PostAccess do
     end
 
     context "any other user" do
-      describe "#edit?" do
-        subject { access.edit? post }
+      describe "#update?" do
+        subject { access.update? post }
         it { is_expected.to be false }
       end
 

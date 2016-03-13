@@ -12,4 +12,9 @@ class Article::PostAccess < BaseAccess
       current_user.is_editor_for?(post.column) or
       current_user.is_admin?
   end
+
+  def destroy?(post)
+    current_user.is_editor_for?(post.column) or
+      current_user.is_admin?
+  end
 end

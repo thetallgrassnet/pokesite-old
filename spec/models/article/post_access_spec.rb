@@ -36,6 +36,11 @@ RSpec.describe Article::PostAccess do
         subject { author_access.edit? post }
         it { is_expected.to be true }
       end
+
+      describe "#destroy?" do
+        subject { author_access.destroy? post }
+        it { is_expected.to be false }
+      end
     end
 
     context "an editor" do
@@ -51,6 +56,11 @@ RSpec.describe Article::PostAccess do
         subject { editor_access.edit? post }
         it { is_expected.to be true }
       end
+
+      describe "#destroy?" do
+        subject { editor_access.destroy? post }
+        it { is_expected.to be true }
+      end
     end
 
     context "an admin" do
@@ -61,11 +71,21 @@ RSpec.describe Article::PostAccess do
         subject { admin_access.edit? post }
         it { is_expected.to be true }
       end
+
+      describe "#destroy?" do
+        subject { admin_access.destroy? post }
+        it { is_expected.to be true }
+      end
     end
 
     context "any other user" do
       describe "#edit?" do
         subject { access.edit? post }
+        it { is_expected.to be false }
+      end
+
+      describe "#destroy?" do
+        subject { access.destroy? post }
         it { is_expected.to be false }
       end
     end

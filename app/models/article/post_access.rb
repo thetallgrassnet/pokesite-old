@@ -6,4 +6,10 @@ class Article::PostAccess < BaseAccess
   def show?(post)
     post.published?
   end
+
+  def edit?(post)
+    current_user == post.author or
+      current_user.is_editor_for?(post.column) or
+      current_user.is_admin?
+  end
 end

@@ -17,7 +17,7 @@ class Admin::ResourceController < Admin::BaseController
 
   def index
     (redirect_to(action: :index) and return) if params[:page] == "1"
-    instance_variable_set @resource_instance_var.pluralize, @klass.all.page(params[:page]).per(10)
+    instance_variable_set @resource_instance_var.pluralize, @klass.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

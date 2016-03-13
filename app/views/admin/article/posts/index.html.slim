@@ -20,8 +20,8 @@ header.row
             td = post.headline
             td = post.column
             td = post.author
-            td = post.created_at
-            td = post.published_at
+            td = post.created_at.to_formatted_s :rfc822
+            td = post.published_at.to_formatted_s :rfc822
             td.table-actions
               ul.list-inline
                 li = link_to glyphicon("eye-open", t("admin.show")), admin_article_post_path(post.uuid)

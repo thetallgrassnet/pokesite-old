@@ -15,3 +15,4 @@
 //= require bootstrap/alert
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
+//= require trix

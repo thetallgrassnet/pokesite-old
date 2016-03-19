@@ -20,7 +20,7 @@ class Article::Post
   validates :body,    presence: true
   validates :author,  presence: true
   validates :column,  presence: true
-  validates :feature_image, presence: true
+  validates :feature_image, presence: true, unless: -> { published_at.nil? }
 
   validate :author_writes_for_column, unless: -> { author.nil? }
 

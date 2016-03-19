@@ -1,0 +1,21 @@
+= bootstrap_form_for(@article_post,
+    url: @article_post.persisted? ? admin_article_post_path(@article_post.uuid) : admin_article_posts_path) do |f|
+  fieldset
+    .field = f.collection_select :column_id, current_user.columns, :uuid, :name
+
+    .field = f.check_box :is_featured
+
+    .field = f.text_field :headline
+
+    .field = f.text_field :subhead
+
+    .field
+      = f.file_field :feature_image
+      = image_tag(@article_post.feature_image_url) if @article_post.feature_image?
+
+    .field = f.trix_editor :body
+
+    .field = f.datetime_local_field :published_at
+
+    .actions
+      = f.submit (@article_post.persisted? ? "Update" : "Create") + " post"

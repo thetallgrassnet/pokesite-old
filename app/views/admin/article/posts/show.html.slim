@@ -20,6 +20,9 @@ header.row
             th = t("articles.posts.is_featured")
             td = @article_post.is_featured
           tr
+            th = t("articles.posts.subhead")
+            td = @article_post.subhead
+          tr
             th = t("articles.posts.created_at")
             td = @article_post.created_at.to_formatted_s :rfc822
           tr

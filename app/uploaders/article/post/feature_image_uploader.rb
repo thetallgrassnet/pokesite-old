@@ -1,3 +1,3 @@
 class Article::Post::FeatureImageUploader < ImageUploader
-  process scale: [640, 360]
+  process scale: [1280, 720]
 end

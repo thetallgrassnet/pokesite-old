@@ -1,5 +1,7 @@
 = bootstrap_form_for(@article_post,
     url: @article_post.persisted? ? admin_article_post_path(@article_post.uuid) : admin_article_posts_path) do |f|
+  = f.hidden_field :body, id: "post_body"
+
   fieldset
     .field = f.collection_select :column_id, current_user.columns, :uuid, :name
 
@@ -10,10 +12,12 @@
     .field = f.text_field :subhead
 
     .field
-      = f.file_field :feature_image
       = image_tag(@article_post.feature_image_url) if @article_post.feature_image?
+      = f.file_field :feature_image
 
-    .field = f.text_area :body
+    .field
+      label.control-label Body
+      .editable data-field-id="body" = sanitize @article_post.body
 
     .field = f.datetime_local_field :published_at
 

@@ -16,4 +16,5 @@
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
 //= require medium-editor
+//= require editable
 //= require_tree ./admin

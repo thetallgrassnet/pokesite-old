@@ -3,7 +3,8 @@
 @import "rails_bootstrap_forms";
 @import "grid";
 @import "medium-editor/medium-editor";
-@import "medium-editor/themes/bootstrap";
+@import "medium-editor/themes/default";
+@import "editable";
 
 body {
   padding-top: $navbar-height;

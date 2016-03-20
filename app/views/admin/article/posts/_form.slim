@@ -13,7 +13,7 @@
       = f.file_field :feature_image
       = image_tag(@article_post.feature_image_url) if @article_post.feature_image?
 
-    .field = f.trix_editor :body
+    .field = f.text_area :body
 
     .field = f.datetime_local_field :published_at
 

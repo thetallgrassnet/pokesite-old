@@ -31,9 +31,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    active_attr (0.9.0)
-      activemodel (>= 3.0.2, < 5.1)
-      activesupport (>= 3.0.2, < 5.1)
     activejob (4.2.6)
       activesupport (= 4.2.6)
       globalid (>= 0.3.0)
@@ -201,8 +198,7 @@ GEM
       activemodel (~> 4.2.6)
       activesupport (~> 4.2.6)
     nenv (0.3.0)
-    neo4j (6.1.10)
-      active_attr (~> 0.8)
+    neo4j (7.0.0)
       activemodel (~> 4)
       activesupport (~> 4)
       neo4j-core (>= 6.0.0)
@@ -384,7 +380,7 @@ DEPENDENCIES
   kaminari-neo4j (>= 0.0.4)
   mini_magick
   namekuji
-  neo4j (~> 6.0)
+  neo4j (~> 7.0)
   newrelic_rpm
   nokogiri (>= 1.6.7.2)
   obscenity (~> 1.0.2)

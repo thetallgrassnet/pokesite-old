@@ -1,9 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 @import "rails_bootstrap_forms";
 @import "grid";
 @import "medium-editor/medium-editor";
 @import "medium-editor/themes/default";
+@import "medium-editor-insert-plugin/medium-editor-insert-plugin";
 @import "editable";
 
 body {

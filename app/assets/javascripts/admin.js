@@ -16,5 +16,8 @@
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
 //= require medium-editor
+//= require handlebars.runtime.js
+//= require jquery-sortable
+//= require medium-editor-insert-plugin
 //= require editable
 //= require_tree ./admin

@@ -15,6 +15,8 @@
     fieldset.col-md-3
       .field = f.check_box :is_featured
 
+      .field = f.check_box :is_published
+
       .field = f.collection_select :column_id, current_user.columns, :uuid, :name
 
       .field = f.datetime_local_field :published_at

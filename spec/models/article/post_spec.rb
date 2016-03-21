@@ -9,7 +9,7 @@ RSpec.describe Article::Post, type: :model do
 
     it "only returns published posts" do
       expect(Article::Post.as(:p).published(:p).all?(&:published?)).to be true
-      expect { unpublished.update_attribute! :published_at, DateTime.now }.to change { Article::Post.as(:p).published(:p).count }.by 1
+      expect { unpublished.update_attributes! is_published: true, published_at: DateTime.now }.to change { Article::Post.as(:p).published(:p).count }.by 1
     end
 
     it "returns published posts in order" do
@@ -67,6 +67,20 @@ RSpec.describe Article::Post, type: :model do
     it "is required" do
       post.body = ""
       expect(post).to be_invalid
+    end
+  end
+
+  describe "#published_at" do
+    context "nil for a published or scheduled post" do
+      let(:p) { FactoryGirl.build(:article_post, published_at: nil) }
+      subject { p }
+      it { is_expected.to_not be_valid }
+    end
+
+    context "nil for an unpublished post" do
+      let(:p) { FactoryGirl.build(:article_post, :unpublished, published_at: nil) }
+      subject { p }
+      it { is_expected.to be_valid }
     end
   end
 

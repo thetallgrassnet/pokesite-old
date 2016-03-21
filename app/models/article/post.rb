@@ -9,6 +9,7 @@ class Article::Post
   property :subhead,       type: String, null: false, default: ""
   property :body,          type: String, null: false, default: ""
   property :is_featured,   type: Boolean, null: false, default: false
+  property :is_published,  type: Boolean, null: false, default: false
   property :published_at,  type: DateTime
   property :feature_image, type: String
 
@@ -20,13 +21,15 @@ class Article::Post
   validates :body,    presence: true
   validates :author,  presence: true
   validates :column,  presence: true
-  validates :feature_image, presence: true, unless: -> { published_at.nil? }
+  validates :published_at, presence: true, if: :is_published?
+  validates :feature_image, presence: true, if: :is_published?
 
   validate :author_writes_for_column, unless: -> { author.nil? }
 
   scope :published, ->(identifier) {
-    where("#{identifier}.published_at <= {now}").order(published_at: :desc)
-      .params(now: DateTime.now.to_time.to_i)
+    where("#{identifier}.is_published = {true} AND #{identifier}.published_at <= {now}")
+      .order(published_at: :desc)
+      .params(true: true, now: DateTime.now.to_time.to_i)
   }
 
   scope :featured, -> {
@@ -42,7 +45,7 @@ class Article::Post
   end
 
   def published?
-    (not published_at.nil?) and published_at <= DateTime.now
+    is_published? and published_at <= DateTime.now
   end
 
   private

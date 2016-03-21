@@ -1,5 +1,5 @@
 class Admin::Article::PostsController < Admin::ResourceController
-  resource ::Article::Post, %w( author_id column_id headline subhead body is_featured published_at feature_image )
+  resource ::Article::Post, %w( author_id column_id headline subhead body is_featured is_published published_at feature_image )
 
   before_filter :typecast_published_at, only: [:create, :update]
 

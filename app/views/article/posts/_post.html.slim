@@ -7,4 +7,4 @@ article
       on #{time_tag post.published_at, post.published_at.strftime("%A, %B %e, %Y at %l:%M%P"), pubdate: true}
 
   section
-    = sanitize post.body
+    = raw post.body

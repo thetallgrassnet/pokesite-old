@@ -7,4 +7,4 @@ $('.editable').mediumInsert
       oembedProxy: 'https://iframely.thetallgrass.net/oembed?iframe=1'
 
 $('.editable').on 'input propertychange', ->
-  $('#post_' + $(this).data('field-id')).val $(this).html()
+  $('#post_' + $(this).data('field-id')).val editor.serialize()['element-0'].value

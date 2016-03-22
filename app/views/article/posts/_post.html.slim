@@ -1,5 +1,7 @@
 article
   header
+    = image_tag post.feature_image, alt: post.headline, class: "img-responsive"
+
     h1= link_to post.headline, post
     h2= post.subhead
     p By #{link_to post.author, post.author}

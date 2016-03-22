@@ -1,8 +1,10 @@
 - content_for :title
   = @title
 
-h1 = @title
+.row
+  .col-md-8
+    h1 = @title
 
-= render @posts
+    = render @posts
 
-= paginate @posts
+    = paginate @posts

@@ -1,6 +1,14 @@
-FROM ruby:2.3.0-slim
+FROM ruby:2.3.0-alpine
 
-RUN apt-get update && apt-get install -y --no-install-recommends build-essential git nodejs imagemagick && rm -rf /var/lib/apt/lists/*
+RUN apk add --update --no-cache \
+      build-base \
+      nodejs \
+      tzdata \
+      libxml2-dev \
+      libxslt-dev \
+      git \
+      imagemagick
+RUN bundle config build.nokogiri --use-system-libraries
 
 ENV APP_HOME /usr/src/app
 RUN mkdir -p $APP_HOME

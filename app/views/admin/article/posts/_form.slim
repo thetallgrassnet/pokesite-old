@@ -10,7 +10,7 @@
 
       .field
         label.control-label Body
-        .editable data-field-id="body" = raw @article_post.body
+        .editable data-field-id="body" == @article_post.body
 
     fieldset.col-md-3
       .field = f.check_box :is_featured

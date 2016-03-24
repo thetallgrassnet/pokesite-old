@@ -36,7 +36,7 @@ header.row
             td = image_tag(@article_post.feature_image_url, class: "img-responsive") if @article_post.feature_image?
           tr
             th = t("articles.posts.body")
-            td = raw @article_post.body
+            td == @article_post.body
 
 footer.row
   ul.list-inline.col-xs-12

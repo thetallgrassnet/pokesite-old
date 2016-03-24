@@ -27,15 +27,22 @@ body.welcome {
       }
     }
 
-    h1 {
-      font-size: 1.5em;
+    .featured-post-details {
       position: absolute;
       bottom: 0;
-      margin: 0;
       padding: 10px;
       width: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       color: white;
+
+      h1 {
+        font-size: 1.5em;
+        margin: 0;
+      }
+
+      .featured-post-meta {
+        font-size: 0.8em;
+      }
     }
   }
 }

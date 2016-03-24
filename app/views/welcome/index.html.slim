@@ -2,4 +2,9 @@
   - for post in @posts
     .featured-post.col-sm-6.col-md-4 style="background-image: url(#{post.feature_image_url})"
       = link_to post, title: post.headline
-        h1 = post.headline
+        .featured-post-details
+          h1 = post.headline
+          .featured-post-meta
+            => post.column.name
+            ' –
+            = time_tag post.published_at, post.published_at.strftime("%A, %B, %e, %Y at %l:%M%P")

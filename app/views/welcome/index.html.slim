@@ -1,2 +1,5 @@
-.row
-  .col-md-8 = render @posts
+.row.featured-posts
+  - for post in @posts
+    .featured-post.col-sm-6.col-md-4 style="background-image: url(#{post.feature_image_url})"
+      = link_to post, title: post.headline
+        h1 = post.headline

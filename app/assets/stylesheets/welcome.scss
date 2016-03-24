@@ -1,0 +1,41 @@
+body.welcome {
+  .featured-post {
+    padding: {
+      left: 0;
+      right: 0;
+    }
+    position: relative;
+    background-size: contain;
+
+    &:after {
+      padding-top: 56.25%;
+      display: block;
+      content: '';
+    }
+
+    a {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+
+    h1 {
+      font-size: 1.5em;
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      padding: 10px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+    }
+  }
+}

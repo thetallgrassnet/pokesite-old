@@ -10,6 +10,7 @@ CarrierWave.configure do |config|
     host: ENV['AWS_HOST'],
     endpoint: ENV['AWS_ENDPOINT']
   }
+  config.asset_host = "http#{ "s" if Rails.env.production? }://#{ ENV['AWS_S3_BUCKET'] }"
   config.fog_directory = ENV['AWS_S3_BUCKET']
   config.fog_public = true
   config.fog_attributes = {}

@@ -16,6 +16,11 @@ body {
   margin-bottom: $footer-height + $line-height-computed;
 }
 
+h1, h2 {
+  font-family: "Lato";
+  font-weight: 900;
+}
+
 h2 {
   font-size: 2rem;
 }

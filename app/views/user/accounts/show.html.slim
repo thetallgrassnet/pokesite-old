@@ -3,4 +3,6 @@
 
 h1 = @account.username
 
-p = "Joined on %s" % @account.created_at.strftime("%B %-d, %Y")
+p
+  ' Joined on
+  = local_time @account.created_at, "%B %-d, %Y"

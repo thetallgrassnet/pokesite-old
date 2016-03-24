@@ -16,8 +16,14 @@ body {
   margin-bottom: $footer-height + $line-height-computed;
 }
 
-#header #logo {
-  display: block;
+h2 {
+  font-size: 2rem;
+}
+
+#site-title {
+  h1, h2 {
+    margin-top: 10px;
+  }
 }
 
 .navbar {

@@ -4,7 +4,7 @@ class Admin::Article::PostsController < Admin::ResourceController
   def index
     (redirect_to(action: :index) and return) if params[:page] == "1"
     @article_posts = (current_user.is_admin? ? ::Article::Post.all : current_user.columns.posts)
-      .order(created_at: :desc).with_associations(:author, :column).page(params[:page]).per(10)
+      .order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def create

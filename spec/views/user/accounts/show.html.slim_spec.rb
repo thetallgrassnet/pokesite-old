@@ -10,6 +10,6 @@ RSpec.describe "user/accounts/show.html.slim", type: :view do
     render
 
     expect(rendered).to match %r{<h1>#{account.username}</h1>}
-    expect(rendered).to include "Joined on <time datetime=\"#{date.iso8601}\" data-local=\"time\" data-format=\"%B %-d, %Y\">#{date.strftime("%B %-d, %Y")}</time>"
+    expect(rendered).to include "Joined on <time datetime=\"#{date.iso8601}\" data-local=\"time\" data-format=\"%B %e, %Y\">#{date.strftime("%B %-d, %Y")}</time>"
   end
 end

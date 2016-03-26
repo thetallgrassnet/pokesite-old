@@ -1,0 +1,29 @@
+header.row
+  h1.col-sm-9 = "#{t("ads.title")}"
+  .col-sm-3
+    = link_to t("admin.new"), new_admin_ad_path, class: "btn btn-success"
+
+.table-container
+  .table-responsive
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th = t("ads.name")
+          th = t("ads.start_date")
+          th = t("ads.end_date")
+          th = t("ads.is_active")
+          th
+      tbody
+        - for ad in @ads
+          tr
+            td = ad.name
+            td = ad.start_date
+            td = ad.end_date
+            td = ad.is_active
+            td.table-actions
+              ul.list-inline
+                li = link_to glyphicon("eye-open", t("admin.show")), admin_ad_path(ad.uuid)
+                li = link_to glyphicon("pencil", t("admin.edit")), edit_admin_ad_path(ad.uuid)
+                - if can? :destroy, ad
+                  li = link_to glyphicon("trash", t("admin.destroy")), admin_ad_path(ad.uuid), method: :delete,
+                      data: { confirm: "Are you sure you want to destroy #{ad}?" }

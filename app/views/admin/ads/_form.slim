@@ -1,0 +1,15 @@
+= bootstrap_form_for(@ad,
+    url: @ad.persisted? ? admin_ad_path(@ad.uuid) : admin_ads_path) do |f|
+  fieldset
+    .field = f.text_field :name
+
+    .field = f.date_field :start_date
+
+    .field = f.date_field :end_date
+
+    .field = f.check_box :is_active
+
+    .field = f.text_area :body
+
+    .actions
+      = f.submit (@ad.persisted? ? "Update" : "Create") + " ad"

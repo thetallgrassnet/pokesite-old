@@ -1,0 +1,27 @@
+header.row
+  h1.col-xs-12 = @ad.to_s
+
+.table-container.row
+  .col-xs-12
+    .table-responsive
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th Attribute
+            th Value
+        tbody
+          tr
+            th = t("ad.start_date")
+            td = @ad.start_date
+          tr
+            th = t("ad.end_date")
+            td = @ad.end_date
+          tr
+            th = t("ad.is_active")
+            td = @ad.is_active
+
+footer.row
+  ul.list-inline.col-xs-12
+    li = link_to t("admin.edit"), edit_admin_ad_path(@ad.uuid)
+    li = link_to t("admin.destroy"), admin_ad_path(@ad.uuid), method: :delete,
+        data: { confirm: "Are you sure you want to destroy #{@ad}?" }

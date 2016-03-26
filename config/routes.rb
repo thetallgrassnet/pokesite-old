@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root "dashboard#index"
 
+    resources :ads, concerns: :paginatable
+
     namespace :article, path: "articles" do
       resources :columns, concerns: :paginatable
       resources :posts, concerns: :paginatable

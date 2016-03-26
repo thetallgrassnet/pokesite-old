@@ -23,6 +23,9 @@ html lang=I18n.locale
 
         .navbar-collapse.collapse
           ul.nav.navbar-nav
+            - if can?(:manage, Ad)
+              li = link_to t("ads.title"), admin_ads_path
+
             - if can?(:manage, Article::Column) or can?(:manage, Article::Post)
               li.dropdown
                 = link_to nil, class: "dropdown-toggle", role: "button", data: { toggle: "dropdown" }, aria: { expanded: false }

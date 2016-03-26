@@ -56,6 +56,12 @@ en:
       new: Sign in
       destroy: Sign out
       new_omniauth: Sign in with %{provider}
+  ads:
+    title: Ads
+    name: Name
+    start_date: Start Date
+    end_date: End Date
+    is_active: Is Active
   articles:
     columns:
       title: Columns

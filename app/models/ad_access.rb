@@ -1,0 +1,2 @@
+class AdAccess < BaseAccess
+end

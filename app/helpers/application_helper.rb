@@ -24,6 +24,10 @@ module ApplicationHelper
     end
   end
 
+  def display_ad
+    render "layouts/ad", ad: Ad.pick_random
+  end
+
   private
 
   def bootstrap_class_for flash_type

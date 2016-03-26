@@ -12,6 +12,7 @@ header.row
           th = t("articles.posts.column")
           th = t("articles.posts.author")
           th = t("articles.posts.is_featured")
+          th = t("articles.posts.is_published")
           th = t("articles.posts.created_at")
           th = t("articles.posts.published_at")
           th
@@ -22,6 +23,7 @@ header.row
             td = post.column
             td = post.author
             td = post.is_featured
+            td = post.is_published
             td = post.created_at.to_formatted_s :rfc822
             td = post.published_at&.to_formatted_s :rfc822
             td.table-actions

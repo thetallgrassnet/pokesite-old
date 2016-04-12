@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "user/accounts/show.html.slim", type: :view do
-  let(:date) { DateTime.now }
+  let(:date) { DateTime.new 2016, 03, 20, 12, 00, 00 }
   let(:account) { FactoryGirl.build(:user_account, created_at: date) }
 
   it "displays the specified user" do

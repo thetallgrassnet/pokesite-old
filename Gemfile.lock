@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/carrierwaveuploader/carrierwave.git
-  revision: b8254cc5be1d54216214bb722eec72a3e48e53d1
+  revision: 28b9bd35cf1e148822ebbf71528b265d56aedc8a
   branch: 0.11-stable
   specs:
     carrierwave (0.11.0)
@@ -84,7 +84,7 @@ GEM
     coffee-script-source (1.10.0)
     colored (1.2)
     concurrent-ruby (1.0.1)
-    database_cleaner (1.5.2)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (3.5.7)
       bcrypt (~> 3.0)

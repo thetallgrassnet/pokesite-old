@@ -162,7 +162,7 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    httpclient (2.7.2)
+    httpclient (2.8.0)
     i18n (0.7.0)
     ipaddress (0.8.3)
     jbuilder (2.4.1)

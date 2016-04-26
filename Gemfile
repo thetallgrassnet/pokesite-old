@@ -40,7 +40,7 @@ gem 'kaminari-neo4j', '>= 0.0.4'
 gem 'namekuji'
 gem 'local_time'
 
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave', branch: '0.11-stable'
+gem 'carrierwave', '~> 0.11'
 gem 'carrierwave-neo4j', require: 'carrierwave/neo4j'
 gem 'fog-aws', '~> 0.9'
 gem 'mini_magick'

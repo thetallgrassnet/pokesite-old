@@ -32,7 +32,7 @@ gem 'font-awesome-rails'
 gem 'neo4j', '~> 7.0'
 gem 'devise-neo4j', '~> 2.0.0'
 
-gem 'devise', '~> 3.5'
+gem 'devise', '~> 4.0'
 gem 'obscenity', '~> 1.0.2'
 gem 'allowy', '~> 2.1.0'
 

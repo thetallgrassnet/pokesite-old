@@ -200,7 +200,7 @@ GEM
       activemodel (~> 4.2.6)
       activesupport (~> 4.2.6)
     nenv (0.3.0)
-    neo4j (7.0.4)
+    neo4j (7.0.5)
       activemodel (~> 4)
       activesupport (~> 4)
       neo4j-core (>= 6.0.0)

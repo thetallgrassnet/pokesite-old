@@ -216,7 +216,7 @@ GEM
       multi_json
       neo4j-rake_tasks (>= 0.3.0)
       net-http-persistent
-    neo4j-rake_tasks (0.5.1)
+    neo4j-rake_tasks (0.5.2)
       colored
       httparty
       os

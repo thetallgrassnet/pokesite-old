@@ -71,7 +71,7 @@ group :test do
   gem "database_cleaner"
 end
 
-gem 'nokogiri', '>= 1.6.7.2'
+gem 'nokogiri', '>= 1.6.8'
 
 group :production do
   gem 'newrelic_rpm'

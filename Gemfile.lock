@@ -67,7 +67,7 @@ GEM
       activesupport (>= 3.0)
       carrierwave (~> 0.5)
       neo4j (>= 3.0.0)
-    codeclimate-test-reporter (0.5.1)
+    codeclimate-test-reporter (0.5.2)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -351,7 +351,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     warden (1.2.6)
       rack (>= 1.0)
-    web-console (3.2.0)
+    web-console (3.2.1)
       activemodel (>= 4.2)
       debug_inspector
       railties (>= 4.2)
